@@ -1,0 +1,4 @@
+name: SimpleEvents
+version: '${project.version}'
+main: pl.pavetti.simpleevents.SimpleEvents
+api-version: '1.19'
