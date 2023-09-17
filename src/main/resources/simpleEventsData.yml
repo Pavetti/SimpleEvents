@@ -1,0 +1,12 @@
+simpleEventsData:
+  throwEnderPerl:
+    id: THROW_ENDER_PERL
+    displayName: '&6&lPerl thrower master'
+    description:
+      - '&8Player who throws'
+      - '&8the most of all'
+      - '&8ender perl wins'
+    messageForWinner: '&a You win the Perl thrower master event and your prize is 1000$'
+    prizeEconomy: 1000
+    #Waring! prizeItems section is not for manually set you can set it by  using command /se setprize
+    prizeItems:

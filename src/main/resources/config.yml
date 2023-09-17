@@ -1,0 +1,41 @@
+prefix: '&5Simple &1Events &8⋙ '
+
+givePrizeWhenEndedByCmd: ture
+
+givePrize: true
+
+autoStart: false
+
+#In this list you can set the ID of simple events that you want to be started automatically
+simpleEventsAutoStart:
+  - 'TEST_1'
+  - 'TEST_2'
+
+#Interval is the time that defines the pause between the automatic start of a simple event after the previous one.
+interval: 72000
+
+scoreboardTimeLine: '&fTime left {TIME}'
+
+scoreboardRankingLines: 5
+
+messages:
+  help:
+    - ''
+    - '&7&m--[--------&r &aSimple Events Admin Commands &7&m--------]--'
+    - ''
+    - ' &f/&ase start &f<&aSimpleEvent&f> <&atime&f>&7 - Starts a given event&7, &f<&7SimpleEvent&f>&7 is id of simple event&7, &f<&7time&f>&7 is duration of event (in second) '
+    - ' &f/&ase end&7 - Ends simple event before time'
+    - ' &f/&ase setprize &f<&aSimpleEvent&f>&7 - Sets a prize for a win, &f<&7SimpleEvent&f>&7 is id of simple event'
+    - ' &f/&ase auto &f<&aon&f/&aoff&f> &7- turns on or off automatic start of a simple events'
+    - ''
+  noPermission: '&cYou do not have access to use this command'
+  noSimpleEventFound: '&cSimple event with id &f{EVENT} &cdo not exit' # {EVENT} - placeholder for name of simple event given in command argument
+  badArgumentTimeSEStart: '&c Argument &f<&ctime&f>&c has to be integer and positive number '
+  badCmdUseSEAuto: '&cYou have to give switch argument &f/&cse auto &f<&con&f/&coff&f>'
+  badCmdUseSEStart: '&cYou have to give event name and duration &f/&ase start &f<&aSimpleEvent&f> <&atime&f>'
+  successfulStartSimpleEvent: '&aSimple event has successfully started'
+  successfulEndSimpleEvent: '&aSimple event has successfully ended'
+  successfulSetPrize: '&aThe prize for &f{EVENT}&a simple event has successfully set' #{EVENT} - name of simple event that prize has set
+  successfulSetAutoSwitch: '&aThe simple events automatic start is now sets to &f{SWITCH}' #{SWITCH} - value for simple events automatic start
+
+

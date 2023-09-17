@@ -1,4 +1,9 @@
 name: SimpleEvents
 version: '${project.version}'
 main: pl.pavetti.simpleevents.SimpleEvents
+authors: [ 'Pavetti' ]
 api-version: '1.19'
+softdepend: ['Vault']
+commands:
+  simpleevent:
+    aliases: ['se']
