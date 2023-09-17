@@ -39,6 +39,8 @@ public class Settings {
     private String successfulSetPrize;
     private String successfulSetAutoSwitch;
     private String messageForWinner;
+    private String nothing;
+    private String eventAlreadyActive;
 
     public Settings(SimpleEvents plugin) {
         this.plugin = plugin;
@@ -73,5 +75,7 @@ public class Settings {
         successfulSetAutoSwitch = chatColor(configuration.getString("messages.successfulSetAutoSwitch"));
         successfulSetPrize = chatColor(configuration.getString("messages.successfulSetPrize"));
         messageForWinner = chatColor(configuration.getString("messages.messageForWinner"));
+        nothing = chatColor(configuration.getString("messages.nothing"));
+        eventAlreadyActive = chatColor(configuration.getString("messages.eventAlreadyActive"));
     }
 }

@@ -2,9 +2,9 @@ package pl.pavetti.simpleevents.manager;
 
 import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.Setter;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -16,7 +16,6 @@ import pl.pavetti.simpleevents.config.Settings;
 import pl.pavetti.simpleevents.exception.NoCorrectSimpleEventDataException;
 import pl.pavetti.simpleevents.model.SimpleEvent;
 import pl.pavetti.simpleevents.model.SimpleEventData;
-import pl.pavetti.simpleevents.api.ScoreboardWrapper;
 import pl.pavetti.simpleevents.util.PlayerUtil;
 import pl.pavetti.simpleevents.util.SimpleEventUtil;
 
@@ -24,6 +23,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 @Getter
+@Setter
 public class SimpleEventsManager {
 
     @Getter(AccessLevel.NONE)
@@ -39,7 +39,7 @@ public class SimpleEventsManager {
     private final ScoreBoardManager scoreBoardManager;
 
     private boolean isRunning = false;
-    private ScoreboardWrapper board;
+    private boolean goEnd = false;
 
     public SimpleEventsManager(SimpleEvents plugin, ConfigFile configFile, Settings settings, Economy economy) {
         this.configFile = configFile;
@@ -105,23 +105,36 @@ public class SimpleEventsManager {
             public void run() {
                 if (second > 0) {
                     //refreshing every second
-                    scoreBoardManager.updateScoreboard(second, SimpleEventUtil.getFormatTop(simpleEvent.getScore(), rankingLinesAmount,settings.getScoreboardRankingLineFormat()));
+                    scoreBoardManager.updateScoreboard(second, SimpleEventUtil.getFormatTop(simpleEvent.getScore()
+                            , rankingLinesAmount, settings.getScoreboardRankingLineFormat()));
                     second--;
-                } else {
-                    //end of mini event
-                    makeWinner(SimpleEventUtil.getTop(simpleEvent.getScore(),rankingLinesAmount), simpleEvent);
+                }else {
+                    //end of event by times up
+                    makeWinner(SimpleEventUtil.getTop(simpleEvent.getScore(),rankingLinesAmount)
+                            , simpleEvent, settings.isGivePrize());
                     simpleEvent.stop();
                     scoreBoardManager.closeScoreBoardForALl();
                     scoreBoardManager.reset();
                     isRunning = false;
                     this.cancel();
                 }
+                if (goEnd) {
+                    //end of event by use command
+                    makeWinner(SimpleEventUtil.getTop(simpleEvent.getScore(),rankingLinesAmount)
+                            , simpleEvent, (settings.isGivePrize() && settings.isGivePrizeWhenEndedByCmd()));
+                    simpleEvent.stop();
+                    scoreBoardManager.closeScoreBoardForALl();
+                    scoreBoardManager.reset();
+                    isRunning = false;
+                    this.cancel();
+                }
+
             }
         }.runTaskTimer(plugin, 0, 20); // 20 ticks = 1 second
     }
 
 
-    private void makeWinner(Map<UUID,Integer> top, SimpleEvent simpleEvent){
+    private void makeWinner(Map<UUID,Integer> top, SimpleEvent simpleEvent, boolean givePrize){
         if(!top.isEmpty()) {
             //gets information about winner
             Map.Entry<UUID, Integer> firstPlayerMapEntry = top.entrySet().iterator().next();
@@ -135,8 +148,10 @@ public class SimpleEventsManager {
             Optional<Player> playerOptional = Optional.ofNullable(Bukkit.getPlayerExact(nick));
             if(playerOptional.isPresent()){
                 Player player = playerOptional.get();
-                givePrizeEconomy(player,prizeEconomy);
-                givePrizeItems(player,prizeItems);
+                if(givePrize) {
+                    givePrizeEconomy(player, prizeEconomy);
+                    givePrizeItems(player, prizeItems);
+                }
                 if(!settings.isGlobalWinMessage()){
                     PlayerUtil.sendMessage(player,settings.getPrefix(), settings.getMessageForWinner());
                 }

@@ -1,5 +1,5 @@
 #Prefix that will be adding to every message sending by this plugin without message that are contains in list of lines (defaultWinMessage,customWinMessage,help)
-prefix: '&5Simple &1Events &8⋙ '
+prefix: '&d&lSimple&9&lEvents &7⋙'
 
 #if true player on the first place will get the prize that you can set by using '/se setprize' command
 givePrize: true
@@ -34,7 +34,6 @@ scoreboard:
 messages:
   #will send global on chat when someone wins event (if you want to disable global send go to 'globalWinMessage' option)
   #placeholders: {NICK} - nick of player who win, {SCORE} - the score achieved by the winner, {EVENT} - name of the event that was play
-  #
   winMessage:
     - '&7 ﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉'
     - '&7  &aPlayer {NICK} wins the event and get prize'
@@ -50,16 +49,18 @@ messages:
     - ' &f/&ase setprize &f<&aEvent&f>&7 - Sets a prize for a win, &f<&7Event&f>&7 is id of simple event'
     - ' &f/&ase auto &f<&aon&f/&aoff&f> &7- turns on or off automatic start of a simple events'
     - ''
+  nothing: '&cNothing...' #this will be displayed if the used command do not make any changes
   noPermission: '&cYou do not have access to use this command'
   noSimpleEventFound: '&cSimple event with id &f{EVENT} &cdo not exit' # {EVENT} - placeholder for name of simple event given in command argument
   badArgumentTimeSEStart: '&c Argument &f<&ctime&f>&c has to be integer and positive number '
-  badCmdUseSEStart: '&cYou have to give event name and duration &f/&ase start &f<&cEvent&f> <&ctime&f>'
+  badCmdUseSEStart: '&cYou have to give event name and duration &f/&cse start &f<&cEvent&f> <&ctime&f>'
   badCmdUseSEAuto: '&cYou have to give switch argument &f/&cse auto &f<&con&f/&coff&f>'
   successfulStartSimpleEvent: '&aSimple event has successfully started'
   successfulEndSimpleEvent: '&aSimple event has successfully ended'
   successfulSetPrize: '&aThe prize for &f{EVENT}&a simple event has successfully set' #{EVENT} - name of simple event that prize has set
   successfulSetAutoSwitch: '&aThe simple events automatic start is now sets to &f{SWITCH}' #{SWITCH} - value for simple events automatic start
   messageForWinner: '&aYou have won the Event!'
+  eventAlreadyActive: '&cYou cannot start new event cause one is still active'
 
 
 

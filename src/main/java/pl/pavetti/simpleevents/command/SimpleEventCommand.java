@@ -3,6 +3,7 @@ package pl.pavetti.simpleevents.command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import pl.pavetti.simpleevents.api.timsixth.ParentCommand;
+import pl.pavetti.simpleevents.command.SimpleEventSubCommand.EndSubCommand;
 import pl.pavetti.simpleevents.command.SimpleEventSubCommand.StartSubCommand;
 import pl.pavetti.simpleevents.config.Settings;
 import pl.pavetti.simpleevents.manager.SimpleEventsManager;
@@ -16,6 +17,7 @@ public class SimpleEventCommand extends ParentCommand {
         this.settings = settings;
 
         getSubCommands().add(new StartSubCommand(settings, simpleEventsManager));
+        getSubCommands().add(new EndSubCommand(simpleEventsManager, settings));
     }
 
     @Override
