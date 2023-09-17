@@ -17,6 +17,7 @@ import pl.pavetti.simpleevents.exception.NoCorrectSimpleEventDataException;
 import pl.pavetti.simpleevents.model.SimpleEvent;
 import pl.pavetti.simpleevents.model.SimpleEventData;
 import pl.pavetti.simpleevents.api.ScoreboardWrapper;
+import pl.pavetti.simpleevents.util.PlayerUtil;
 import pl.pavetti.simpleevents.util.SimpleEventUtil;
 
 import java.lang.reflect.Constructor;
@@ -104,10 +105,9 @@ public class SimpleEventsManager {
             public void run() {
                 if (second > 0) {
                     //refreshing every second
-                    scoreBoardManager.updateScoreboard(second, SimpleEventUtil.getFormatTop(simpleEvent.getScore(), rankingLinesAmount));
+                    scoreBoardManager.updateScoreboard(second, SimpleEventUtil.getFormatTop(simpleEvent.getScore(), rankingLinesAmount,settings.getScoreboardRankingLineFormat()));
                     second--;
                 } else {
-                    plugin.getServer().broadcastMessage("Player wins the event");
                     //end of mini event
                     makeWinner(SimpleEventUtil.getTop(simpleEvent.getScore(),rankingLinesAmount), simpleEvent);
                     simpleEvent.stop();
@@ -123,6 +123,7 @@ public class SimpleEventsManager {
 
     private void makeWinner(Map<UUID,Integer> top, SimpleEvent simpleEvent){
         if(!top.isEmpty()) {
+            //gets information about winner
             Map.Entry<UUID, Integer> firstPlayerMapEntry = top.entrySet().iterator().next();
             UUID uuid = firstPlayerMapEntry.getKey();
             String nick = Bukkit.getOfflinePlayer(uuid).getName();
@@ -130,15 +131,19 @@ public class SimpleEventsManager {
 
             int prizeEconomy = simpleEvent.getData().getPrizeEconomy();
             List<ItemStack> prizeItems= simpleEvent.getData().getPrizeItems();
-
+            //if player on server gives prizes
             Optional<Player> playerOptional = Optional.ofNullable(Bukkit.getPlayerExact(nick));
             if(playerOptional.isPresent()){
                 Player player = playerOptional.get();
                 givePrizeEconomy(player,prizeEconomy);
                 givePrizeItems(player,prizeItems);
-
+                if(!settings.isGlobalWinMessage()){
+                    PlayerUtil.sendMessage(player,settings.getPrefix(), settings.getMessageForWinner());
+                }
             }
-            sendGlobalMessage(Bukkit.getOfflinePlayer(uuid));
+            if(settings.isGlobalWinMessage()){
+                sendGlobalMessage(nick,score,simpleEvent.getData().getName());
+            }
         }
     }
 
@@ -154,10 +159,13 @@ public class SimpleEventsManager {
         }
     }
 
-    private void sendGlobalMessage(OfflinePlayer player){
-        //TODO GLOBAL message
-        //send broadcast message about player who win event
-        plugin.getServer().broadcastMessage("Player " + player.getName() + "wins the event");
+    private void sendGlobalMessage(String name,int score,String eventName){
+        for (String line : settings.getWinMessage()) {
+            line = line.replace("{NICK}",name)
+                    .replace("{SCORE}",String.valueOf(score))
+                    .replace("{EVENT}",eventName);
+            plugin.getServer().broadcastMessage(line);
+        }
     }
 
     public boolean isSimpleEvent(String id){

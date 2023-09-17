@@ -4,6 +4,7 @@ import lombok.experimental.UtilityClass;
 import org.bukkit.Bukkit;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @UtilityClass
 public class SimpleEventUtil {
@@ -13,13 +14,17 @@ public class SimpleEventUtil {
         return String.format("%d.%02d", minutes, remainingSeconds);
     }
 
-    public String[] getFormatTop(Map<UUID,Integer> map,int rankingLines){
+    public String[] getFormatTop(Map<UUID,Integer> map,int rankingLines,String formatPattern){
         Map<UUID, Integer> top = getTop(map,rankingLines);
         String[] formatTop = new String[rankingLines];
-        int count = 0;
-        for (Map.Entry<UUID, Integer> entry : top.entrySet()) {
-            formatTop[count] = ChatUtil.chatColor("&6&l " + (count + 1) + "► &r&b" + Bukkit.getOfflinePlayer(entry.getKey()).getName() + " " + entry.getValue());
-            count++;
+        if(rankingLines != 0) {
+            int count = 0;
+            for (Map.Entry<UUID, Integer> entry : top.entrySet()) {
+                formatTop[count] = formatPattern.replace("{POSITION}", String.valueOf(count + 1))
+                        .replace("{PLAYER}", Bukkit.getOfflinePlayer(entry.getKey()).getName())
+                        .replace("{SCORE}", String.valueOf(entry.getValue()));
+                count++;
+            }
         }
         return formatTop;
     }
@@ -34,13 +39,21 @@ public class SimpleEventUtil {
             sortedMap.put(entry.getKey(), entry.getValue());
         }
         Map<UUID, Integer> top = new LinkedHashMap<>();
-        int count = 0;
-        for (Map.Entry<UUID, Integer> entry : sortedMap.entrySet()) {
-            if (count == rankingLines - 1) {
-                break;
+        if(rankingLines != 0) {
+            int count = 0;
+            for (Map.Entry<UUID, Integer> entry : sortedMap.entrySet()) {
+                top.put(entry.getKey(), entry.getValue());
+                count++;
+                if (count == rankingLines) {
+                    break;
+                }
             }
-            top.put(entry.getKey(), entry.getValue());
-            count++;
+        }else {
+            for (Map.Entry<UUID, Integer> entry : sortedMap.entrySet()) {
+                top.put(entry.getKey(), entry.getValue());
+                break;
+
+            }
         }
         return top;
     }

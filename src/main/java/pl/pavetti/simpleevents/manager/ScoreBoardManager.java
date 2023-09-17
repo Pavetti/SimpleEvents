@@ -43,17 +43,19 @@ public class ScoreBoardManager {
         linesAmount++;
 
         for (int i = 1; i <= rankingPlaces; i++){
-            board.addLine(chatColor("&6&l " + i + ".")); //TODO cos z tym zrobic tez
+            board.addLine(settings.getScoreboardRankingLineFormat().replace("{POSITION}",String.valueOf(i))
+                    .replace("{PLAYER}","")
+                    .replace("{SCORE}", ""));
             linesAmount++;
         }
 
         board.addBlankSpace();
         linesAmount++;
-        board.addLine(chatColor(settings.getScoreboardTimeLine()).replace("{TIME}", SimpleEventUtil.formatTime(time)));
+        board.addLine(chatColor(settings.getScoreboardTimeLineFormat().replace("{TIME}", SimpleEventUtil.formatTime(time))));
         linesAmount++;
     }
     public void updateScoreboard(int time, String[] top){
-        board.setLine(linesAmount - 1,settings.getScoreboardTimeLine().replace("{TIME}", SimpleEventUtil.formatTime(time)));
+        board.setLine(linesAmount - 1,settings.getScoreboardTimeLineFormat().replace("{TIME}", SimpleEventUtil.formatTime(time)));
         int index;
 
         for (int i = 0; i < rankingPlaces; i++) {
@@ -61,7 +63,9 @@ public class ScoreBoardManager {
             if(top[i] != null){
                 board.setLine(index,top[i]);
             }else{
-                board.setLine(index,chatColor("&6&l " + (i + 1) + "."));  //TODO cos z tym zrobic
+                board.setLine(index,settings.getScoreboardRankingLineFormat().replace("{POSITION}",String.valueOf(i + 1))
+                        .replace("{PLAYER}","")
+                        .replace("{SCORE}", ""));
             }
         }
     }

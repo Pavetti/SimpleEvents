@@ -2,11 +2,11 @@ simpleEventsData:
   throwEnderPerl:
     id: THROW_ENDER_PERL
     displayName: '&6&lPerl thrower master'
+    #WARING, VERY IMPORTANT! Number of lines in scoreboard can not exceed 15, basic there is 4 for title, time and blank lines, so rankingLines plus line of description can not exceed 11)
     description:
-      - '&8Player who throws'
-      - '&8the most of all'
-      - '&8ender perl wins'
-    messageForWinner: '&a You win the Perl thrower master event and your prize is 1000$'
+      - '&5The player who '
+      - '&5throws the most'
+      - '&5ender pearls wins'
     prizeEconomy: 1000
     #Waring! prizeItems section is not for manually set you can set it by  using command /se setprize
     prizeItems:
