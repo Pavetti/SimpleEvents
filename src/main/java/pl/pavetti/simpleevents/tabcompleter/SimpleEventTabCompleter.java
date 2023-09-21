@@ -3,38 +3,36 @@ package pl.pavetti.simpleevents.tabcompleter;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
-import org.bukkit.entity.Player;
-import pl.pavetti.simpleevents.manager.SimpleEventsManager;
+import pl.pavetti.simpleevents.manager.EventManager;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class SimpleEventTabCompleter implements TabCompleter {
-    private final SimpleEventsManager simpleEventsManager;
+    private final EventManager eventManager;
 
-    public SimpleEventTabCompleter(SimpleEventsManager simpleEventsManager) {
-        this.simpleEventsManager = simpleEventsManager;
+    public SimpleEventTabCompleter(EventManager eventManager) {
+        this.eventManager = eventManager;
     }
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+
+        //TODO wylonczyc complete gdy nie ma permisji
         List<String> completions = new ArrayList<>();
 
         if(args.length == 1){
-            completions.addAll(Arrays.asList("start","end","setprize","auto"));
+            completions.addAll(Arrays.asList("start","end","itemprize"));
         }
         else if (args.length == 2 && args[0].equalsIgnoreCase("start")) {
-            completions.addAll(simpleEventsManager.getSimpleEvents().keySet());
+            completions.addAll(eventManager.getRegisteredEvents().keySet());
         }
         else if(args.length == 3 && args[0].equalsIgnoreCase("start")){
             completions.add("<time>");
         }
-        else if (args.length == 2 && args[0].equalsIgnoreCase("setprize")){
-            completions.addAll(simpleEventsManager.getSimpleEvents().keySet());
-        }
-        else if (args.length == 2 && args[0].equalsIgnoreCase("auto")) {
-            completions.addAll(Arrays.asList("on","off"));
+        else if (args.length == 2 && args[0].equalsIgnoreCase("itemprize")){
+            completions.addAll(eventManager.getRegisteredEvents().keySet());
         }
         return completions;
     }

@@ -43,6 +43,15 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <outputDirectory>C:\Users\jacek\Desktop\server 1.19.4\plugins\SimpleEvents</outputDirectory>
+                </configuration>
+
+            </plugin>
         </plugins>
         <resources>
             <resource>

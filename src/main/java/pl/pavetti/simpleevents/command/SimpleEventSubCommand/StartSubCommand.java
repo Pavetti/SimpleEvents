@@ -4,16 +4,16 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import pl.pavetti.simpleevents.api.timsixth.SubCommand;
 import pl.pavetti.simpleevents.config.Settings;
-import pl.pavetti.simpleevents.manager.SimpleEventsManager;
+import pl.pavetti.simpleevents.manager.EventManager;
 import pl.pavetti.simpleevents.util.PlayerUtil;
 
 public class StartSubCommand implements SubCommand {
     private final Settings settings;
-    private final SimpleEventsManager simpleEventsManager;
+    private final EventManager eventManager;
 
-    public StartSubCommand(Settings settings, SimpleEventsManager simpleEventsManager) {
+    public StartSubCommand(Settings settings, EventManager eventManager) {
         this.settings = settings;
-        this.simpleEventsManager = simpleEventsManager;
+        this.eventManager = eventManager;
     }
 
     @Override
@@ -37,19 +37,19 @@ public class StartSubCommand implements SubCommand {
         int duration = Integer.parseInt(args[2]);
 
         //check is simple event with given id exist
-        if (!simpleEventsManager.isSimpleEvent(eventId)) {
-            PlayerUtil.sendMessage(player,prefix,settings.getNoSimpleEventFound().replace("{EVENT}",eventId));
+        if (!eventManager.isSimpleEvent(eventId)) {
+            PlayerUtil.sendMessage(player,prefix,settings.getNoEventFound().replace("{EVENT}",eventId));
             return true;
         }
 
-        if(simpleEventsManager.isRunning()){
+        if(eventManager.isRunning()){
             PlayerUtil.sendMessage(player,prefix,settings.getEventAlreadyActive());
             return true;
         }
 
         //start simple event
-        simpleEventsManager.startSimpleEvent(duration,simpleEventsManager.getSimpleEvents().get(eventId));
-        PlayerUtil.sendMessage(player,prefix,settings.getSuccessfulStartSimpleEvent());
+        eventManager.startSimpleEvent(duration, eventManager.getRegisteredEvents().get(eventId));
+        PlayerUtil.sendMessage(player,prefix,settings.getSuccessfulStartEvent());
         return false;
     }
 

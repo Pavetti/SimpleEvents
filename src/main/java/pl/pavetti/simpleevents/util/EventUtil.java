@@ -4,10 +4,9 @@ import lombok.experimental.UtilityClass;
 import org.bukkit.Bukkit;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @UtilityClass
-public class SimpleEventUtil {
+public class EventUtil {
     public String formatTime(int seconds){
         int minutes = seconds / 60;
         int remainingSeconds = seconds % 60;

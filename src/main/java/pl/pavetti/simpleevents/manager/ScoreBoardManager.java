@@ -9,8 +9,8 @@ import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
 import pl.pavetti.simpleevents.api.ScoreboardWrapper;
 import pl.pavetti.simpleevents.config.Settings;
-import pl.pavetti.simpleevents.model.SimpleEventData;
-import pl.pavetti.simpleevents.util.SimpleEventUtil;
+import pl.pavetti.simpleevents.model.EventData;
+import pl.pavetti.simpleevents.util.EventUtil;
 import static pl.pavetti.simpleevents.util.ChatUtil.chatColor;
 
 @Setter
@@ -29,7 +29,7 @@ public class ScoreBoardManager {
         this.rankingPlaces = rankingPlaces;
     }
 
-    public void createScoreBoard(int time,  SimpleEventData data){
+    public void createScoreBoard(int time,  EventData data){
         board = new ScoreboardWrapper(chatColor(data.getName()));
         board.addBlankSpace();
         linesAmount++;
@@ -51,11 +51,11 @@ public class ScoreBoardManager {
 
         board.addBlankSpace();
         linesAmount++;
-        board.addLine(chatColor(settings.getScoreboardTimeLineFormat().replace("{TIME}", SimpleEventUtil.formatTime(time))));
+        board.addLine(chatColor(settings.getScoreboardTimeLineFormat().replace("{TIME}", EventUtil.formatTime(time))));
         linesAmount++;
     }
     public void updateScoreboard(int time, String[] top){
-        board.setLine(linesAmount - 1,settings.getScoreboardTimeLineFormat().replace("{TIME}", SimpleEventUtil.formatTime(time)));
+        board.setLine(linesAmount - 1,settings.getScoreboardTimeLineFormat().replace("{TIME}", EventUtil.formatTime(time)));
         int index;
 
         for (int i = 0; i < rankingPlaces; i++) {

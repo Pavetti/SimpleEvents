@@ -1,4 +1,4 @@
-package pl.pavetti.simpleevents.simpleevent;
+package pl.pavetti.simpleevents.event;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -6,19 +6,19 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
-import pl.pavetti.simpleevents.model.SimpleEvent;
-import pl.pavetti.simpleevents.model.SimpleEventData;
+import pl.pavetti.simpleevents.model.Event;
+import pl.pavetti.simpleevents.model.EventData;
 
 import java.util.HashMap;
 import java.util.UUID;
 
-public class ThrowEnderPerlSimpleEvent extends SimpleEvent {
+public class ThrowEnderPerlEvent extends Event {
     private static final int COOLDOWN_TIME_IN_SECOND = 1;
     private final HashMap<UUID, Long> cooldowns = new HashMap<>();
 
-    public ThrowEnderPerlSimpleEvent(Plugin plugin, SimpleEventData simpleEventData) {
+    public ThrowEnderPerlEvent(Plugin plugin, EventData eventData) {
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
-        data = simpleEventData;
+        data = eventData;
     }
 
     @Override

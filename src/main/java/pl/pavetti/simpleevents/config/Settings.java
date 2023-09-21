@@ -19,7 +19,7 @@ public class Settings {
     private boolean givePrize;
     private boolean givePrizeWhenEndedByCmd;
     private boolean autoStart;
-    private List<String> simpleEventsAutoStart;
+    private List<String> eventsAutoStart;
     private int interval;
     private boolean globalWinMessage;
     //scoreboard config
@@ -30,17 +30,19 @@ public class Settings {
     private List<String> winMessage;
     private List<String> help;
     private String noPermission;
-    private String noSimpleEventFound;
+    private String noEventFound;
     private String badArgumentTimeSEStart;
     private String badCmdUseSEStart;
     private String badCmdUseSEAuto;
-    private String successfulStartSimpleEvent;
-    private String successfulEndSimpleEvent;
-    private String successfulSetPrize;
-    private String successfulSetAutoSwitch;
+    private String successfulStartEvent;
+    private String successfulEndEvent;
+    private String successfulSetItemPrize;
     private String messageForWinner;
     private String nothing;
     private String eventAlreadyActive;
+    private String badCmdUseSESetPrize;
+    private String itemPrizeInventoryTitle;
+    private String noEventFoundInEventDataFile;
 
     public Settings(SimpleEvents plugin) {
         this.plugin = plugin;
@@ -53,11 +55,12 @@ public class Settings {
         //basic config
         prefix = chatColor(configuration.getString("prefix"));
         givePrizeWhenEndedByCmd = configuration.getBoolean("givePrizeWhenEndedByCmd");
-        simpleEventsAutoStart = configuration.getStringList("simpleEventsAutoStart");
+        eventsAutoStart = configuration.getStringList("eventsAutoStart");
         autoStart = configuration.getBoolean("autoStart");
         givePrize = configuration.getBoolean("givePrize");
         globalWinMessage = configuration.getBoolean("globalWinMessage");
         interval = configuration.getInt("interval");
+        itemPrizeInventoryTitle = chatColor(configuration.getString("itemPrizeInventoryTitle"));
         //scoreboard config
         scoreboardTimeLineFormat = chatColor(configuration.getString("scoreboard.timeLineFormat"));
         scoreboardRankingLineFormat = chatColor(configuration.getString("scoreboard.rankingLineFormat"));
@@ -66,16 +69,17 @@ public class Settings {
         help = chatColor(configuration.getStringList("messages.help"));
         winMessage = chatColor(configuration.getStringList("messages.winMessage"));
         noPermission = chatColor(configuration.getString("messages.noPermission"));
-        noSimpleEventFound = chatColor(configuration.getString("messages.noSimpleEventFound"));
+        noEventFound = chatColor(configuration.getString("messages.noEventFound"));
         badCmdUseSEAuto = chatColor(configuration.getString("messages.badCmdUseSEAuto"));
         badCmdUseSEStart = chatColor(configuration.getString("messages.badCmdUseSEStart"));
         badArgumentTimeSEStart = chatColor(configuration.getString("messages.badArgumentTimeSEStart"));
-        successfulStartSimpleEvent = chatColor(configuration.getString("messages.successfulStartSimpleEvent"));
-        successfulEndSimpleEvent = chatColor(configuration.getString("messages.successfulEndSimpleEvent"));
-        successfulSetAutoSwitch = chatColor(configuration.getString("messages.successfulSetAutoSwitch"));
-        successfulSetPrize = chatColor(configuration.getString("messages.successfulSetPrize"));
+        successfulStartEvent = chatColor(configuration.getString("messages.successfulStartEvent"));
+        successfulEndEvent = chatColor(configuration.getString("messages.successfulEndEvent"));
+        successfulSetItemPrize = chatColor(configuration.getString("messages.successfulSetItemPrize"));
         messageForWinner = chatColor(configuration.getString("messages.messageForWinner"));
         nothing = chatColor(configuration.getString("messages.nothing"));
         eventAlreadyActive = chatColor(configuration.getString("messages.eventAlreadyActive"));
+        badCmdUseSESetPrize = chatColor(configuration.getString("messages.badCmdUseSESetPrize"));
+        noEventFoundInEventDataFile = chatColor(configuration.getString("messages.noEventFoundInEventDataFile"));
     }
 }

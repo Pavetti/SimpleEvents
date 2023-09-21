@@ -10,17 +10,20 @@ givePrizeWhenEndedByCmd: ture
 #if true events from list in section 'simpleEventsAutoStart' will activate automatically at the time specified in the 'interval' section.
 autoStart: false
 
-#In this list you can set the ID of simple events that you want to be started automatically
-simpleEventsAutoStart:
+#In this list you can set the ID of  events that you want to be started automatically
+eventsAutoStart:
   - 'TEST_1'
   - 'TEST_2'
 
-#Interval is the time that defines the pause between the automatic start of a simple event after the previous one.
+#Interval is the time that defines the pause between the automatic start of a event after the previous one.
 interval: 72000
 
 #if true 'winMessage' will send global when someone wins event
 #if false only player who wins will get 'messageForWinner'
 globalWinMessage: true
+
+#title of inventory that displays on command use /se itemprize
+itemPrizeInventoryTitle: '&aItems prize'
 
 #Every options relevant to scoreboard you can find in ths section
 scoreboard:
@@ -44,23 +47,23 @@ messages:
     - ''
     - ' &f(&a alias for &f/&asimpleevent is &f/&ase&f)'
     -
-    - ' &f/&ase start &f<&aEvent&f> <&atime&f>&7 - Starts a given event&7, &f<&7Event&f>&7 is id of simple event&7, &f<&7time&f>&7 is duration of event (in second) '
-    - ' &f/&ase end&7 - Ends simple event before time'
-    - ' &f/&ase setprize &f<&aEvent&f>&7 - Sets a prize for a win, &f<&7Event&f>&7 is id of simple event'
-    - ' &f/&ase auto &f<&aon&f/&aoff&f> &7- turns on or off automatic start of a simple events'
+    - ' &f/&ase start &f<&aEvent&f> <&atime&f>&7 - Starts a given event&7, &f<&7Event&f>&7 is id of event&7, &f<&7time&f>&7 is duration of event (in second) '
+    - ' &f/&ase end&7 - Ends event before time'
+    - ' &f/&ase itemprize &f<&aEvent&f>&7 - Sets an items that will be prize, &f<&7Event&f>&7 is id of event'
     - ''
   nothing: '&cNothing...' #this will be displayed if the used command do not make any changes
   noPermission: '&cYou do not have access to use this command'
-  noSimpleEventFound: '&cSimple event with id &f{EVENT} &cdo not exit' # {EVENT} - placeholder for name of simple event given in command argument
+  noEventFound: '&cEvent with id &f{EVENT} &cdoes not exit' # {EVENT} - placeholder for name of event given in command argument
   badArgumentTimeSEStart: '&c Argument &f<&ctime&f>&c has to be integer and positive number '
   badCmdUseSEStart: '&cYou have to give event name and duration &f/&cse start &f<&cEvent&f> <&ctime&f>'
   badCmdUseSEAuto: '&cYou have to give switch argument &f/&cse auto &f<&con&f/&coff&f>'
-  successfulStartSimpleEvent: '&aSimple event has successfully started'
-  successfulEndSimpleEvent: '&aSimple event has successfully ended'
-  successfulSetPrize: '&aThe prize for &f{EVENT}&a simple event has successfully set' #{EVENT} - name of simple event that prize has set
-  successfulSetAutoSwitch: '&aThe simple events automatic start is now sets to &f{SWITCH}' #{SWITCH} - value for simple events automatic start
+  badCmdUseSESetPrize: '&cYou have to give event argument &f/&cse itemprize &f<&cEvent&f>&7'
+  successfulStartEvent: '&aEvent has successfully started'
+  successfulEndEvent: '&aEvent has successfully ended'
+  successfulSetItemPrize: '&aThe item prize for &f{EVENT}&a event has successfully set' #{EVENT} - name of event that prize has set
   messageForWinner: '&aYou have won the Event!'
   eventAlreadyActive: '&cYou cannot start new event cause one is still active'
+  noEventFoundInEventDataFile: '&cEvent with id &f{EVENT} &cdoes not exit in eventData.yml, check this file or try to rebuild.' # {EVENT} - placeholder for name of event given in command argument
 
 
 

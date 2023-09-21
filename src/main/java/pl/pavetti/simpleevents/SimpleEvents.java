@@ -1,19 +1,23 @@
 package pl.pavetti.simpleevents;
 
 import net.milkbowl.vault.economy.Economy;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
+import pl.pavetti.simpleevents.Listener.CloseInventoryListener;
 import pl.pavetti.simpleevents.command.SimpleEventCommand;
 import pl.pavetti.simpleevents.config.ConfigFile;
+import pl.pavetti.simpleevents.config.EventDataFile;
 import pl.pavetti.simpleevents.config.Settings;
-import pl.pavetti.simpleevents.manager.SimpleEventsManager;
+import pl.pavetti.simpleevents.manager.EventManager;
 import pl.pavetti.simpleevents.tabcompleter.SimpleEventTabCompleter;
 
 public final class SimpleEvents extends JavaPlugin {
 
     private ConfigFile configFile;
     private Settings settings;
-    private SimpleEventsManager simpleEventsManager;
+    private EventDataFile  eventData;
+    private EventManager eventManager;
     private Economy economy;
 
     @Override
@@ -26,6 +30,7 @@ public final class SimpleEvents extends JavaPlugin {
         initConfiguration();
         registerCommand();
         registerTabCompleter();
+        registerListener();
     }
 
     @Override
@@ -40,15 +45,23 @@ public final class SimpleEvents extends JavaPlugin {
 
         configFile = new ConfigFile(this);
         settings = new Settings(this);
-        simpleEventsManager = new SimpleEventsManager(this,configFile,settings,economy);
+        eventData = new EventDataFile(configFile);
+
+        eventManager = new EventManager(this,configFile,settings,economy, eventData);
     }
 
     private void registerCommand(){
-        getCommand("simpleevent").setExecutor(new SimpleEventCommand(settings,simpleEventsManager));
+        getCommand("simpleevent").setExecutor(new SimpleEventCommand(settings, eventManager,eventData));
     }
 
     private void registerTabCompleter(){
-        getCommand("simpleevent").setTabCompleter(new SimpleEventTabCompleter(simpleEventsManager));
+        getCommand("simpleevent").setTabCompleter(new SimpleEventTabCompleter(eventManager));
+    }
+
+    private void registerListener(){
+        PluginManager pluginManager = getServer().getPluginManager();
+        pluginManager.registerEvents(new CloseInventoryListener(configFile, settings, eventData, eventManager), this);
+
     }
 
     private boolean setupEconomy() {
