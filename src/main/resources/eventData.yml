@@ -4,6 +4,7 @@ eventsData:
   throwEnderPerl:
     id: THROW_ENDER_PERL
     displayName: '&6&lPerl thrower master'
+    defaultDuration: 120
     description:
       - '&5The player who '
       - '&5throws the most'

@@ -44,7 +44,7 @@ public class EventDataFile {
                         .collect(Collectors.toList());
             }
             //creating EventData
-            EventData eventData = getEventDataFormConfiguration(configuration,section,itemStackList);
+            EventData eventData = createEventData(configuration,section,itemStackList);
 
 
             eventsData.put(section, eventData);
@@ -68,10 +68,11 @@ public class EventDataFile {
         return Optional.empty();
     }
 
-    public EventData getEventDataFormConfiguration(ConfigurationSection configuration, String section,List<ItemStack> items){
+    public static EventData createEventData(ConfigurationSection configuration, String section, List<ItemStack> items){
         return  new EventData(
                 configuration.getString( section + ".id"),
                 configuration.getString(section + ".displayName"),
+                configuration.getInt(section + ".defaultDuration"),
                 configuration.getStringList(section + ".description"),
                 configuration.getDouble(section + ".prizeEconomy"),
                 items);

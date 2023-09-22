@@ -98,9 +98,15 @@ public class EventManager {
                             , rankingLinesAmount, settings.getScoreboardRankingLineFormat()));
                     second--;
                 }else {
+                    for (ItemStack prizeItem : event.getData().getPrizeItems()) {
+                        System.out.println("Przed make winner: Type: " + prizeItem.getType() + " Amount: " + prizeItem.getAmount());
+                    }
                     //end of event by times up
                     makeWinner(EventUtil.getTop(event.getScore(),rankingLinesAmount)
                             , event, settings.isGivePrize());
+                    for (ItemStack prizeItem : event.getData().getPrizeItems()) {
+                        System.out.println("After Type: " + prizeItem.getType() + " Amount: " + prizeItem.getAmount());
+                    }
                     event.stop();
                     scoreBoardManager.closeScoreBoardForALl();
                     scoreBoardManager.reset();
@@ -115,6 +121,7 @@ public class EventManager {
                     scoreBoardManager.closeScoreBoardForALl();
                     scoreBoardManager.reset();
                     isRunning = false;
+                    goEnd = false;
                     this.cancel();
                 }
 
@@ -131,15 +138,25 @@ public class EventManager {
             String nick = Bukkit.getOfflinePlayer(uuid).getName();
             int score = firstPlayerMapEntry.getValue();
 
+            for (ItemStack prizeItem : event.getData().getPrizeItems()) {
+                System.out.println("1. Type: " + prizeItem.getType() + " Amount: " + prizeItem.getAmount());
+            }
+
             double prizeEconomy = event.getData().getPrizeEconomy();
-            List<ItemStack> prizeItems= event.getData().getPrizeItems();
+            List<ItemStack> prizeItems = event.getData().getPrizeItems();
             //if player on server gives prizes
             Optional<Player> playerOptional = Optional.ofNullable(Bukkit.getPlayerExact(nick));
             if(playerOptional.isPresent()){
                 Player player = playerOptional.get();
                 if(givePrize) {
+                    for (ItemStack prizeItem : event.getData().getPrizeItems()) {
+                        System.out.println("2. Type: " + prizeItem.getType() + " Amount: " + prizeItem.getAmount());
+                    }
                     givePrizeEconomy(player, prizeEconomy);
                     givePrizeItems(player, prizeItems);
+                    for (ItemStack prizeItem : event.getData().getPrizeItems()) {
+                        System.out.println("3. Type: " + prizeItem.getType() + " Amount: " + prizeItem.getAmount());
+                    }
                 }
                 if(!settings.isGlobalWinMessage()){
                     PlayerUtil.sendMessage(player,settings.getPrefix(), settings.getMessageForWinner());
@@ -148,6 +165,9 @@ public class EventManager {
             if(settings.isGlobalWinMessage()){
                 sendGlobalMessage(nick,score, event.getData().getName());
             }
+            for (ItemStack prizeItem : event.getData().getPrizeItems()) {
+                System.out.println("4. Type: " + prizeItem.getType() + " Amount: " + prizeItem.getAmount());
+            }
         }
     }
 
@@ -155,13 +175,12 @@ public class EventManager {
         if(economy != null && amount != 0) economy.depositPlayer(player,amount);
     }
 
-    private void givePrizeItems(Player player, List<ItemStack> items){
+    private void
+    givePrizeItems(Player player, List<ItemStack> items){
         if(items != null) {
             for (ItemStack item : items) {
-                System.out.println("Material " + item.getType() + " ilosc " + item.getAmount());
                 player.getInventory().addItem(item);
             }
-            System.out.println();
         }
     }
 

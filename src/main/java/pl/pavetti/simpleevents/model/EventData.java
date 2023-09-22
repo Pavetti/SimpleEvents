@@ -6,20 +6,16 @@ import java.util.*;
 
 @RequiredArgsConstructor
 @Getter
-@Setter
 @ToString
 public class EventData {
-    public EventData(String id, String name, List<String> description, double prizeEconomy, List<ItemStack> prizeItems) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.prizeEconomy = prizeEconomy;
-        this.prizeItems = prizeItems;
-    }
+    /*
+    *   This class reparent data about event form yml file
+    */
 
     private final String id;
     private final String name;
+    private final int defaultDuration;
     private final List<String> description;
     private final double prizeEconomy;
-    private List<ItemStack> prizeItems;
+    private final List<ItemStack> prizeItems;
 }

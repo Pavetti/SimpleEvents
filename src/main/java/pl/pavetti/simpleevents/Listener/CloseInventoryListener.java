@@ -46,21 +46,17 @@ public class CloseInventoryListener implements Listener {
         }
     }
     private void setItems(Inventory inventory, String eventId){
-        System.out.println("ustawia");
         ConfigurationSection configuration = ConfigurationSectionUtils.getMainSection(configFile.getYmlEventData(),"eventsData");
 
         //creating new ItemStack list form items form inventory
         List<ItemStack> items = new ArrayList<>(Arrays.asList(inventory.getContents())).stream()
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
-        System.out.println("list" +  items.size());
         //serializing items to maps
         List<Map<String, Object>> itemsMap = items.stream()
                 .filter(Objects::nonNull)
                 .map(ItemStack::serialize)
                 .collect(Collectors.toList());
-        System.out.println("map" +  itemsMap.size());
-        System.out.println();
 
         //add list of serialized items to file
         Optional<String> sectionOptional = eventDataFile.getEventDataSectionNameByID(eventId);
@@ -76,9 +72,8 @@ public class CloseInventoryListener implements Listener {
         eventDataFile.save();
 
         //getting old eventData from EventManager and adding new item prize
-        String id = configuration.getString(section + ".id");
-        EventData eventData = eventManager.getRegisteredEvents().get(id).getData();
-        eventData.setPrizeItems(items);
+        EventData eventData = EventDataFile.createEventData(configuration,section,items);
+        String id = eventData.getId();
 
         //setting new eventData to Map in eventDataFile
         eventDataFile.getEventsData().put(section,eventData);

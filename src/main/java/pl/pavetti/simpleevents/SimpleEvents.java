@@ -11,6 +11,7 @@ import pl.pavetti.simpleevents.config.EventDataFile;
 import pl.pavetti.simpleevents.config.Settings;
 import pl.pavetti.simpleevents.manager.EventManager;
 import pl.pavetti.simpleevents.tabcompleter.SimpleEventTabCompleter;
+import pl.pavetti.simpleevents.task.AutoEventStart;
 
 public final class SimpleEvents extends JavaPlugin {
 
@@ -31,6 +32,7 @@ public final class SimpleEvents extends JavaPlugin {
         registerCommand();
         registerTabCompleter();
         registerListener();
+        registerTask();
     }
 
     @Override
@@ -61,7 +63,10 @@ public final class SimpleEvents extends JavaPlugin {
     private void registerListener(){
         PluginManager pluginManager = getServer().getPluginManager();
         pluginManager.registerEvents(new CloseInventoryListener(configFile, settings, eventData, eventManager), this);
+    }
 
+    private void registerTask(){
+        if(settings.isAutoStart()) new AutoEventStart(eventManager,settings).runTaskTimer(this,0,settings.getInterval());
     }
 
     private boolean setupEconomy() {
