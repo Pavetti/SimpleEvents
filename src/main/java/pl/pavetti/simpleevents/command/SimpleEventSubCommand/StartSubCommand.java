@@ -51,6 +51,7 @@ public class StartSubCommand implements SubCommand {
         eventManager.startSimpleEvent(duration, eventManager.getRegisteredEvents().get(eventId));
         PlayerUtil.sendMessage(player,prefix,settings.getSuccessfulStartEvent());
         return false;
+        //TODO add default time start whe no time argument
     }
 
     @Override

@@ -17,8 +17,8 @@ public class ThrowEnderPerlEvent extends Event {
     private final HashMap<UUID, Long> cooldowns = new HashMap<>();
 
     public ThrowEnderPerlEvent(Plugin plugin, EventData eventData) {
+        super(eventData);
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
-        data = eventData;
     }
 
     @Override
@@ -32,17 +32,6 @@ public class ThrowEnderPerlEvent extends Event {
         running = false;
     }
 
-    public void addThrewPerl(Player player, int amount) {
-
-        if (running && score.containsKey(player.getUniqueId())) {
-            int currentAmount = score.get(player.getUniqueId());
-            score.put(player.getUniqueId(), currentAmount + amount);
-        }
-        else if (running && !score.containsKey(player.getUniqueId())) {
-            score.put(player.getUniqueId(), amount);
-        }
-    }
-
     @EventHandler
     public void onPlayerThrowPearl(PlayerInteractEvent event){
 
@@ -51,7 +40,7 @@ public class ThrowEnderPerlEvent extends Event {
             ItemStack item = event.getItem();
             if(event.getAction().toString().contains("RIGHT_CLICK") && item != null && item.getType() == Material.ENDER_PEARL){
                 if (!hasCooldown(player)) {
-                    addThrewPerl(player,1);
+                    addScore(player,1);
                     setCooldown(player);
                 }
             }

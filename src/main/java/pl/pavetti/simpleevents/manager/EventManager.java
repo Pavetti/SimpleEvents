@@ -52,7 +52,8 @@ public class EventManager {
         this.eventDataFile = eventDataFile;
 
         //names of class that has to be registered as SimpleEvent
-        eventsClassNames.addAll(Arrays.asList("ThrowEnderPerlEvent"));
+        eventsClassNames.addAll(Arrays.asList("ThrowEnderPerlEvent","BreakBlockEvent","PlaceBlockEvent","PassiveMobsKillEvent"
+                                                ,"HostileMobsKillEvent"));
         loadSimpleEvents(plugin);
 
     }
@@ -63,7 +64,7 @@ public class EventManager {
         for (String classEventName : eventsClassNames) {
 
             //change classEventName to section name in eventData.yml
-            String section = (classEventName.substring(0, 1).toLowerCase() + classEventName.substring(1)).substring(0, classEventName.length() - 5);
+            String section = (classEventName.substring(0, 1).toLowerCase() + classEventName.substring(1)).substring(0, classEventName.length());
             EventData eventData = this.eventDataFile.getEventsData().get(section);
             if(eventData == null){
                 throw new NoCorrectEventDataException("Can not load event data form eventData.yml cause one or more event data section have got changed names. Try to rebuild this file.");
@@ -98,15 +99,9 @@ public class EventManager {
                             , rankingLinesAmount, settings.getScoreboardRankingLineFormat()));
                     second--;
                 }else {
-                    for (ItemStack prizeItem : event.getData().getPrizeItems()) {
-                        System.out.println("Przed make winner: Type: " + prizeItem.getType() + " Amount: " + prizeItem.getAmount());
-                    }
                     //end of event by times up
                     makeWinner(EventUtil.getTop(event.getScore(),rankingLinesAmount)
                             , event, settings.isGivePrize());
-                    for (ItemStack prizeItem : event.getData().getPrizeItems()) {
-                        System.out.println("After Type: " + prizeItem.getType() + " Amount: " + prizeItem.getAmount());
-                    }
                     event.stop();
                     scoreBoardManager.closeScoreBoardForALl();
                     scoreBoardManager.reset();
@@ -138,9 +133,6 @@ public class EventManager {
             String nick = Bukkit.getOfflinePlayer(uuid).getName();
             int score = firstPlayerMapEntry.getValue();
 
-            for (ItemStack prizeItem : event.getData().getPrizeItems()) {
-                System.out.println("1. Type: " + prizeItem.getType() + " Amount: " + prizeItem.getAmount());
-            }
 
             double prizeEconomy = event.getData().getPrizeEconomy();
             List<ItemStack> prizeItems = event.getData().getPrizeItems();
@@ -149,14 +141,14 @@ public class EventManager {
             if(playerOptional.isPresent()){
                 Player player = playerOptional.get();
                 if(givePrize) {
-                    for (ItemStack prizeItem : event.getData().getPrizeItems()) {
-                        System.out.println("2. Type: " + prizeItem.getType() + " Amount: " + prizeItem.getAmount());
-                    }
+//                    for (ItemStack prizeItem : event.getData().getPrizeItems()) {
+//                        System.out.println("2. Type: " + prizeItem.getType() + " Amount: " + prizeItem.getAmount());
+//                    }
                     givePrizeEconomy(player, prizeEconomy);
                     givePrizeItems(player, prizeItems);
-                    for (ItemStack prizeItem : event.getData().getPrizeItems()) {
-                        System.out.println("3. Type: " + prizeItem.getType() + " Amount: " + prizeItem.getAmount());
-                    }
+//                    for (ItemStack prizeItem : event.getData().getPrizeItems()) {
+//                        System.out.println("3. Type: " + prizeItem.getType() + " Amount: " + prizeItem.getAmount());
+//                    }
                 }
                 if(!settings.isGlobalWinMessage()){
                     PlayerUtil.sendMessage(player,settings.getPrefix(), settings.getMessageForWinner());
@@ -164,9 +156,6 @@ public class EventManager {
             }
             if(settings.isGlobalWinMessage()){
                 sendGlobalMessage(nick,score, event.getData().getName());
-            }
-            for (ItemStack prizeItem : event.getData().getPrizeItems()) {
-                System.out.println("4. Type: " + prizeItem.getType() + " Amount: " + prizeItem.getAmount());
             }
         }
     }
