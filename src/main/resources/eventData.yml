@@ -3,10 +3,10 @@ eventsData:
   #WARING, VERY IMPORTANT! Number of lines in scoreboard can not exceed 15, basic there is 4 for title, time and blank lines, so rankingLines plus line of description can not exceed 11)
   throwEnderPerlEvent:
     id: THROW_ENDER_PERL
-    displayName: '&6&lPerl thrower master'
-    defaultDuration: 120
+    displayName: '&6&lPerl Thrower Master'
+    defaultDuration: 360
     description:
-      - '&5The player who '
+      - '&5The player who'
       - '&5throws the most'
       - '&5ender pearls wins'
     prizeEconomy: 1000
@@ -14,35 +14,35 @@ eventsData:
 
   breakBlockEvent:
     id: BREAK_BLOCK
-    displayName: '&6&lBlock destroyer'
-    defaultDuration: 240
+    displayName: '&6&lBlock Destroyer'
+    defaultDuration: 360
     description:
-      - '&5The player who '
+      - '&5The player who'
       - '&5breaks the most'
       - '&5blocks wins'
-    prizeEconomy: 1000
+    prizeEconomy: 0
     prizeItems:
 
   placeBlockEvent:
     id: PLACE_BLOCK
     displayName: '&6&lCrazy Builder'
-    defaultDuration: 240
+    defaultDuration: 360
     description:
-      - '&5The player who '
+      - '&5The player who'
       - '&5places the most'
       - '&5blocks wins'
-    prizeEconomy: 1000
+    prizeEconomy: 0
     prizeItems:
 
   passiveMobsKillEvent:
     id: PASSIVE_MOB_KILL
     displayName: '&6&lAnimal Hunter'
-    defaultDuration: 240
+    defaultDuration: 360
     description:
-      - '&5The player who '
+      - '&5The player who'
       - '&5kills the most'
       - '&5passive mobs wins'
-    prizeEconomy: 1000
+    prizeEconomy: 600
     prizeItems:
 
   hostileMobsKillEvent:
@@ -50,8 +50,75 @@ eventsData:
     displayName: '&6&lMonster Hunter'
     defaultDuration: 360
     description:
-      - '&5The player who '
+      - '&5The player who'
       - '&5kills the most'
       - '&5hostile mobs wins'
-    prizeEconomy: 1000
+    prizeEconomy: 600
     prizeItems:
+  dealDamageEvent:
+    id: DEAL_DAMAGE
+    displayName: '&6&lMaster of Damage'
+    defaultDuration: 360
+    description:
+      - '&5The player who'
+      - '&5deals the most'
+      - '&5damage wins'
+    prizeEconomy: 1500
+    prizeItems:
+  catchFishEvent:
+    id: CATCH_FISH
+    displayName: '&6&lGreatest Fisherman'
+    defaultDuration: 360
+    description:
+      - '&5The player who'
+      - '&5catchs the most'
+      - '&5things by'
+      - '&5fishing rood wins'
+    prizeEconomy: 3000
+    prizeItems:
+  playerKillEvent:
+    id: PLAYER_KILL
+    displayName: '&6&lAssassin'
+    defaultDuration: 600
+    description:
+      - '&5The player who'
+      - '&5catchs the most'
+      - '&5things by'
+      - '&5fishing rood wins'
+    prizeEconomy: 5000
+    prizeItems:
+  deathEvent:
+    id: PLAYER_DEATH
+    displayName: '&6&lDeadly Step'
+    defaultDuration: 600
+    description:
+      - '&5The player who'
+      - '&5deaths the most'
+      - '&5times wins'
+    prizeEconomy: 500
+    prizeItems:
+  craftItemEvent:
+    id: CRAFT_ITEM
+    displayName: '&6&lGreatest Crafter'
+    defaultDuration: 120
+    description:
+      - '&5The player who'
+      - '&5crafts the most'
+      - '&5things by'
+      - '&5crafting table'
+      - '&5wins'
+    prizeEconomy: 3000
+    prizeItems:
+  enchantItemEvent:
+    id: ENCHANT_ITEM
+    displayName: '&6&lGreatest Wizard'
+    defaultDuration: 180
+    description:
+      - '&5The player who'
+      - '&5enchant the most'
+      - '&5things by'
+      - '&5enchanting table'
+      - '&5wins'
+    prizeEconomy: 3000
+    prizeItems:
+

@@ -1,4 +1,4 @@
-package pl.pavetti.simpleevents.Listener;
+package pl.pavetti.simpleevents.listener;
 
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.HumanEntity;

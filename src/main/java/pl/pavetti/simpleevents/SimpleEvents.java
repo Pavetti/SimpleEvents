@@ -4,7 +4,7 @@ import net.milkbowl.vault.economy.Economy;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
-import pl.pavetti.simpleevents.Listener.CloseInventoryListener;
+import pl.pavetti.simpleevents.listener.CloseInventoryListener;
 import pl.pavetti.simpleevents.command.SimpleEventCommand;
 import pl.pavetti.simpleevents.config.ConfigFile;
 import pl.pavetti.simpleevents.config.EventDataFile;
