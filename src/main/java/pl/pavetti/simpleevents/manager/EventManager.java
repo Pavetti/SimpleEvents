@@ -54,7 +54,7 @@ public class EventManager {
         //names of class that has to be registered as SimpleEvent
         eventsClassNames.addAll(Arrays.asList("ThrowEnderPerlEvent","BreakBlockEvent","PlaceBlockEvent","PassiveMobsKillEvent"
                                                 ,"HostileMobsKillEvent","DealDamageEvent","CatchFishEvent","PlayerKillEvent"
-                                                ,"DeathEvent", "CraftItemEvent", "EnchantItemEvent"));
+                                                ,"DeathEvent", "CraftItemEvent", "EnchantItemEvent","EatFoodEvent","JumpEvent"));
         loadSimpleEvents(plugin);
 
     }

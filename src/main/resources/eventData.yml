@@ -121,4 +121,24 @@ eventsData:
       - '&5wins'
     prizeEconomy: 3000
     prizeItems:
+  eatFoodEvent:
+    id: EAT_FOOD
+    displayName: '&6&lGlutton Battle'
+    defaultDuration: 240
+    description:
+      - '&5The player who'
+      - '&5eats the most'
+      - '&5food wins'
+    prizeEconomy: 1000
+    prizeItems:
+  jumpEvent:
+    id: JUMPING
+    displayName: '&6&lJumping Fight'
+    defaultDuration: 240
+    description:
+      - '&5The player who'
+      - '&5jumps the most'
+      - '&5times wins'
+    prizeEconomy: 1000
+    prizeItems:
 
