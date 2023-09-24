@@ -5,6 +5,7 @@ import org.bukkit.entity.Player;
 import pl.pavetti.simpleevents.api.timsixth.SubCommand;
 import pl.pavetti.simpleevents.config.Settings;
 import pl.pavetti.simpleevents.manager.EventManager;
+import pl.pavetti.simpleevents.model.Event;
 import pl.pavetti.simpleevents.util.PlayerUtil;
 
 public class StartSubCommand implements SubCommand {
@@ -22,36 +23,49 @@ public class StartSubCommand implements SubCommand {
         String prefix = settings.getPrefix();
 
         //check command format correctness
-        if (args.length < 3) {
+        if(args.length >= 3){
+            //with time argument
+            if (!args[2].matches("-?\\d+")) {
+                //check time argument time correctness
+                PlayerUtil.sendMessage(player,prefix,settings.getBadArgumentTimeSEStart());
+                return true;
+            }
+            String eventId = args[1];
+            int duration = Integer.parseInt(args[2]);
+            return checkEventCorrectAndStart(prefix,player,eventId,duration);
+        }
+        else if (args.length == 2) {
+            //without time argument
+            String eventId = args[1];
+            return checkEventCorrectAndStart(prefix,player,eventId,0);
+        }
+        else {
+            //bad format
             PlayerUtil.sendMessage(player,prefix,settings.getBadCmdUseSEStart());
             return true;
         }
 
-        //check time argument time correctness
-        if (!args[2].matches("-?\\d+")) {
-            PlayerUtil.sendMessage(player,prefix,settings.getBadArgumentTimeSEStart());
-            return true;
-        }
+    }
 
-        String eventId = args[1];
-        int duration = Integer.parseInt(args[2]);
-
+    private boolean checkEventCorrectAndStart(String prefix,Player player,String eventId,int duration){
         //check is simple event with given id exist
         if (!eventManager.isSimpleEvent(eventId)) {
             PlayerUtil.sendMessage(player,prefix,settings.getNoEventFound().replace("{EVENT}",eventId));
             return true;
         }
-
         if(eventManager.isRunning()){
             PlayerUtil.sendMessage(player,prefix,settings.getEventAlreadyActive());
             return true;
         }
+        Event event = eventManager.getRegisteredEvents().get(eventId);
+        if(duration == 0){
+            duration = event.getData().getDefaultDuration();
+        }
 
         //start simple event
-        eventManager.startSimpleEvent(duration, eventManager.getRegisteredEvents().get(eventId));
+        eventManager.startSimpleEvent(duration, event);
         PlayerUtil.sendMessage(player,prefix,settings.getSuccessfulStartEvent());
         return false;
-        //TODO add default time start whe no time argument
     }
 
     @Override

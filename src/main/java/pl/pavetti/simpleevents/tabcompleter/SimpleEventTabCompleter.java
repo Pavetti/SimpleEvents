@@ -3,6 +3,7 @@ package pl.pavetti.simpleevents.tabcompleter;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
+import org.bukkit.entity.Player;
 import pl.pavetti.simpleevents.manager.EventManager;
 
 import java.util.ArrayList;
@@ -19,8 +20,12 @@ public class SimpleEventTabCompleter implements TabCompleter {
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
 
-        //TODO wylonczyc complete gdy nie ma permisji
         List<String> completions = new ArrayList<>();
+
+        if(sender instanceof Player){
+            Player player = (Player) sender;
+            if(!player.hasPermission("se.admin")) return completions;
+        }
 
         if(args.length == 1){
             completions.addAll(Arrays.asList("start","end","itemprize"));

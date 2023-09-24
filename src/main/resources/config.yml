@@ -61,7 +61,8 @@ settings:
       - ''
       - ' &f(&aalias for &f/&asimpleevent is &f/&ase&f)'
       - ''
-      - ' &f/&ase start &f<&aevent&f> <&atime&f>&7 - Starts a given event&7, &f<&7event&f>&7 is id of event&7, &f<&7time&f>&7 is duration of event (in second) '
+      - ' &f/&ase start &f<&aevent&f> <&atime&f>&7 - Starts a given event&7, &f<&7event&f>&7 is id of event&7, &f<&7time&f>&7 is duration of event (in second)'
+      -  '&7if you do not provide a time argument, it will be set to the default time specified in the eventData.yml file'
       - ' &f/&ase end&7 - Ends event before time'
       - ' &f/&ase itemprize &f<&aevent&f>&7 - Sets an items that will be prize, &f<&7event&f>&7 is id of event'
       - ''
@@ -69,7 +70,7 @@ settings:
     noPermission: '&cYou do not have access to use this command'
     noEventFound: '&cEvent with id &f{EVENT} &cdoes not exit' # {EVENT} - placeholder for name of event given in command argument
     badArgumentTimeSEStart: '&c Argument &f<&ctime&f>&c has to be integer and positive number '
-    badCmdUseSEStart: '&cYou have to give event name and duration &f/&cse start &f<&cevent&f> <&ctime&f>'
+    badCmdUseSEStart: '&cYou have to give event name and optional duration &f/&cse start &f<&cevent&f> <&ctime&f>'
     badCmdUseSEAuto: '&cYou have to give switch argument &f/&cse auto &f<&con&f/&coff&f>'
     badCmdUseSESetPrize: '&cYou have to give event argument &f/&cse itemprize &f<&cevent&f>&7'
     successfulStartEvent: '&aEvent has successfully started'

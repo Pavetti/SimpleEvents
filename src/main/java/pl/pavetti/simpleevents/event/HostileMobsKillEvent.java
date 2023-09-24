@@ -30,7 +30,7 @@ public class HostileMobsKillEvent extends Event {
     public void onHostileMobKillEvent(EntityDeathEvent event){
         if(running){
             if(event.getEntity() instanceof Creature && event.getEntity() instanceof Monster){
-                addScore(event.getEntity().getKiller(),1);
+                if(event.getEntity().getKiller() != null) addScore(event.getEntity().getKiller(),1);
             }
         }
     }

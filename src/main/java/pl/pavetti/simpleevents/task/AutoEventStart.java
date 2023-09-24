@@ -26,7 +26,6 @@ public class AutoEventStart extends BukkitRunnable {
             }
         }
     }
-    //TODO test it
     @Override
     public void run() {
         Optional<Event> eventOptional = randomChoiceEvent();

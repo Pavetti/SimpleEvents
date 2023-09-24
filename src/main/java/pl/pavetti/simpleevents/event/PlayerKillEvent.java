@@ -23,11 +23,10 @@ public class PlayerKillEvent extends Event {
     public void stop() {
         running = false;
     }
-    //TODO test it
     @EventHandler
     public void onKillPlayerByPlayer(EntityDeathEvent event){
         if(event.getEntity() instanceof Player){
-            addScore(event.getEntity().getKiller(), 1);
+            if(event.getEntity().getKiller() != null) addScore(event.getEntity().getKiller(), 1);
         }
     }
 }

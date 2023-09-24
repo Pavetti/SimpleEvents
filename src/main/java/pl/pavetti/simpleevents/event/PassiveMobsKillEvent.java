@@ -2,6 +2,7 @@ package pl.pavetti.simpleevents.event;
 
 import org.bukkit.entity.Creature;
 import org.bukkit.entity.Monster;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.plugin.Plugin;
@@ -29,7 +30,7 @@ public class PassiveMobsKillEvent extends Event {
     public void onPassiveMobKillEvent(EntityDeathEvent event){
         if(running){
             if(event.getEntity() instanceof Creature && !(event.getEntity() instanceof Monster)){
-                addScore(event.getEntity().getKiller(),1);
+                if(event.getEntity().getKiller() != null) addScore(event.getEntity().getKiller(),1);
             }
         }
     }
