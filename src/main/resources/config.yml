@@ -1,69 +1,83 @@
-#Prefix that will be adding to every message sending by this plugin without message that are contains in list of lines (defaultWinMessage,customWinMessage,help)
-prefix: '&d&lSimple&9&lEvents &7⋙'
+settings:
+  #Prefix that will be adding to every message sending by this plugin without message that are contains in list of lines (defaultWinMessage,customWinMessage,help)
+  prefix: '&d&lSimple&9&lEvents &7⋙ '
 
-#if true player on the first place will get the prize that you can set by using '/se setprize' command
-givePrize: true
+  #if true player on the first place will get the prize that you can set by using '/se setprize' command
+  givePrize: true
 
-#If an event is stopped by using the '/se end' command, the player who is currently ranked first will receive the prize.
-givePrizeWhenEndedByCmd: ture
+  #If an event is stopped by using the '/se end' command, the player who is currently ranked first will receive the prize.
+  givePrizeWhenEndedByCmd: ture
 
-#if true events from list in section 'simpleEventsAutoStart' will activate automatically at the time specified in the 'interval' section.
-autoStart: false
+  #if true events from list in section 'simpleEventsAutoStart' will activate automatically at the time specified in the 'interval' section.
+  autoStart: true
 
-#In this list you can set the ID of  events that you want to be started automatically
-eventsAutoStart:
-  - 'TEST_1'
-  - 'TEST_2'
+  #In this list you can set the ID of  events that you want to be started automatically
+  eventsAutoStart:
+    - THROW_ENDER_PERL
+    - BREAK_BLOCK
+    - PLACE_BLOCK
+    - PASSIVE_MOB_KILL
+    - HOSTILE_MOB_KILL
+    - DEAL_DAMAGE
+    - CATCH_FISH
+    - PLAYER_KILL
+    - PLAYER_DEATH
+    - CRAFT_ITEM
+    - ENCHANT_ITEM
+    - EAT_FOOD
+    - JUMPING
+    - MOVING
+    - GET_DAMAGE_NO_DEATH
+  #Interval is the time (in seconds) that defines the pause between the automatic start of an event after the previous one.
+  #First automatic start is always 5 minutes after server starts
+  interval: 7200
 
-#Interval is the time that defines the pause between the automatic start of a event after the previous one.
-interval: 72000
+  #if true 'winMessage' will send global when someone wins event
+  #if false only player who wins will get 'messageForWinner'
+  globalWinMessage: true
 
-#if true 'winMessage' will send global when someone wins event
-#if false only player who wins will get 'messageForWinner'
-globalWinMessage: true
+  #title of inventory that displays on command use /se itemprize
+  itemPrizeInventoryTitle: '&aItems prize'
 
-#title of inventory that displays on command use /se itemprize
-itemPrizeInventoryTitle: '&aItems prize'
+  #Every options relevant to scoreboard you can find in ths section
+  scoreboard:
+    timeLineFormat: '&7Time left &f{TIME}' #{TIME} - holds time left to end event
+    rankingLineFormat: ' &6{POSITION}. &7{PLAYER} &f{SCORE}'#{POSITION} - holds the number of the player's current ranking position, {PLAYER} - holds players name, {SCORE} - holds players score
+    #Number of places for players in the ranking
+    #WARING VERY IMPORTANT! Number of lines in scoreboard can not exceed 16, basic there is 4 for title, time and blank lines, so rankingLines plus line of description can not exceed 14)
+    rankingLines: 5
 
-#Every options relevant to scoreboard you can find in ths section
-scoreboard:
-  timeLineFormat: '&7Time left &f{TIME}' #{TIME} - holds time left to end event
-  rankingLineFormat: ' &6{POSITION}. &7{PLAYER} &f{SCORE}'#{POSITION} - holds the number of the player's current ranking position, {PLAYER} - holds players name, {SCORE} - holds players score
-  #Number of places for players in the ranking
-  #WARING VERY IMPORTANT! Number of lines in scoreboard can not exceed 16, basic there is 4 for title, time and blank lines, so rankingLines plus line of description can not exceed 14)
-  rankingLines: 5
-
-#Every option relevant to sends message you can find in this section
-messages:
-  #will send global on chat when someone wins event (if you want to disable global send go to 'globalWinMessage' option)
-  #placeholders: {NICK} - nick of player who win, {SCORE} - the score achieved by the winner, {EVENT} - name of the event that was play
-  winMessage:
-    - '&7 ﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉'
-    - '&7  &aPlayer {NICK} wins the event and get prize'
-    - '&7 ﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍'
-  help:
-    - ''
-    - '&7&m--[--------&r &aSimple Events Admin Commands &7&m--------]--'
-    - ''
-    - ' &f(&a alias for &f/&asimpleevent is &f/&ase&f)'
-    -
-    - ' &f/&ase start &f<&aEvent&f> <&atime&f>&7 - Starts a given event&7, &f<&7Event&f>&7 is id of event&7, &f<&7time&f>&7 is duration of event (in second) '
-    - ' &f/&ase end&7 - Ends event before time'
-    - ' &f/&ase itemprize &f<&aEvent&f>&7 - Sets an items that will be prize, &f<&7Event&f>&7 is id of event'
-    - ''
-  nothing: '&cNothing...' #this will be displayed if the used command do not make any changes
-  noPermission: '&cYou do not have access to use this command'
-  noEventFound: '&cEvent with id &f{EVENT} &cdoes not exit' # {EVENT} - placeholder for name of event given in command argument
-  badArgumentTimeSEStart: '&c Argument &f<&ctime&f>&c has to be integer and positive number '
-  badCmdUseSEStart: '&cYou have to give event name and duration &f/&cse start &f<&cEvent&f> <&ctime&f>'
-  badCmdUseSEAuto: '&cYou have to give switch argument &f/&cse auto &f<&con&f/&coff&f>'
-  badCmdUseSESetPrize: '&cYou have to give event argument &f/&cse itemprize &f<&cEvent&f>&7'
-  successfulStartEvent: '&aEvent has successfully started'
-  successfulEndEvent: '&aEvent has successfully ended'
-  successfulSetItemPrize: '&aThe item prize for &f{EVENT}&a event has successfully set' #{EVENT} - name of event that prize has set
-  messageForWinner: '&aYou have won the Event!'
-  eventAlreadyActive: '&cYou cannot start new event cause one is still active'
-  noEventFoundInEventDataFile: '&cEvent with id &f{EVENT} &cdoes not exit in eventData.yml, check this file or try to rebuild.' # {EVENT} - placeholder for name of event given in command argument
+  #Every option relevant to sends message you can find in this section
+  messages:
+    #will send global on chat when someone wins event (if you want to disable global send go to 'globalWinMessage' option)
+    #placeholders: {NICK} - nick of player who win, {SCORE} - the score achieved by the winner, {EVENT} - name of the event that was play
+    winMessage:
+      - '&7 ﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉'
+      - '&7  &aPlayer {NICK} wins the event and get prize'
+      - '&7 ﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍'
+    help:
+      - ''
+      - '&7&m--[--------&r &aSimple Events Admin Commands &7&m--------]--'
+      - ''
+      - ' &f(&aalias for &f/&asimpleevent is &f/&ase&f)'
+      - ''
+      - ' &f/&ase start &f<&aevent&f> <&atime&f>&7 - Starts a given event&7, &f<&7event&f>&7 is id of event&7, &f<&7time&f>&7 is duration of event (in second) '
+      - ' &f/&ase end&7 - Ends event before time'
+      - ' &f/&ase itemprize &f<&aevent&f>&7 - Sets an items that will be prize, &f<&7event&f>&7 is id of event'
+      - ''
+    nothing: '&cNothing...' #this will be displayed if the used command do not make any changes
+    noPermission: '&cYou do not have access to use this command'
+    noEventFound: '&cEvent with id &f{EVENT} &cdoes not exit' # {EVENT} - placeholder for name of event given in command argument
+    badArgumentTimeSEStart: '&c Argument &f<&ctime&f>&c has to be integer and positive number '
+    badCmdUseSEStart: '&cYou have to give event name and duration &f/&cse start &f<&cevent&f> <&ctime&f>'
+    badCmdUseSEAuto: '&cYou have to give switch argument &f/&cse auto &f<&con&f/&coff&f>'
+    badCmdUseSESetPrize: '&cYou have to give event argument &f/&cse itemprize &f<&cevent&f>&7'
+    successfulStartEvent: '&aEvent has successfully started'
+    successfulEndEvent: '&aEvent has successfully ended'
+    successfulSetItemPrize: '&aThe item prize for &f{EVENT}&a event has successfully set' #{EVENT} - name of event that prize has set
+    messageForWinner: '&aYou have won the Event!'
+    eventAlreadyActive: '&cYou cannot start new event cause one is still active'
+    noEventFoundInEventDataFile: '&cEvent with id &f{EVENT} &cdoes not exit in eventData.yml, check this file or try to rebuild.' # {EVENT} - placeholder for name of event given in command argument
 
 
 

@@ -2,27 +2,13 @@ package pl.pavetti.simpleevents.event;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.entity.EntityDamageByBlockEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.plugin.Plugin;
 import pl.pavetti.simpleevents.model.Event;
 import pl.pavetti.simpleevents.model.EventData;
-@Deprecated
-public class SelfDamageEvent extends Event {
-    /*
-    selfDamageEvent:
-        id: SELF_DAMAGE
-        displayName: '&6&lMaster of Careless'
-        defaultDuration: 360
-        description:
-          - '&5The player who'
-          - '&5deal the most'
-          - '&5self damage'
-          - '&5without dead wins'
-        prizeEconomy: 3000
-        prizeItems:
-    * */
-    public SelfDamageEvent(Plugin plugin, EventData data) {
+public class GetDamageNoDeathEvent extends Event {
+    public GetDamageNoDeathEvent(Plugin plugin, EventData data) {
         super(data);
         plugin.getServer().getPluginManager().registerEvents(this,plugin);
     }
@@ -39,10 +25,11 @@ public class SelfDamageEvent extends Event {
     }
 
     @EventHandler
-    public void onPlayerSelfDamage(EntityDamageByBlockEvent event){
+    public void onPlayerSelfDamage(EntityDamageEvent event){
         if (running){
-
-            addScore((Player) event.getEntity(), (int) event.getFinalDamage());
+            if(event.getEntity() instanceof  Player){
+                addScore((Player) event.getEntity(), (int) event.getFinalDamage());
+            }
         }
     }
 

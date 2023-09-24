@@ -1,6 +1,5 @@
 package pl.pavetti.simpleevents.event;
 
-import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

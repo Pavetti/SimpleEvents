@@ -7,6 +7,7 @@ import pl.pavetti.simpleevents.model.Event;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 public class AutoEventStart extends BukkitRunnable {
@@ -28,24 +29,29 @@ public class AutoEventStart extends BukkitRunnable {
     //TODO test it
     @Override
     public void run() {
-        Event event = randomChoiceEvent();
-        if(!eventManager.isRunning()){
-            eventManager.startSimpleEvent(event.getData().getDefaultDuration(),event);
-        }
+        Optional<Event> eventOptional = randomChoiceEvent();
+        eventOptional.ifPresent(event ->{
+            if(!eventManager.isRunning()){
+                eventManager.startSimpleEvent(event.getData().getDefaultDuration(),event);
+            }
+        });
     }
 
-    private Event randomChoiceEvent(){
-        Event event = null;
-        String eventId = null;
-        int randomInt;
-        do{
-            randomInt = random.nextInt(eventsToAutoStart.size());
-            eventId = eventsToAutoStart.get(randomInt);
-            event = eventManager.getRegisteredEvents().get(eventId);
-
-        }while (eventId.equals(lastEventId) || eventId == null);
-        lastEventId = eventId;
-        return event;
+    private Optional<Event> randomChoiceEvent(){
+        if(eventsToAutoStart.size() == 0) return Optional.empty();
+        else if(eventsToAutoStart.size() == 1) return Optional.of(eventManager.getRegisteredEvents().get(eventsToAutoStart.get(0)));
+        else {
+            Event event;
+            String eventId;
+            int randomInt;
+            do {
+                randomInt = random.nextInt(eventsToAutoStart.size());
+                eventId = eventsToAutoStart.get(randomInt);
+                event = eventManager.getRegisteredEvents().get(eventId);
+            } while (eventId.equals(lastEventId) || eventId == null);
+            lastEventId = eventId;
+            return Optional.of(event);
+        }
 
     }
 

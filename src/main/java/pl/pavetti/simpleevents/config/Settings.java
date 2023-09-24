@@ -53,33 +53,33 @@ public class Settings {
         FileConfiguration configuration = plugin.getConfig();
 
         //basic config
-        prefix = chatColor(configuration.getString("prefix"));
-        givePrizeWhenEndedByCmd = configuration.getBoolean("givePrizeWhenEndedByCmd");
-        eventsAutoStart = configuration.getStringList("eventsAutoStart");
-        autoStart = configuration.getBoolean("autoStart");
-        givePrize = configuration.getBoolean("givePrize");
-        globalWinMessage = configuration.getBoolean("globalWinMessage");
-        interval = configuration.getInt("interval");
-        itemPrizeInventoryTitle = chatColor(configuration.getString("itemPrizeInventoryTitle"));
+        prefix = chatColor(configuration.getString("settings.prefix"));
+        givePrizeWhenEndedByCmd = configuration.getBoolean("settings.givePrizeWhenEndedByCmd");
+        eventsAutoStart = configuration.getStringList("settings.eventsAutoStart");
+        autoStart = configuration.getBoolean("settings.autoStart");
+        givePrize = configuration.getBoolean("settings.givePrize");
+        globalWinMessage = configuration.getBoolean("settings.globalWinMessage");
+        interval = configuration.getInt("settings.interval") * 20;
+        itemPrizeInventoryTitle = chatColor(configuration.getString("settings.itemPrizeInventoryTitle"));
         //scoreboard config
-        scoreboardTimeLineFormat = chatColor(configuration.getString("scoreboard.timeLineFormat"));
-        scoreboardRankingLineFormat = chatColor(configuration.getString("scoreboard.rankingLineFormat"));
-        scoreboardRankingLines = configuration.getInt("scoreboard.rankingLines");
+        scoreboardTimeLineFormat = chatColor(configuration.getString("settings.scoreboard.timeLineFormat"));
+        scoreboardRankingLineFormat = chatColor(configuration.getString("settings.scoreboard.rankingLineFormat"));
+        scoreboardRankingLines = configuration.getInt("settings.scoreboard.rankingLines");
         //messages
-        help = chatColor(configuration.getStringList("messages.help"));
-        winMessage = chatColor(configuration.getStringList("messages.winMessage"));
-        noPermission = chatColor(configuration.getString("messages.noPermission"));
-        noEventFound = chatColor(configuration.getString("messages.noEventFound"));
-        badCmdUseSEAuto = chatColor(configuration.getString("messages.badCmdUseSEAuto"));
-        badCmdUseSEStart = chatColor(configuration.getString("messages.badCmdUseSEStart"));
-        badArgumentTimeSEStart = chatColor(configuration.getString("messages.badArgumentTimeSEStart"));
-        successfulStartEvent = chatColor(configuration.getString("messages.successfulStartEvent"));
-        successfulEndEvent = chatColor(configuration.getString("messages.successfulEndEvent"));
-        successfulSetItemPrize = chatColor(configuration.getString("messages.successfulSetItemPrize"));
-        messageForWinner = chatColor(configuration.getString("messages.messageForWinner"));
-        nothing = chatColor(configuration.getString("messages.nothing"));
-        eventAlreadyActive = chatColor(configuration.getString("messages.eventAlreadyActive"));
-        badCmdUseSESetPrize = chatColor(configuration.getString("messages.badCmdUseSESetPrize"));
-        noEventFoundInEventDataFile = chatColor(configuration.getString("messages.noEventFoundInEventDataFile"));
+        help = chatColor(configuration.getStringList("settings.messages.help"));
+        winMessage = chatColor(configuration.getStringList("settings.messages.winMessage"));
+        noPermission = chatColor(configuration.getString("settings.messages.noPermission"));
+        noEventFound = chatColor(configuration.getString("settings.messages.noEventFound"));
+        badCmdUseSEAuto = chatColor(configuration.getString("settings.messages.badCmdUseSEAuto"));
+        badCmdUseSEStart = chatColor(configuration.getString("settings.messages.badCmdUseSEStart"));
+        badArgumentTimeSEStart = chatColor(configuration.getString("settings.messages.badArgumentTimeSEStart"));
+        successfulStartEvent = chatColor(configuration.getString("settings.messages.successfulStartEvent"));
+        successfulEndEvent = chatColor(configuration.getString("settings.messages.successfulEndEvent"));
+        successfulSetItemPrize = chatColor(configuration.getString("settings.messages.successfulSetItemPrize"));
+        messageForWinner = chatColor(configuration.getString("settings.messages.messageForWinner"));
+        nothing = chatColor(configuration.getString("settings.messages.nothing"));
+        eventAlreadyActive = chatColor(configuration.getString("settings.messages.eventAlreadyActive"));
+        badCmdUseSESetPrize = chatColor(configuration.getString("settings.messages.badCmdUseSESetPrize"));
+        noEventFoundInEventDataFile = chatColor(configuration.getString("settings.messages.noEventFoundInEventDataFile"));
     }
 }
