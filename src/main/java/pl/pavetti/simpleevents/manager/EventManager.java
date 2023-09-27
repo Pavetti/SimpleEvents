@@ -143,14 +143,10 @@ public class EventManager {
             if(playerOptional.isPresent()){
                 Player player = playerOptional.get();
                 if(givePrize) {
-//                    for (ItemStack prizeItem : event.getData().getPrizeItems()) {
-//                        System.out.println("2. Type: " + prizeItem.getType() + " Amount: " + prizeItem.getAmount());
-//                    }
+
                     givePrizeEconomy(player, prizeEconomy);
                     givePrizeItems(player, prizeItems);
-//                    for (ItemStack prizeItem : event.getData().getPrizeItems()) {
-//                        System.out.println("3. Type: " + prizeItem.getType() + " Amount: " + prizeItem.getAmount());
-//                    }
+
                 }
                 if(!settings.isGlobalWinMessage()){
                     PlayerUtil.sendMessage(player,settings.getPrefix(), settings.getMessageForWinner());
@@ -170,7 +166,7 @@ public class EventManager {
     givePrizeItems(Player player, List<ItemStack> items){
         if(items != null) {
             for (ItemStack item : items) {
-                player.getInventory().addItem(item);
+                PlayerUtil.addItem(player,item);
             }
         }
     }

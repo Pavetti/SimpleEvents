@@ -2,7 +2,7 @@ name: SimpleEvents
 version: '${project.version}'
 main: pl.pavetti.simpleevents.SimpleEvents
 authors: [ 'Pavetti' ]
-api-version: '1.19'
+api-version: '1.13'
 softdepend: ['Vault']
 commands:
   simpleevent:
