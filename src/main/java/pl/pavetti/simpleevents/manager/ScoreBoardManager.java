@@ -5,7 +5,6 @@ import lombok.Setter;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
 import pl.pavetti.simpleevents.api.ScoreboardWrapper;
 import pl.pavetti.simpleevents.config.Settings;
@@ -23,6 +22,7 @@ public class ScoreBoardManager {
 
     private final int rankingPlaces;
     private final Settings settings;
+    private Scoreboard deafultScoreboard = Bukkit.getScoreboardManager().getMainScoreboard();;
 
     public ScoreBoardManager(Settings settings, int rankingPlaces){
         this.settings = settings;
@@ -30,6 +30,7 @@ public class ScoreBoardManager {
     }
 
     public void createScoreBoard(int time,  EventData data){
+
         board = new ScoreboardWrapper(chatColor(data.getName()));
         board.addBlankSpace();
         linesAmount++;
@@ -76,17 +77,21 @@ public class ScoreBoardManager {
     }
 
     public void closeScoreBoardForALl(){
-        for (Player player : Bukkit.getOnlinePlayers()) {
-            Scoreboard scoreboard = player.getScoreboard();
-            Objective objective = scoreboard.getObjective("dummy");
-            if (objective != null) {
-                objective.unregister();
+        if(deafultScoreboard != null){
+            for (Player player : Bukkit.getOnlinePlayers()) {
+                player.setScoreboard(deafultScoreboard);
+//            Scoreboard scoreboard = player.getScoreboard();
+//            Objective objective = scoreboard.getObjective("dummy");
+//            if (objective != null) {
+//                objective.unregister();
+//            }
+//            for (String entry : scoreboard.getEntries()) {
+//                scoreboard.resetScores(entry);
+//            }
+//            player.setScoreboard(Bukkit.getScoreboardManager().getNewScoreboard());
             }
-            for (String entry : scoreboard.getEntries()) {
-                scoreboard.resetScores(entry);
-            }
-            player.setScoreboard(Bukkit.getScoreboardManager().getNewScoreboard());
         }
+
     }
 
     public void reset(){

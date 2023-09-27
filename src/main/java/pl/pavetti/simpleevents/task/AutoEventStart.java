@@ -5,6 +5,8 @@ import pl.pavetti.simpleevents.config.Settings;
 import pl.pavetti.simpleevents.manager.EventManager;
 import pl.pavetti.simpleevents.model.Event;
 
+import java.time.LocalTime;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -13,14 +15,16 @@ import java.util.Random;
 public class AutoEventStart extends BukkitRunnable {
 
     private final EventManager eventManager;
+    private final Settings  settings;
     private String lastEventId;
     private final Random random = new Random();
     private final List<String> eventsToAutoStart = new ArrayList<>();
 
     public AutoEventStart(EventManager eventManager, Settings settings) {
         this.eventManager = eventManager;
+        this.settings = settings;
 
-        for (String eventId : settings.getEventsAutoStart()) {
+        for (String eventId : settings.getEventsAutoActive()) {
             if(eventManager.getRegisteredEvents().keySet().contains(eventId)){
                 eventsToAutoStart.add(eventId);
             }
@@ -31,7 +35,9 @@ public class AutoEventStart extends BukkitRunnable {
         Optional<Event> eventOptional = randomChoiceEvent();
         eventOptional.ifPresent(event ->{
             if(!eventManager.isRunning()){
-                eventManager.startSimpleEvent(event.getData().getDefaultDuration(),event);
+                if(isTime()) {
+                    eventManager.startSimpleEvent(event.getData().getDefaultDuration(), event);
+                }
             }
         });
     }
@@ -51,7 +57,13 @@ public class AutoEventStart extends BukkitRunnable {
             lastEventId = eventId;
             return Optional.of(event);
         }
-
     }
 
+    private boolean isTime(){
+        //This function return true if current time is bigger than ActiveTimeForm and  smaller than ActiveTimeTo
+        ZonedDateTime zonedDateTime = ZonedDateTime.now(settings.getTimeZone());
+        LocalTime currentTime = zonedDateTime.toLocalTime();
+        if(!settings.isImposedActiveTime()) return true;
+        return currentTime.isAfter(settings.getActiveTimeFrom()) && currentTime.isBefore(settings.getActiveTimeTo());
+    }
 }

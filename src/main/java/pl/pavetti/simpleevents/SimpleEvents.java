@@ -66,7 +66,7 @@ public final class SimpleEvents extends JavaPlugin {
     }
 
     private void registerTask(){
-        if(settings.isAutoStart()) new AutoEventStart(eventManager,settings).runTaskTimer(this,6000,settings.getInterval());
+        if(settings.isAutoActive()) new AutoEventStart(eventManager,settings).runTaskTimer(this,0,settings.getInterval());
     }
 
     private boolean setupEconomy() {

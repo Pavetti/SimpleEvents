@@ -33,12 +33,13 @@ public abstract class Event implements Listener {
     abstract public void stop();
 
     protected void addScore(Player player, int amount) {
-        if (running && score.containsKey(player.getUniqueId())) {
-            int currentAmount = score.get(player.getUniqueId());
-            score.put(player.getUniqueId(), currentAmount + amount);
-        }
-        else if (running && !score.containsKey(player.getUniqueId())) {
-            score.put(player.getUniqueId(), amount);
+        if(!player.hasPermission("se.noattend")) {
+            if (running && score.containsKey(player.getUniqueId())) {
+                int currentAmount = score.get(player.getUniqueId());
+                score.put(player.getUniqueId(), currentAmount + amount);
+            } else if (running && !score.containsKey(player.getUniqueId())) {
+                score.put(player.getUniqueId(), amount);
+            }
         }
     }
 

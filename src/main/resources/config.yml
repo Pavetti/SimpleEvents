@@ -8,36 +8,46 @@ settings:
   #If an event is stopped by using the '/se end' command, the player who is currently ranked first will receive the prize.
   givePrizeWhenEndedByCmd: ture
 
-  #if true events from list in section 'simpleEventsAutoStart' will activate automatically at the time specified in the 'interval' section.
-  autoStart: true
-
-  #In this list you can set the ID of  events that you want to be started automatically
-  eventsAutoStart:
-    - THROW_ENDER_PERL
-    - BREAK_BLOCK
-    - PLACE_BLOCK
-    - PASSIVE_MOB_KILL
-    - HOSTILE_MOB_KILL
-    - DEAL_DAMAGE
-    - CATCH_FISH
-    - PLAYER_KILL
-    - PLAYER_DEATH
-    - CRAFT_ITEM
-    - ENCHANT_ITEM
-    - EAT_FOOD
-    - JUMPING
-    - MOVING
-    - GET_DAMAGE_NO_DEATH
-  #Interval is the time (in seconds) that defines the pause between the automatic start of an event after the previous one.
-  #First automatic start is always 5 minutes after server starts
-  interval: 7200
-
   #if true 'winMessage' will send global when someone wins event
   #if false only player who wins will get 'messageForWinner'
   globalWinMessage: true
 
   #title of inventory that displays on command use /se itemprize
   itemPrizeInventoryTitle: '&aItems prize'
+
+  #Every options relevant to events automatically actives you can find in this section
+  autoActive:
+    #if true events from list in section 'simpleEventsAutoStart' will activate automatically at the time specified in the 'interval' section.
+    autoActive: true
+
+    #In this list you can set the ID of  events that you want to be started automatically
+    eventsAutoActive:
+      - THROW_ENDER_PERL
+      - BREAK_BLOCK
+      - PLACE_BLOCK
+      - PASSIVE_MOB_KILL
+      - HOSTILE_MOB_KILL
+      - DEAL_DAMAGE
+      - CATCH_FISH
+      - PLAYER_KILL
+      - PLAYER_DEATH
+      - CRAFT_ITEM
+      - ENCHANT_ITEM
+      - EAT_FOOD
+      - JUMPING
+      - MOVING
+      - GET_DAMAGE_NO_DEATH
+    #Interval is the time (in seconds) that defines the pause between the automatic start of an event after the previous one.
+    #First automatic start is always 5 minutes after server starts
+    interval: 10
+
+    #if 'imposedActiveTime' is true events will activate only after "imposedActiveTime" and before "activeTimeTo", but if its false events will activate continuously
+    imposedActiveTime: false
+    #This is a time zone that the plugin will use. List of other time zone you can find in zone_ids.txt
+    timeZone: 'Europe/Warsaw'
+    #Events actives from 'activeTimeFrom' o'clock to 'activeTimeTo' o'clock Correct format is HH:mm for example 12:00
+    activeTimeFrom: '00:00'
+    activeTimeTo: '00:00'
 
   #Every options relevant to scoreboard you can find in ths section
   scoreboard:
