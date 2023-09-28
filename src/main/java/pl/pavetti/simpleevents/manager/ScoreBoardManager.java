@@ -3,13 +3,21 @@ package pl.pavetti.simpleevents.manager;
 import lombok.Getter;
 import lombok.Setter;
 
+import me.neznamy.tab.api.TabAPI;
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
+import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
 import pl.pavetti.simpleevents.api.ScoreboardWrapper;
 import pl.pavetti.simpleevents.config.Settings;
 import pl.pavetti.simpleevents.model.EventData;
 import pl.pavetti.simpleevents.util.EventUtil;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
 import static pl.pavetti.simpleevents.util.ChatUtil.chatColor;
 
 @Setter
@@ -22,7 +30,7 @@ public class ScoreBoardManager {
 
     private final int rankingPlaces;
     private final Settings settings;
-    private Scoreboard deafultScoreboard = Bukkit.getScoreboardManager().getMainScoreboard();;
+    private final Map<UUID,Scoreboard> oldScores = new HashMap<>();
 
     public ScoreBoardManager(Settings settings, int rankingPlaces){
         this.settings = settings;
@@ -56,6 +64,7 @@ public class ScoreBoardManager {
         linesAmount++;
     }
     public void updateScoreboard(int time, String[] top){
+
         board.setLine(linesAmount - 1,settings.getScoreboardTimeLineFormat().replace("{TIME}", EventUtil.formatTime(time)));
         int index;
 
@@ -71,27 +80,25 @@ public class ScoreBoardManager {
         }
     }
     public void showScoreBoardForALl(){
+        saveScores();
         for (Player player : Bukkit.getOnlinePlayers()) {
             player.setScoreboard(board.getScoreboard());
         }
     }
+    private void saveScores(){
+        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+            oldScores.put(onlinePlayer.getUniqueId(),onlinePlayer.getScoreboard());
+        }
+    }
 
     public void closeScoreBoardForALl(){
-        if(deafultScoreboard != null){
-            for (Player player : Bukkit.getOnlinePlayers()) {
-                player.setScoreboard(deafultScoreboard);
-//            Scoreboard scoreboard = player.getScoreboard();
-//            Objective objective = scoreboard.getObjective("dummy");
-//            if (objective != null) {
-//                objective.unregister();
-//            }
-//            for (String entry : scoreboard.getEntries()) {
-//                scoreboard.resetScores(entry);
-//            }
-//            player.setScoreboard(Bukkit.getScoreboardManager().getNewScoreboard());
-            }
-        }
-
+        oldScores.forEach(((uuid, scoreboard) -> {
+            OfflinePlayer offlinePlayer =Bukkit.getOfflinePlayer(uuid);
+           if(offlinePlayer.isOnline()) {
+               Player player = (Player) offlinePlayer;
+               player.setScoreboard(scoreboard);
+           }
+        }));
     }
 
     public void reset(){

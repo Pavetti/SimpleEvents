@@ -39,15 +39,17 @@ settings:
       - GET_DAMAGE_NO_DEATH
     #Interval is the time (in seconds) that defines the pause between the automatic start of an event after the previous one.
     #First automatic start is always 5 minutes after server starts
-    interval: 10
+    interval: 7200
 
     #if 'imposedActiveTime' is true events will activate only after "imposedActiveTime" and before "activeTimeTo", but if its false events will activate continuously
     imposedActiveTime: false
+
     #This is a time zone that the plugin will use. List of other time zone you can find in zone_ids.txt
     timeZone: 'Europe/Warsaw'
+
     #Events actives from 'activeTimeFrom' o'clock to 'activeTimeTo' o'clock Correct format is HH:mm for example 12:00
-    activeTimeFrom: '00:00'
-    activeTimeTo: '00:00'
+    activeTimeFrom: '08:00'
+    activeTimeTo: '22:00'
 
   #Every options relevant to scoreboard you can find in ths section
   scoreboard:
