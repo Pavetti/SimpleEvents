@@ -185,3 +185,25 @@ eventsData:
       - '&5health wins'
     prizeEconomy: 0
     prizeItems:
+
+  oreMineEvent:
+    id: ORE_MINE
+    displayName: '&6&lMiner'
+    defaultDuration: 1200
+    description:
+      - '&5The player who'
+      - '&5mines the most '
+      - '&5ores wins'
+    prizeEconomy: 0
+    prizeItems:
+
+  woodCutEvent:
+    id: WOOD_CUT
+    displayName: '&6&llumberjack'
+    defaultDuration: 1200
+    description:
+      - '&5The player who'
+      - '&5cut the most '
+      - '&5woods wins'
+    prizeEconomy: 0
+    prizeItems:

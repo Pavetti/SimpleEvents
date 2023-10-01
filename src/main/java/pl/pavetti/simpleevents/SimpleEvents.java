@@ -4,6 +4,7 @@ import net.milkbowl.vault.economy.Economy;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
+import pl.pavetti.simpleevents.api.MetricsLite;
 import pl.pavetti.simpleevents.listener.CloseInventoryListener;
 import pl.pavetti.simpleevents.command.SimpleEventCommand;
 import pl.pavetti.simpleevents.config.ConfigFile;
@@ -20,6 +21,7 @@ public final class SimpleEvents extends JavaPlugin {
     private EventDataFile  eventData;
     private EventManager eventManager;
     private Economy economy;
+    private MetricsLite metrics;
 
     @Override
     public void onEnable() {
@@ -27,6 +29,7 @@ public final class SimpleEvents extends JavaPlugin {
         if (!setupEconomy() ) {
             getLogger().severe(String.format("[%s] - No Vault dependency found! Some features will not be able to use.", getDescription().getName()));
         }
+        metrics = new MetricsLite(this,19944);
 
         initConfiguration();
         registerCommand();
