@@ -44,7 +44,7 @@ settings:
     #if 'imposedActiveTime' is true events will activate only after "imposedActiveTime" and before "activeTimeTo", but if its false events will activate continuously
     imposedActiveTime: false
 
-    #This is a time zone that the plugin will use. List of other time zone you can find in zone_ids.txt
+    #This is a time zone that the plugin will use. List of other time zone you can find on https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
     timeZone: 'Europe/Warsaw'
 
     #Events actives from 'activeTimeFrom' o'clock to 'activeTimeTo' o'clock Correct format is HH:mm for example 12:00
