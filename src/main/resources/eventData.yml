@@ -181,7 +181,7 @@ eventsData:
     defaultDuration: 360
     description:
       - '&5The player who'
-      - '&5loses the most '
+      - '&5loses the most'
       - '&5health wins'
     prizeEconomy: 0
     prizeItems:
@@ -192,7 +192,7 @@ eventsData:
     defaultDuration: 1200
     description:
       - '&5The player who'
-      - '&5mines the most '
+      - '&5mines the most'
       - '&5ores wins'
     prizeEconomy: 0
     prizeItems:
@@ -203,7 +203,29 @@ eventsData:
     defaultDuration: 1200
     description:
       - '&5The player who'
-      - '&5cut the most '
+      - '&5cut the most'
       - '&5woods wins'
+    prizeEconomy: 0
+    prizeItems:
+
+  chatMessageEvent:
+    id: CHAT_MESSAGE
+    displayName: '&6&lChat Spamer'
+    defaultDuration: 60
+    description:
+      - '&5The player who'
+      - '&5sends the most'
+      - '&5messages wins'
+    prizeEconomy: 0
+    prizeItems:
+
+  retypeCodeEvent: #only player who first retypes code gets the point
+    id: RETYPE_CODE
+    displayName: '&6&lFast Fingers'
+    defaultDuration: 120
+    description:
+      - '&5The player who'
+      - '&5retypes the most'
+      - '&5codes wins'
     prizeEconomy: 0
     prizeItems:

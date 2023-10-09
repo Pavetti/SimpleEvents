@@ -24,7 +24,6 @@ public final class SimpleEvents extends JavaPlugin {
     private EventDataFile  eventData;
     private EventManager eventManager;
     private Economy economy;
-    private MetricsLite metrics;
 
     @Override
     public void onEnable() {
@@ -32,7 +31,7 @@ public final class SimpleEvents extends JavaPlugin {
         if (!setupEconomy() ) {
             getLogger().severe(String.format("[%s] - No Vault dependency found! Some features will not be able to use.", getDescription().getName()));
         }
-        metrics = new MetricsLite(this,19944);
+        MetricsLite metrics = new MetricsLite(this, 19944);
 
         initConfiguration();
         registerCommand();

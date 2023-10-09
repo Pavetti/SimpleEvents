@@ -55,7 +55,8 @@ public class EventManager {
         eventsClassNames.addAll(Arrays.asList("ThrowEnderPerlEvent","BreakBlockEvent","PlaceBlockEvent","PassiveMobsKillEvent"
                                                 ,"HostileMobsKillEvent","DealDamageEvent","CatchFishEvent","PlayerKillEvent"
                                                 ,"DeathEvent", "CraftItemEvent", "EnchantItemEvent","EatFoodEvent","JumpEvent"
-                                                ,"MoveEvent","GetDamageNoDeathEvent","OreMineEvent","WoodCutEvent"));
+                                                ,"MoveEvent","GetDamageNoDeathEvent","OreMineEvent","WoodCutEvent","ChatMessageEvent"
+                                                ,"RetypeCodeEvent"));
         loadSimpleEvents(plugin);
 
     }
