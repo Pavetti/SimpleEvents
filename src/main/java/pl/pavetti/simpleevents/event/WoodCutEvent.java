@@ -19,17 +19,12 @@ public class WoodCutEvent extends Event {
             Material.JUNGLE_WOOD,
             Material.ACACIA_WOOD,
             Material.DARK_OAK_WOOD,
-            Material.MANGROVE_WOOD,
-            Material.CHERRY_WOOD,
-            Material.CRIMSON_HYPHAE,
-            Material.WARPED_HYPHAE,
             Material.DARK_OAK_LOG,
             Material.BIRCH_LOG,
             Material.SPRUCE_LOG,
             Material.JUNGLE_LOG,
             Material.ACACIA_LOG,
-            Material.MANGROVE_LOG,
-            Material.CHERRY_LOG);
+            Material.OAK_LOG);
 
     public WoodCutEvent(Plugin plugin, EventData data) {
         super(data);
