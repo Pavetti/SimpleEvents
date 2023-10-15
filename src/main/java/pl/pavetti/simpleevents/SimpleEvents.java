@@ -1,5 +1,6 @@
 package pl.pavetti.simpleevents;
 
+import lombok.Getter;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -13,6 +14,7 @@ import pl.pavetti.simpleevents.command.SimpleEventCommand;
 import pl.pavetti.simpleevents.config.ConfigFile;
 import pl.pavetti.simpleevents.config.EventDataFile;
 import pl.pavetti.simpleevents.config.Settings;
+import pl.pavetti.simpleevents.listener.PlayerJoinListener;
 import pl.pavetti.simpleevents.manager.EventManager;
 import pl.pavetti.simpleevents.tabcompleter.SimpleEventTabCompleter;
 import pl.pavetti.simpleevents.task.AutoEventStart;
@@ -25,6 +27,7 @@ public final class SimpleEvents extends JavaPlugin {
     private EventManager eventManager;
     private Economy economy;
 
+
     @Override
     public void onEnable() {
         // Plugin startup logic
@@ -36,8 +39,8 @@ public final class SimpleEvents extends JavaPlugin {
         initConfiguration();
         registerCommand();
         registerTabCompleter();
-        registerListener();
         registerTask();
+        registerListener();
 
         updateCheck();
     }
@@ -80,8 +83,10 @@ public final class SimpleEvents extends JavaPlugin {
         new UpdateChecker(this, 112876).getVersion(version -> {
             if (this.getDescription().getVersion().equals(version)) {
                 getLogger().info("[SimpleEvents] There is not a new update available.");
+                getServer().getPluginManager().registerEvents(new PlayerJoinListener(false),this);
             } else {
                 Bukkit.broadcastMessage(ChatColor.LIGHT_PURPLE + "[SimpleEvents] THERE IS A NEW UPDATE AVAILABLE!");
+                getServer().getPluginManager().registerEvents(new PlayerJoinListener(true),this);
             }
         });
     }

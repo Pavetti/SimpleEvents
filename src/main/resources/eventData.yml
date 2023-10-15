@@ -229,3 +229,25 @@ eventsData:
       - '&5codes wins'
     prizeEconomy: 0
     prizeItems:
+
+  shieldBlockEvent:
+    id: SHIELD_BLOCK
+    displayName: '&6&lDefender'
+    defaultDuration: 900
+    description:
+      - '&5The player who'
+      - '&5defended the most'
+      - '&5times by shield wins'
+    prizeEconomy: 0
+    prizeItems:
+
+  expIncreaseEvent:
+    id: EXP_INCREASE
+    displayName: '&6&lExp Master'
+    defaultDuration: 1200
+    description:
+      - '&5The player who'
+      - '&5increase his exp'
+      - '&5the most wins'
+    prizeEconomy: 0
+    prizeItems:
