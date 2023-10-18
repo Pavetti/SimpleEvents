@@ -41,7 +41,8 @@ settings:
       - WOOD_CUT
       - CHAT_MESSAGE
       - RETYPE_CODE
-      -
+      - SHIELD_BLOCK
+      - EXP_INCREASE
     #Interval is the time (in seconds) that defines the pause between the automatic start of an event after the previous one.
     #First automatic start is always 5 minutes after server starts
     interval: 7200
