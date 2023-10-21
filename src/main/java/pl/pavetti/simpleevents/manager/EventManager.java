@@ -12,10 +12,12 @@ import org.bukkit.scheduler.BukkitRunnable;
 import pl.pavetti.simpleevents.SimpleEvents;
 import pl.pavetti.simpleevents.config.ConfigFile;
 import pl.pavetti.simpleevents.config.EventDataFile;
+import pl.pavetti.simpleevents.config.PlayerDataFile;
 import pl.pavetti.simpleevents.config.Settings;
 import pl.pavetti.simpleevents.exception.NoCorrectEventDataException;
 import pl.pavetti.simpleevents.model.Event;
 import pl.pavetti.simpleevents.model.EventData;
+import pl.pavetti.simpleevents.model.PlayerData;
 import pl.pavetti.simpleevents.util.PlayerUtil;
 import pl.pavetti.simpleevents.util.EventUtil;
 
@@ -32,6 +34,7 @@ public class EventManager {
     private final Settings settings;
     private final EventDataFile eventDataFile;
     private final int rankingLinesAmount;
+    private final PlayerDataFile playerDataFile;
 
     private SimpleEvents plugin;
 
@@ -42,13 +45,14 @@ public class EventManager {
     private boolean isRunning = false;
     private boolean goEnd = false;
 
-    public EventManager(SimpleEvents plugin, ConfigFile configFile, Settings settings, Economy economy, EventDataFile eventDataFile) {
+    public EventManager(SimpleEvents plugin, ConfigFile configFile, Settings settings, Economy economy, EventDataFile eventDataFile, PlayerDataFile playerDataFile) {
         this.configFile = configFile;
         this.settings = settings;
         this.economy = economy;
         this.plugin = plugin;
+        this.playerDataFile = playerDataFile;
         this.rankingLinesAmount = settings.getScoreboardRankingLines();
-        scoreBoardManager = new ScoreBoardManager(settings,rankingLinesAmount);
+        scoreBoardManager = new ScoreBoardManager(settings,rankingLinesAmount, this.playerDataFile);
         this.eventDataFile = eventDataFile;
 
         //names of class that has to be registered as SimpleEvent

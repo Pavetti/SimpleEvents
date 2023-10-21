@@ -3,19 +3,20 @@ package pl.pavetti.simpleevents.manager;
 import lombok.Getter;
 import lombok.Setter;
 
-import me.neznamy.tab.api.TabAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
-import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
 import pl.pavetti.simpleevents.api.ScoreboardWrapper;
+import pl.pavetti.simpleevents.config.PlayerDataFile;
 import pl.pavetti.simpleevents.config.Settings;
 import pl.pavetti.simpleevents.model.EventData;
+import pl.pavetti.simpleevents.model.PlayerData;
 import pl.pavetti.simpleevents.util.EventUtil;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 
 import static pl.pavetti.simpleevents.util.ChatUtil.chatColor;
@@ -30,11 +31,13 @@ public class ScoreBoardManager {
 
     private final int rankingPlaces;
     private final Settings settings;
+    private final PlayerDataFile playerDataFile;
     private final Map<UUID,Scoreboard> oldScores = new HashMap<>();
 
-    public ScoreBoardManager(Settings settings, int rankingPlaces){
+    public ScoreBoardManager(Settings settings, int rankingPlaces, PlayerDataFile playerData){
         this.settings = settings;
         this.rankingPlaces = rankingPlaces;
+        this.playerDataFile = playerData;
     }
 
     public void createScoreBoard(int time,  EventData data){
@@ -82,7 +85,13 @@ public class ScoreBoardManager {
     public void showScoreBoardForALl(){
         saveScores();
         for (Player player : Bukkit.getOnlinePlayers()) {
-            player.setScoreboard(board.getScoreboard());
+
+            Optional<PlayerData> playerDataOptional = playerDataFile.getPlayerDataOf(player.getUniqueId());
+            if(playerDataOptional.isPresent()){
+                if(playerDataOptional.get().isScoreboardShow()){
+                    player.setScoreboard(board.getScoreboard());
+                }
+            }else {player.setScoreboard(board.getScoreboard());}
         }
     }
     private void saveScores(){

@@ -12,7 +12,7 @@ import java.util.List;
 
 public class WoodCutEvent extends Event {
 
-    private List<Material> woods = Arrays.asList(
+    private final List<Material> woods = Arrays.asList(
             Material.OAK_WOOD,
             Material.SPRUCE_WOOD,
             Material.BIRCH_WOOD,

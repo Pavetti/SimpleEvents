@@ -15,8 +15,10 @@ public class ConfigFile {
 
 
     private File eventDataFile;
+    private File playerDataFile;
 
     private YamlConfiguration ymlEventData;
+    private YamlConfiguration ymlPlayerData;
     public ConfigFile(SimpleEvents plugin) {
         this.plugin = plugin;
         createFiles();
@@ -25,6 +27,7 @@ public class ConfigFile {
 
     private void createFiles() {
         eventDataFile = createFile("eventData.yml");
+        playerDataFile = createFile("playerData.yml");
     }
 
     private File createFile(String name) {
@@ -40,5 +43,6 @@ public class ConfigFile {
 
     private void loadFiles() {
         ymlEventData = YamlConfiguration.loadConfiguration(eventDataFile);
+        ymlPlayerData = YamlConfiguration.loadConfiguration(playerDataFile);
     }
 }

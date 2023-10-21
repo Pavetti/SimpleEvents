@@ -12,7 +12,7 @@ import java.util.List;
 
 public class EatFoodEvent extends Event {
 
-    private List<Material> food = Arrays.asList(
+    private final List<Material> food = Arrays.asList(
             Material.APPLE,
             Material.BAKED_POTATO,
             Material.BEETROOT,

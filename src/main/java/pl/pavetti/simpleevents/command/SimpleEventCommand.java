@@ -32,4 +32,5 @@ public class SimpleEventCommand extends ParentCommand {
 
         return false;
     }
+
 }

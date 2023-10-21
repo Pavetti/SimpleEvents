@@ -37,7 +37,7 @@ public class JumpEvent extends Event {
             if (velocity.getY() > 0)
             {
                 // Default jump velocity
-                double jumpVelocity = (double) 0.42F; // Default jump velocity
+                double jumpVelocity = 0.42F; // Default jump velocity
                 PotionEffect jumpPotion = player.getPotionEffect(PotionEffectType.JUMP);
                 if (jumpPotion != null)
                 {

@@ -2,7 +2,6 @@ package pl.pavetti.simpleevents.event;
 
 import org.bukkit.entity.Creature;
 import org.bukkit.entity.Monster;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.plugin.Plugin;

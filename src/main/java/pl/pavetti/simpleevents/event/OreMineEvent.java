@@ -7,13 +7,12 @@ import org.bukkit.plugin.Plugin;
 import pl.pavetti.simpleevents.model.Event;
 import pl.pavetti.simpleevents.model.EventData;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class OreMineEvent extends Event {
 
-    private List<Material> ores = Arrays.asList(
+    private final List<Material> ores = Arrays.asList(
             Material.COAL_ORE,
             Material.IRON_ORE,
             Material.REDSTONE_ORE,

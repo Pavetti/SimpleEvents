@@ -43,10 +43,11 @@ public class Settings {
     private String noEventFound;
     private String badArgumentTimeSEStart;
     private String badCmdUseSEStart;
-    private String badCmdUseSEAuto;
+    private String badCmdUseSEScoreShow;
     private String successfulStartEvent;
     private String successfulEndEvent;
     private String successfulSetItemPrize;
+    private String successfulSwitchScoreShow;
     private String messageForWinner;
     private String nothing;
     private String eventAlreadyActive;
@@ -74,7 +75,6 @@ public class Settings {
         autoActive = configuration.getBoolean("settings.autoActive.autoActive");
         imposedActiveTime = configuration.getBoolean("settings.autoActive.imposedActiveTime");
         eventsAutoActive = configuration.getStringList("settings.autoActive.eventsAutoActive");
-
         //scoreboard config
         scoreboardTimeLineFormat = chatColor(configuration.getString("settings.scoreboard.timeLineFormat"));
         scoreboardRankingLineFormat = chatColor(configuration.getString("settings.scoreboard.rankingLineFormat"));
@@ -84,12 +84,14 @@ public class Settings {
         winMessage = chatColor(configuration.getStringList("settings.messages.winMessage"));
         noPermission = chatColor(configuration.getString("settings.messages.noPermission"));
         noEventFound = chatColor(configuration.getString("settings.messages.noEventFound"));
-        badCmdUseSEAuto = chatColor(configuration.getString("settings.messages.badCmdUseSEAuto"));
+        badCmdUseSEScoreShow = chatColor(configuration.getString("settings.messages.badCmdUseSEScoreShow"));
         badCmdUseSEStart = chatColor(configuration.getString("settings.messages.badCmdUseSEStart"));
         badArgumentTimeSEStart = chatColor(configuration.getString("settings.messages.badArgumentTimeSEStart"));
+        badCmdUseSEScoreShow = chatColor(configuration.getString("settings.messages.badCmdUseSEScoreShow"));
         successfulStartEvent = chatColor(configuration.getString("settings.messages.successfulStartEvent"));
         successfulEndEvent = chatColor(configuration.getString("settings.messages.successfulEndEvent"));
         successfulSetItemPrize = chatColor(configuration.getString("settings.messages.successfulSetItemPrize"));
+        successfulSwitchScoreShow = chatColor(configuration.getString("settings.messages.successfulSwitchScoreShow"));
         messageForWinner = chatColor(configuration.getString("settings.messages.messageForWinner"));
         nothing = chatColor(configuration.getString("settings.messages.nothing"));
         eventAlreadyActive = chatColor(configuration.getString("settings.messages.eventAlreadyActive"));

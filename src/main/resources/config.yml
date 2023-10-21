@@ -43,11 +43,12 @@ settings:
       - RETYPE_CODE
       - SHIELD_BLOCK
       - EXP_INCREASE
+
     #Interval is the time (in seconds) that defines the pause between the automatic start of an event after the previous one.
     #First automatic start is always 5 minutes after server starts
     interval: 7200
 
-    #if 'imposedActiveTime' is true events will activate only after "imposedActiveTime" and before "activeTimeTo", but if its false events will activate continuously
+    #if 'imposedActiveTime' is true events will activate only after "activeTimeFrom" and before "activeTimeTo", but if its false events will activate continuously
     imposedActiveTime: false
 
     #This is a time zone that the plugin will use. List of other time zone you can find on https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
@@ -59,8 +60,12 @@ settings:
 
   #Every options relevant to scoreboard you can find in ths section
   scoreboard:
-    timeLineFormat: '&7Time left &f{TIME}' #{TIME} - holds time left to end event
-    rankingLineFormat: ' &6{POSITION}. &7{PLAYER} &f{SCORE}'#{POSITION} - holds the number of the player's current ranking position, {PLAYER} - holds players name, {SCORE} - holds players score
+    #{TIME} - holds time left to end event
+    timeLineFormat: '&7Time left &f{TIME}'
+
+    #{POSITION} - holds the number of the player's current ranking position, {PLAYER} - holds players name, {SCORE} - holds players score
+    rankingLineFormat: ' &6{POSITION}. &7{PLAYER} &f{SCORE}'
+
     #Number of places for players in the ranking
     #WARING VERY IMPORTANT! Number of lines in scoreboard can not exceed 16, basic there is 4 for title, time and blank lines, so rankingLines plus line of description can not exceed 14)
     rankingLines: 5
@@ -83,20 +88,25 @@ settings:
       - ' &f(&aalias for &f/&asimpleevent is &f/&ase&f)'
       - ''
       - ' &f/&ase start &f<&aevent&f> <&atime&f>&7 - Starts a given event&7, &f<&7event&f>&7 is id of event&7, &f<&7time&f>&7 is duration of event (in second)'
-      -  '&7if you do not provide a time argument, it will be set to the default time specified in the eventData.yml file'
+      - ' &7if you do not provide a time argument, it will be set to the default time specified in the eventData.yml file'
       - ' &f/&ase end&7 - Ends event before time'
       - ' &f/&ase itemprize &f<&aevent&f>&7 - Sets an items that will be prize, &f<&7event&f>&7 is id of event'
       - ''
+      - '&7&m--[--------&r &aSimple Events Player Commands &7&m--------]--'
+      - ''
+      - ' &f/&asescore &f<&con&f/&coff&f> - Change visibility of events scoreboard'
+
     nothing: '&cNothing...' #this will be displayed if the used command do not make any changes
     noPermission: '&cYou do not have access to use this command'
     noEventFound: '&cEvent with id &f{EVENT} &cdoes not exit' # {EVENT} - placeholder for name of event given in command argument
     badArgumentTimeSEStart: '&c Argument &f<&ctime&f>&c has to be integer and positive number '
     badCmdUseSEStart: '&cYou have to give event name and optional duration &f/&cse start &f<&cevent&f> <&ctime&f>'
-    badCmdUseSEAuto: '&cYou have to give switch argument &f/&cse auto &f<&con&f/&coff&f>'
     badCmdUseSESetPrize: '&cYou have to give event argument &f/&cse itemprize &f<&cevent&f>&7'
-    successfulStartEvent: '&aEvent has successfully started'
-    successfulEndEvent: '&aEvent has successfully ended'
-    successfulSetItemPrize: '&aThe item prize for &f{EVENT}&a event has successfully set' #{EVENT} - name of event that prize has set
+    badCmdUseSEScoreShow: '&cYou have to give switch argument &f/&csescore &f<&con&f/&coff&f>'
+    successfulStartEvent: 'Event has successfully started'
+    successfulEndEvent: 'Event has successfully ended'
+    successfulSetItemPrize: 'The item prize for &f{EVENT}&a event has successfully set' #{EVENT} - name of event that prize has set
+    successfulSwitchScoreShow: 'Showing event scoreboard has been switched to &f{SWITCH}' #{SWITCH} - changed value of score showing
     messageForWinner: '&aYou have won the Event!'
     eventAlreadyActive: '&cYou cannot start new event cause one is still active'
     noEventFoundInEventDataFile: '&cEvent with id &f{EVENT} &cdoes not exit in eventData.yml, check this file or try to rebuild.' # {EVENT} - placeholder for name of event given in command argument
