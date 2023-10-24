@@ -16,7 +16,6 @@ public class SEScoreTabCompleter implements TabCompleter {
 
         List<String> completions = new ArrayList<>();
 
-
         if(args.length == 1){
             completions.addAll(Arrays.asList("on","off"));
         }

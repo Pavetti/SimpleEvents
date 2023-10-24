@@ -26,11 +26,8 @@ public class SimpleEventCommand extends ParentCommand {
     @Override
     protected boolean executeCommand(CommandSender commandSender, String[] args) {
         Player player = (Player) commandSender;
-
         //sends to player info about subcommands
         PlayerUtil.sendMessage(player,settings.getHelp());
-
         return false;
     }
-
 }

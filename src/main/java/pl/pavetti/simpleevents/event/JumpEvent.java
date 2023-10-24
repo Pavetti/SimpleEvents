@@ -39,16 +39,13 @@ public class JumpEvent extends Event {
                 // Default jump velocity
                 double jumpVelocity = 0.42F; // Default jump velocity
                 PotionEffect jumpPotion = player.getPotionEffect(PotionEffectType.JUMP);
-                if (jumpPotion != null)
-                {
+                if (jumpPotion != null) {
                     // If player has jump potion add it to jump velocity
                     jumpVelocity += (double) ((float) jumpPotion.getAmplifier() + 1) * 0.1F;
                 }
                 // Check if player is not on ladder and if jump velocity calculated is equals to player Y velocity
-                if (player.getLocation().getBlock().getType() != Material.LADDER && Double.compare(velocity.getY(), jumpVelocity) == 0)
-                {
+                if (player.getLocation().getBlock().getType() != Material.LADDER && Double.compare(velocity.getY(), jumpVelocity) == 0) {
                     addScore(event.getPlayer(), 1);
-
                 }
             }
         }

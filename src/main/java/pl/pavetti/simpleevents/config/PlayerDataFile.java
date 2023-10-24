@@ -17,7 +17,6 @@ public class PlayerDataFile {
 
     @Getter(AccessLevel.NONE)
     private final ConfigFile configFile;
-
     private final Map<UUID, PlayerData> playerData = new HashMap<>();
 
     public PlayerDataFile(ConfigFile configFile) {

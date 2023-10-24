@@ -19,10 +19,12 @@ public class PlayerKillEvent extends Event {
         running = true;
 
     }
+
     @Override
     public void stop() {
         running = false;
     }
+
     @EventHandler
     public void onKillPlayerByPlayer(EntityDeathEvent event){
         if(running) {

@@ -20,6 +20,7 @@ public class PlaceBlockEvent extends Event {
     public void stop() {
         running = false;
     }
+
     @EventHandler
     public void onBlockPlace(org.bukkit.event.block.BlockPlaceEvent event){
         if(running){

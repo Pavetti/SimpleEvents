@@ -28,5 +28,4 @@ public class PlayerUtil {
         }
         if(drop) player.getWorld().dropItem(player.getLocation(),itemStack);
     }
-
 }

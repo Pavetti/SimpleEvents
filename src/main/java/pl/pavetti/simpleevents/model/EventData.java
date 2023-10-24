@@ -11,7 +11,6 @@ public class EventData {
     /*
     *   This class reparent data about event form yml file
     */
-
     private final String id;
     private final String name;
     private final int defaultDuration;

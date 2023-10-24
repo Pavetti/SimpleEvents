@@ -5,6 +5,7 @@ import pl.pavetti.simpleevents.model.Event;
 import pl.pavetti.simpleevents.model.EventData;
 @Deprecated
 public class VillagerTradeEvent extends Event {
+    //This event is not completely done
     public VillagerTradeEvent(Plugin plugin, EventData data) {
         super(data);
         plugin.getServer().getPluginManager().registerEvents(this,plugin);

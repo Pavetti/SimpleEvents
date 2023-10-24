@@ -44,7 +44,6 @@ public class StartSubCommand implements SubCommand {
             PlayerUtil.sendMessage(player,prefix,settings.getBadCmdUseSEStart());
             return true;
         }
-
     }
 
     private boolean checkEventCorrectAndStart(String prefix,Player player,String eventId,int duration){
@@ -61,7 +60,6 @@ public class StartSubCommand implements SubCommand {
         if(duration == 0){
             duration = event.getData().getDefaultDuration();
         }
-
         //start simple event
         eventManager.startSimpleEvent(duration, event);
         PlayerUtil.sendMessage(player,prefix,settings.getSuccessfulStartEvent());

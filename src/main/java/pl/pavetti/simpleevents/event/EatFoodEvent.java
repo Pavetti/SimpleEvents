@@ -51,6 +51,7 @@ public class EatFoodEvent extends Event {
             Material.SALMON,
             Material.TROPICAL_FISH,
             Material.PUFFERFISH);
+
     public EatFoodEvent(Plugin plugin, EventData data) {
         super(data);
         plugin.getServer().getPluginManager().registerEvents(this,plugin);

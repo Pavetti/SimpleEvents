@@ -17,13 +17,13 @@ public class BreakBlockEvent extends Event {
     public void start() {
         score.clear();
         running = true;
-
     }
 
     @Override
     public void stop() {
         running = false;
     }
+
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event){
         if(running){

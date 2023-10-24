@@ -19,7 +19,6 @@ public class EventDataFile {
 
     @Getter(AccessLevel.NONE)
     private final ConfigFile configFile;
-
     //<Section,EventData>
     private final Map<String, EventData> eventsData = new HashMap<>();
 
@@ -45,8 +44,6 @@ public class EventDataFile {
             }
             //creating EventData
             EventData eventData = createEventData(configuration,section,itemStackList);
-
-
             eventsData.put(section, eventData);
         }
     }

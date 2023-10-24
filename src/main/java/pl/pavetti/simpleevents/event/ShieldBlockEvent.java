@@ -21,10 +21,12 @@ public class ShieldBlockEvent extends Event {
         running = true;
 
     }
+
     @Override
     public void stop() {
         running = false;
     }
+
     @EventHandler
     public void onShieldBlockEBE(EntityDamageByEntityEvent event){
         if(running) {

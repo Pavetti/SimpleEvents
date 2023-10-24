@@ -32,23 +32,19 @@ public class ItemPrizeSubCommand implements SubCommand {
     public boolean executeCommand(CommandSender sender, String[] args) {
         Player player = (Player) sender;
         String prefix = settings.getPrefix();
-
         //check command format correctness
         if(args.length < 2){
             PlayerUtil.sendMessage(player,prefix,settings.getBadCmdUseSESetPrize());
             return true;
         }
         String id = args[1];
-
         //check is simple event with given id exist
         if (!eventManager.getRegisteredEvents().containsKey(id)) {
             PlayerUtil.sendMessage(player,prefix,settings.getNoEventFound().replace("{EVENT}",id));
             return true;
         }
-
         Inventory inventory = Bukkit.createInventory(new SetPrizeItemsInventoryHolder(id),27,settings.getItemPrizeInventoryTitle());
         Optional<EventData> eventDataOptional = eventDataFile.getEventDataByID(id);
-
         if (!eventDataOptional.isPresent()){
             PlayerUtil.sendMessage(player,prefix,settings.getNoEventFoundInEventDataFile());
             return true;
@@ -63,7 +59,6 @@ public class ItemPrizeSubCommand implements SubCommand {
             }
         }
         player.openInventory(inventory);
-
         return false;
     }
 

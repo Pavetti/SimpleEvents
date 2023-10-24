@@ -26,6 +26,7 @@ public class CraftItemEvent extends Event {
     public void stop() {
         running = false;
     }
+
     @EventHandler
     public void onCraftItem(org.bukkit.event.inventory.CraftItemEvent event){
         if(running){

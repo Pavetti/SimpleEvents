@@ -9,6 +9,7 @@ import org.bukkit.event.Listener;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+
 @Getter
 @Setter
 public abstract class Event implements Listener {

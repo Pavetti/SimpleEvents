@@ -32,6 +32,7 @@ public class RetypeCodeEvent extends Event {
         plugin.getServer().getPluginManager().registerEvents(this,plugin);
         this.random = new Random();
     }
+
     @Override
     public void start() {
         score.clear();
@@ -45,6 +46,7 @@ public class RetypeCodeEvent extends Event {
         running = false;
         generate = false;
     }
+
     @EventHandler
     public void onCodeRetype(AsyncPlayerChatEvent event){
         if(running){

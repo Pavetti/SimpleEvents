@@ -49,5 +49,4 @@ public class WoodCutEvent extends Event {
             if(woods.contains(event.getBlock().getType())) addScore(event.getPlayer(),1 );
         }
     }
-
 }

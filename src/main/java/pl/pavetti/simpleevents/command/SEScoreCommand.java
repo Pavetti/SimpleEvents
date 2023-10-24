@@ -7,7 +7,6 @@ import pl.pavetti.simpleevents.config.PlayerDataFile;
 import pl.pavetti.simpleevents.config.Settings;
 import pl.pavetti.simpleevents.util.PlayerUtil;
 
-import java.util.UUID;
 
 public class SEScoreCommand extends ParentCommand {
     private final Settings settings;
@@ -37,8 +36,6 @@ public class SEScoreCommand extends ParentCommand {
         }else {
             PlayerUtil.sendMessage(player,settings.getPrefix(),settings.getBadCmdUseSEScoreShow());
         }
-
-
         return false;
     }
 

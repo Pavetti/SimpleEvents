@@ -18,7 +18,6 @@ public class Settings {
 
     @Getter(AccessLevel.NONE)
     private final SimpleEvents plugin;
-
     //basic config
     private String prefix;
     private boolean givePrize;
@@ -112,5 +111,4 @@ public class Settings {
             throw new NoCorretTimeFormatException("In correct activeTimeFrom or activeTimeTo section value format. Check your config file.");
         }
     }
-
 }
