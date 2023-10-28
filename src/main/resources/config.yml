@@ -105,7 +105,7 @@ settings:
     badCmdUseSEScoreShow: '&cYou have to give switch argument &f/&csescore &f<&con&f/&coff&f>'
     successfulStartEvent: 'Event has successfully started'
     successfulEndEvent: 'Event has successfully ended'
-    successfulSetItemPrize: 'The item prize for &f{EVENT}&a event has successfully set' #{EVENT} - name of event that prize has set
+    successfulSetItemPrize: 'The item prize for &f{EVENT}&r event has successfully set' #{EVENT} - name of event that prize has set
     successfulSwitchScoreShow: 'Showing event scoreboard has been switched to &f{SWITCH}' #{SWITCH} - changed value of score showing
     messageForWinner: '&aYou have won the Event!'
     eventAlreadyActive: '&cYou cannot start new event cause one is still active'

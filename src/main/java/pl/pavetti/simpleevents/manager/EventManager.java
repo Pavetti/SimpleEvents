@@ -60,7 +60,7 @@ public class EventManager {
                                                 ,"HostileMobsKillEvent","DealDamageEvent","CatchFishEvent","PlayerKillEvent"
                                                 ,"DeathEvent", "CraftItemEvent", "EnchantItemEvent","EatFoodEvent","JumpEvent"
                                                 ,"MoveEvent","GetDamageNoDeathEvent","OreMineEvent","WoodCutEvent","ChatMessageEvent"
-                                                ,"RetypeCodeEvent","ExpIncreaseEvent","ShieldBlockEvent"));
+                                                ,"RetypeCodeEvent","ExpIncreaseEvent","ShieldBlockEvent","MobSpawnerBreakEvent"));
         loadSimpleEvents(plugin);
 
     }

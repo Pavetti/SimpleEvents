@@ -247,7 +247,18 @@ eventsData:
     defaultDuration: 1200
     description:
       - '&5The player who'
-      - '&5increase his exp'
+      - '&5increases his exp'
       - '&5the most wins'
+    prizeEconomy: 0
+    prizeItems:
+
+  mobSpawnerBreakEvent:
+    id: MOBSPAWNER_BREAK
+    displayName: '&6&lMob Ravager'
+    defaultDuration: 1200
+    description:
+      - '&5The player who'
+      - '&5breaks the most'
+      - '&5mob spawners wins'
     prizeEconomy: 0
     prizeItems:
