@@ -26,7 +26,7 @@ public class RetypeCodeEvent extends Event {
     private static final String CHARS = "qwertyuiopasdfghjklzxcvbnm1234567890@#%&";
 
     public RetypeCodeEvent(Plugin plugin, EventData data) {
-        super(data);
+        super(plugin,data);
         this.plugin = plugin;
         this.playerData = ((SimpleEvents) plugin).getPlayerData();
         plugin.getServer().getPluginManager().registerEvents(this,plugin);
@@ -35,15 +35,14 @@ public class RetypeCodeEvent extends Event {
 
     @Override
     public void start() {
-        score.clear();
-        running = true;
+        super.start();
         generate = true;
         runnable();
     }
 
     @Override
     public void stop() {
-        running = false;
+        super.stop();
         generate = false;
     }
 

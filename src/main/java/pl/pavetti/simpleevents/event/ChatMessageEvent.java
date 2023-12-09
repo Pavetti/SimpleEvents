@@ -8,20 +8,9 @@ import pl.pavetti.simpleevents.model.EventData;
 
 public class ChatMessageEvent extends Event {
 
+
     public ChatMessageEvent(Plugin plugin, EventData data) {
-        super(data);
-        plugin.getServer().getPluginManager().registerEvents(this,plugin);
-    }
-
-    @Override
-    public void start() {
-        score.clear();
-        running = true;
-    }
-
-    @Override
-    public void stop() {
-        running = false;
+        super(plugin, data);
     }
 
     @EventHandler

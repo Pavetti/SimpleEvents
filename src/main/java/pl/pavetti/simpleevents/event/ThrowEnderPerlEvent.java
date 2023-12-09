@@ -16,21 +16,10 @@ public class ThrowEnderPerlEvent extends Event {
     private static final int COOLDOWN_TIME_IN_SECOND = 1;
     private final HashMap<UUID, Long> cooldowns = new HashMap<>();
 
-    public ThrowEnderPerlEvent(Plugin plugin, EventData eventData) {
-        super(eventData);
-        plugin.getServer().getPluginManager().registerEvents(this, plugin);
+    public ThrowEnderPerlEvent(Plugin plugin, EventData data) {
+        super(plugin, data);
     }
 
-    @Override
-    public void start() {
-        score.clear();
-        running = true;
-    }
-
-    @Override
-    public void stop() {
-        running = false;
-    }
 
     @EventHandler
     public void onPlayerThrowPearl(PlayerInteractEvent event){

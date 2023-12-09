@@ -8,20 +8,10 @@ import org.bukkit.plugin.Plugin;
 import pl.pavetti.simpleevents.model.Event;
 import pl.pavetti.simpleevents.model.EventData;
 public class GetDamageNoDeathEvent extends Event {
+
+
     public GetDamageNoDeathEvent(Plugin plugin, EventData data) {
-        super(data);
-        plugin.getServer().getPluginManager().registerEvents(this,plugin);
-    }
-
-    @Override
-    public void start() {
-        score.clear();
-        running = true;
-    }
-
-    @Override
-    public void stop() {
-        running = false;
+        super(plugin, data);
     }
 
     @EventHandler

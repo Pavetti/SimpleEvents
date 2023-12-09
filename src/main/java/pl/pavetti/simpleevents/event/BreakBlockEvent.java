@@ -9,19 +9,9 @@ import pl.pavetti.simpleevents.model.EventData;
 
 public class BreakBlockEvent extends Event {
 
-    public BreakBlockEvent(Plugin plugin, EventData eventData) {
-        super(eventData);
-        plugin.getServer().getPluginManager().registerEvents(this, plugin);
-    }
-    @Override
-    public void start() {
-        score.clear();
-        running = true;
-    }
 
-    @Override
-    public void stop() {
-        running = false;
+    public BreakBlockEvent(Plugin plugin, EventData data) {
+        super(plugin, data);
     }
 
     @EventHandler

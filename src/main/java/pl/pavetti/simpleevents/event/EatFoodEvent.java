@@ -53,20 +53,9 @@ public class EatFoodEvent extends Event {
             Material.PUFFERFISH);
 
     public EatFoodEvent(Plugin plugin, EventData data) {
-        super(data);
-        plugin.getServer().getPluginManager().registerEvents(this,plugin);
+        super(plugin, data);
     }
 
-    @Override
-    public void start() {
-        score.clear();
-        running = true;
-    }
-
-    @Override
-    public void stop() {
-        running = false;
-    }
 
     @EventHandler
     public void onEat(PlayerItemConsumeEvent event){

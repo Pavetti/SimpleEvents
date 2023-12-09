@@ -10,20 +10,9 @@ import pl.pavetti.simpleevents.model.EventData;
 
 public class HostileMobsKillEvent extends Event {
 
+
     public HostileMobsKillEvent(Plugin plugin, EventData data) {
-        super(data);
-        plugin.getServer().getPluginManager().registerEvents(this, plugin);
-    }
-
-    @Override
-    public void start() {
-        score.clear();
-        running = true;
-    }
-
-    @Override
-    public void stop() {
-        running = false;
+        super(plugin, data);
     }
 
     @EventHandler

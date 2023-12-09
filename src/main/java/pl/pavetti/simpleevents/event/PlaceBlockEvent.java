@@ -6,19 +6,10 @@ import pl.pavetti.simpleevents.model.Event;
 import pl.pavetti.simpleevents.model.EventData;
 
 public class PlaceBlockEvent extends Event {
-    public PlaceBlockEvent(Plugin plugin, EventData eventData) {
-        super(eventData);
-        plugin.getServer().getPluginManager().registerEvents(this, plugin);
-    }
-    @Override
-    public void start() {
-        score.clear();
-        running = true;
 
-    }
-    @Override
-    public void stop() {
-        running = false;
+
+    public PlaceBlockEvent(Plugin plugin, EventData data) {
+        super(plugin, data);
     }
 
     @EventHandler

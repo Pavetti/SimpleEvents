@@ -9,20 +9,10 @@ import pl.pavetti.simpleevents.model.Event;
 import pl.pavetti.simpleevents.model.EventData;
 
 public class PassiveMobsKillEvent extends Event {
+
+
     public PassiveMobsKillEvent(Plugin plugin, EventData data) {
-        super(data);
-        plugin.getServer().getPluginManager().registerEvents(this, plugin);
-    }
-
-    @Override
-    public void start() {
-        score.clear();
-        running = true;
-    }
-
-    @Override
-    public void stop() {
-        running = false;
+        super(plugin, data);
     }
 
     @EventHandler

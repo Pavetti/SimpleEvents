@@ -27,21 +27,9 @@ public class WoodCutEvent extends Event {
             Material.OAK_LOG);
 
     public WoodCutEvent(Plugin plugin, EventData data) {
-        super(data);
-        plugin.getServer().getPluginManager().registerEvents(this,plugin);
-
+        super(plugin, data);
     }
 
-    @Override
-    public void start() {
-        score.clear();
-        running = true;
-    }
-
-    @Override
-    public void stop() {
-        running = false;
-    }
 
     @EventHandler
     public void onWoodCut(BlockBreakEvent event){

@@ -23,20 +23,9 @@ public class OreMineEvent extends Event {
             Material.GOLD_ORE);
 
     public OreMineEvent(Plugin plugin, EventData data) {
-        super(data);
-        plugin.getServer().getPluginManager().registerEvents(this,plugin);
+        super(plugin, data);
     }
 
-    @Override
-    public void start() {
-        score.clear();
-        running = true;
-    }
-
-    @Override
-    public void stop() {
-        running = false;
-    }
 
     @EventHandler
     public void onOreBreak(BlockBreakEvent event){

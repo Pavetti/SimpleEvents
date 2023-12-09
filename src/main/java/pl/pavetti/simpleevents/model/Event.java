@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
+import org.bukkit.plugin.Plugin;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,17 +21,23 @@ public abstract class Event implements Listener {
     *           class name - SecondExampleSimpleEvent, eventData.yml section name: secondExample
     */
 
-    public Event(EventData data) {
+    public Event(Plugin plugin, EventData data) {
         this.data = data;
+        plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
 
     protected EventData data;
     protected boolean running = false;
     protected Map<UUID,Integer> score = new HashMap<>();
 
-    abstract public void start();
+    public void start(){
+        score.clear();
+        running = true;
+    }
 
-    abstract public void stop();
+   public void stop(){
+        running = false;
+   }
 
     protected void addScore(Player player, int amount) {
         if(!player.hasPermission("se.noattend")) {
