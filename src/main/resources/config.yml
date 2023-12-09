@@ -99,17 +99,17 @@ settings:
     nothing: '&cNothing...' #this will be displayed if the used command do not make any changes
     noPermission: '&cYou do not have access to use this command'
     noEventFound: '&cEvent with id &f{EVENT} &cdoes not exit' # {EVENT} - placeholder for name of event given in command argument
-    badArgumentTimeSEStart: '&c Argument &f<&ctime&f>&c has to be integer and positive number '
-    badCmdUseSEStart: '&cYou have to give event name and optional duration &f/&cse start &f<&cevent&f> <&ctime&f>'
-    badCmdUseSESetPrize: '&cYou have to give event argument &f/&cse itemprize &f<&cevent&f>&7'
-    badCmdUseSEScoreShow: '&cYou have to give switch argument &f/&csescore &f<&con&f/&coff&f>'
+    noEventFoundInEventDataFile: '&cEvent with id &f{EVENT} &cdoes not exit in eventData.yml, check this file or try to rebuild.' # {EVENT} - placeholder for name of event given in command argument
+    badArgumentTimeSEStart: '&cArgument &7<&ctime&7>&c has to be natural number'
+    badCmdUseSEStart: '&cYou have to give event name and optional duration &7/&cse start &7<&cevent&7> <&ctime&7>'
+    badCmdUseSESetPrize: '&cYou have to give event argument &7/&cse itemprize &7<&cevent&7>'
+    badCmdUseSEScoreShow: '&cYou have to give switch argument &7/&csescore &7<&con&7/&coff&7>'
     successfulStartEvent: 'Event has successfully started'
     successfulEndEvent: 'Event has successfully ended'
     successfulSetItemPrize: 'The item prize for &f{EVENT}&r event has successfully set' #{EVENT} - name of event that prize has set
     successfulSwitchScoreShow: 'Showing event scoreboard has been switched to &f{SWITCH}' #{SWITCH} - changed value of score showing
     messageForWinner: '&aYou have won the Event!'
     eventAlreadyActive: '&cYou cannot start new event cause one is still active'
-    noEventFoundInEventDataFile: '&cEvent with id &f{EVENT} &cdoes not exit in eventData.yml, check this file or try to rebuild.' # {EVENT} - placeholder for name of event given in command argument
 
 
 
