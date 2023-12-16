@@ -44,6 +44,13 @@ public class PlayerDataFile {
         return Optional.empty();
     }
 
+    public Optional<Boolean> getPlayerDataScoreShow(UUID uuid){
+        if(playerData.containsKey(uuid)){
+            return  Optional.of(playerData.get(uuid).isScoreboardShow());
+        }
+        return Optional.empty();
+    }
+
     public void setPlayerDataScoreShow(UUID uuid, boolean bool) {
         ConfigurationSection configuration =
             ConfigurationSectionUtils.getMainSection(

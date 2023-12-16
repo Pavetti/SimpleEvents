@@ -179,8 +179,7 @@ public class EventManager {
                     makeWinner(
                         EventUtil.getTop(event.getScore(), rankingLinesAmount),
                         event,
-                        (settings.isGivePrize() &&
-                            settings.isGivePrizeWhenEndedByCmd())
+                        (settings.isGivePrize() && settings.isGivePrizeWhenEndedByCmd())
                     );
                     event.stop();
                     scoreBoardManager.closeScoreBoardForALl();
@@ -194,11 +193,8 @@ public class EventManager {
             .runTaskTimer(plugin, 0, 20); // 20 ticks = 1 second
     }
 
-    private void makeWinner(
-        Map<UUID, Integer> top,
-        Event event,
-        boolean givePrize
-    ) {
+    private void makeWinner(Map<UUID, Integer> top, Event event, boolean givePrize) {
+        System.out.println(givePrize);
         if (!top.isEmpty()) {
             //gets information about winner
             Map.Entry<UUID, Integer> firstPlayerMapEntry = top

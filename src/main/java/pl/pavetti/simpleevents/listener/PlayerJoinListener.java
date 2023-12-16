@@ -21,10 +21,8 @@ public class PlayerJoinListener implements Listener {
             player.sendMessage(
                 "﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉"
             );
-            player.sendMessage(
-                ChatColor.LIGHT_PURPLE +
-                "[SimpleEvents] THERE IS A NEW UPDATE AVAILABLE!"
-            );
+            player.sendMessage(ChatColor.LIGHT_PURPLE + "[SimpleEvents] THERE IS A NEW UPDATE AVAILABLE!");
+            player.sendMessage(ChatColor.LIGHT_PURPLE + "https://www.spigotmc.org/resources/simpleevents-server-events-system.112876/");
             player.sendMessage(
                 "﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍"
             );

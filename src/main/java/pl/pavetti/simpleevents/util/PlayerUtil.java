@@ -26,7 +26,6 @@ public class PlayerUtil {
         for (int i = 0; i < player.getInventory().getContents().length; i++) {
             if (i == 36 || i == 37 || i == 38 || i == 39 || i == 40) continue;
             if (player.getInventory().getItem(i) == null) {
-                System.out.println(i);
                 player.getInventory().setItem(i, itemStack);
                 drop = false;
                 break;

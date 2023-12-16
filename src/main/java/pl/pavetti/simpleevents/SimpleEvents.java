@@ -10,7 +10,7 @@ import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import pl.pavetti.simpleevents.api.MetricsLite;
 import pl.pavetti.simpleevents.api.UpdateChecker;
-import pl.pavetti.simpleevents.command.SEScoreCommand;
+import pl.pavetti.simpleevents.command.ScoreboardToggleCommand;
 import pl.pavetti.simpleevents.command.SimpleEventCommand;
 import pl.pavetti.simpleevents.config.ConfigFile;
 import pl.pavetti.simpleevents.config.EventDataFile;
@@ -20,7 +20,6 @@ import pl.pavetti.simpleevents.listener.CloseInventoryListener;
 import pl.pavetti.simpleevents.listener.PlayerJoinListener;
 import pl.pavetti.simpleevents.manager.EventManager;
 import pl.pavetti.simpleevents.model.PlayerData;
-import pl.pavetti.simpleevents.tabcompleter.SEScoreTabCompleter;
 import pl.pavetti.simpleevents.tabcompleter.SimpleEventTabCompleter;
 import pl.pavetti.simpleevents.task.AutoEventStart;
 
@@ -92,17 +91,12 @@ public final class SimpleEvents extends JavaPlugin {
     }
 
     private void registerCommand() {
-        getCommand("simpleevent")
-                .setExecutor(new SimpleEventCommand(settings, eventManager, eventData));
-        getCommand("sescore")
-            .setExecutor(new SEScoreCommand(settings, playerData));
+        getCommand("simpleevent").setExecutor(new SimpleEventCommand(settings, eventManager, eventData));
+        getCommand("scoreboardtoggle").setExecutor(new ScoreboardToggleCommand(settings, playerData));
     }
 
     private void registerTabCompleter() {
-        getCommand("simpleevent")
-            .setTabCompleter(new SimpleEventTabCompleter(eventManager));
-        getCommand("sescore")
-            .setTabCompleter(new SEScoreTabCompleter());
+        getCommand("simpleevent").setTabCompleter(new SimpleEventTabCompleter(eventManager));
     }
 
     private void registerListener() {
@@ -144,7 +138,7 @@ public final class SimpleEvents extends JavaPlugin {
             } else {
                 Bukkit.broadcastMessage(
                     ChatColor.LIGHT_PURPLE +
-                    "[SimpleEvents] THERE IS A NEW UPDATE AVAILABLE!"
+                    "[SimpleEvents] THERE IS A NEW UPDATE AVAILABLE! \n https://www.spigotmc.org/resources/simpleevents-server-events-system.112876/"
                 );
                 getServer()
                     .getPluginManager()

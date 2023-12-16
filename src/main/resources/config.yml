@@ -1,100 +1,122 @@
 settings:
-  #Prefix that will be adding to every message sending by this plugin without message that are contains in list of lines (defaultWinMessage,customWinMessage,help)
+
+  # Prefix that will be adding to every message sending by this plugin
+  # without message that are contains in list of lines (defaultWinMessage,customWinMessage,help)
   prefix: '&d&lSimple&9&lEvents &7⋙ '
 
-  #if true player on the first place will get the prize that you can set by using '/se setprize' command
+  # If true player on the first place will get the prize
+  # that you can set by using '/se setprize' command
   givePrize: true
 
-  #If an event is stopped by using the '/se end' command, the player who is currently ranked first will receive the prize.
-  givePrizeWhenEndedByCmd: ture
+  #If an event is stopped by using the '/se end' command,
+  #the player who is currently ranked first will receive the prize.
+  givePrizeWhenEndedByCmd: true
 
-  #if true 'winMessage' will send global when someone wins event
-  #if false only player who wins will get 'messageForWinner'
+  # If true 'winMessage' will send global when someone wins event
+  # If false only player who wins will get 'messageForWinner'
   globalWinMessage: true
 
-  #title of inventory that displays on command use /se itemprize
+  # Title of inventory that displays on command use /se itemprize
   itemPrizeInventoryTitle: '&aItems prize'
 
-  #Every options relevant to events automatically actives you can find in this section
+  # Every options relevant to events automatically actives you can find in this section
   autoActive:
-    #if true events from list in section 'simpleEventsAutoStart' will activate automatically at the time specified in the 'interval' section.
+
+    # If true events from list in section 'simpleEventsAutoStart' will activate automatically
+    # at the time specified in the 'interval' section.
     autoActive: true
 
-    #In this list you can set the ID of  events that you want to be started automatically
+    # In this list you can set the ID of  events that you want to be started automatically
     eventsAutoActive:
-      - THROW_ENDER_PERL
-      - BREAK_BLOCK
-      - PLACE_BLOCK
-      - PASSIVE_MOB_KILL
-      - HOSTILE_MOB_KILL
-      - DEAL_DAMAGE
-      - CATCH_FISH
-      - PLAYER_KILL
-      - PLAYER_DEATH
-      - CRAFT_ITEM
-      - ENCHANT_ITEM
-      - EAT_FOOD
-      - JUMPING
-      - MOVING
-      - GET_DAMAGE_NO_DEATH
-      - ORE_MINE
-      - WOOD_CUT
-      - CHAT_MESSAGE
-      - RETYPE_CODE
-      - SHIELD_BLOCK
-      - EXP_INCREASE
+      - throw-ender-perl
+      - break-block
+      - place-block
+      - passive-mob-kill
+      - hostile-mob-kill
+      - deal-damage
+      - catch-fish
+      - player-kill
+      - player-death
+      - craft-item
+      - enchant-item
+      - eat-food
+      - jumping
+      - moving
+      - get-damage
+      - no-death
+      - ore-mine
+      - wood-cut
+      - chat-message
+      - retype-code
+      - shield-block
+      - exp-increase
 
-    #Interval is the time (in seconds) that defines the pause between the automatic start of an event after the previous one.
-    #First automatic start is always 5 minutes after server starts
+    # Interval is the time (in seconds) that defines the pause between
+    # the automatic start of an event after the previous one.
+    # First automatic start is always 5 minutes after server starts
     interval: 7200
 
-    #if 'imposedActiveTime' is true events will activate only after "activeTimeFrom" and before "activeTimeTo", but if its false events will activate continuously
+    # If 'imposedActiveTime' is true events will activate only
+    # after "activeTimeFrom" and before "activeTimeTo",
+    # but if its false events will activate continuously
     imposedActiveTime: false
 
-    #This is a time zone that the plugin will use. List of other time zone you can find on https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+    # This is a time zone that the plugin will use.
+    # List of other time zone you can find on
+    # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
     timeZone: 'Europe/Warsaw'
 
-    #Events actives from 'activeTimeFrom' o'clock to 'activeTimeTo' o'clock Correct format is HH:mm for example 12:00
+    # Events actives from 'activeTimeFrom' o'clock to 'activeTimeTo' o'clock
+    # Correct format is HH:mm for example 12:00
     activeTimeFrom: '08:00'
-    activeTimeTo: '22:00'
+    activeTimeTo: '18:00'
 
-  #Every options relevant to scoreboard you can find in ths section
+  # Every options relevant to scoreboard you can find in ths section
   scoreboard:
-    #{TIME} - holds time left to end event
+
+    # {TIME} - holds time left to end event
     timeLineFormat: '&7Time left &f{TIME}'
 
-    #{POSITION} - holds the number of the player's current ranking position, {PLAYER} - holds players name, {SCORE} - holds players score
+    # {POSITION} - holds the number of the player's current ranking position,
+    # {PLAYER} - holds players name,
+    # {SCORE} - holds players score
     rankingLineFormat: ' &6{POSITION}. &7{PLAYER} &f{SCORE}'
 
-    #Number of places for players in the ranking
-    #WARING VERY IMPORTANT! Number of lines in scoreboard can not exceed 16, basic there is 4 for title, time and blank lines, so rankingLines plus line of description can not exceed 14)
+    # Number of places for players in the ranking
+    # !!!WARING VERY IMPORTANT!!! Number of lines in scoreboard can not exceed 16,
+    # basic there is 4 for title, time and blank lines,
+    # so rankingLines plus line of description can not exceed 14)
     rankingLines: 5
 
-  #Every option relevant to sends message you can find in this section
+  # Every option relevant to sends message you can find in this section
   messages:
-    #will send global on chat when someone wins event (if you want to disable global send go to 'globalWinMessage' option)
-    #placeholders: {NICK} - nick of player who win, {SCORE} - the score achieved by the winner, {EVENT} - name of the event that was play
+
+    # Will send global on chat when someone wins event
+    # (if you want to disable global send go to 'globalWinMessage' option)
+    # placeholders:
+    # {NICK} - nick of player who win,
+    # {SCORE} - the score achieved by the winner,
+    # {EVENT} - name of the event that was play
     winMessage:
       - '&7 ﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉'
       - '&7  &aPlayer {NICK} wins the event and get prize'
       - '&7 ﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍'
     help:
       - ''
-      - '&7&m--[--------&r &aSimple Events Admin Commands &7&m--------]--'
+      - '&7&m--[-------&r &aSimple Events Admin Commands &7&m-------]--'
       - ''
-      - ' &fWaring!&aPlayers whose have operator or se.noattend permission'
-      - ' &awill not be taken into account during the event'
+      - ' &4&lWaring! &r&fPlayers whose have &aoperator&f or &ase.noattend&f permission will not be taken into account during the event'
       - ''
-      - ' &f(&aalias for &f/&asimpleevent is &f/&ase&f)'
+      - ' &fAlias for &f/&asimpleevent &fis /&ase&f'
       - ''
       - ' &f/&ase start &f<&aevent&f> <&atime&f>&7 - Starts a given event&7, &f<&7event&f>&7 is id of event&7, &f<&7time&f>&7 is duration of event (in second)'
       - ' &7if you do not provide a time argument, it will be set to the default time specified in the eventData.yml file'
       - ' &f/&ase end&7 - Ends event before time'
       - ' &f/&ase itemprize &f<&aevent&f>&7 - Sets an items that will be prize, &f<&7event&f>&7 is id of event'
       - ''
-      - '&7&m--[--------&r &aSimple Events Player Commands &7&m--------]--'
+      - '&7&m--[-------&r &aSimple Events Player Commands &7&m-------]--'
       - ''
-      - ' &f/&asescore &f<&con&f/&coff&f> - Change visibility of events scoreboard'
+      - ' &f/&ascoreboardtoggle&7 - Toggle visibility of events scoreboard'
 
     nothing: '&cNothing...' #this will be displayed if the used command do not make any changes
     noPermission: '&cYou do not have access to use this command'
@@ -106,8 +128,9 @@ settings:
     badCmdUseSEScoreShow: '&cYou have to give switch argument &7/&csescore &7<&con&7/&coff&7>'
     successfulStartEvent: 'Event has successfully started'
     successfulEndEvent: 'Event has successfully ended'
-    successfulSetItemPrize: 'The item prize for &f{EVENT}&r event has successfully set' #{EVENT} - name of event that prize has set
-    successfulSwitchScoreShow: 'Showing event scoreboard has been switched to &f{SWITCH}' #{SWITCH} - changed value of score showing
+    successfulSetItemPrize: 'The item prize for &f{EVENT}&r&7 event has successfully set' #{EVENT} - name of event that prize has set
+    successfulSwitchScoreShowToEnable: 'Event scoreboard enable'
+    successfulSwitchScoreShowToDisable: 'Event scoreboard disable'
     messageForWinner: '&aYou have won the Event!'
     eventAlreadyActive: '&cYou cannot start new event cause one is still active'
 

@@ -5,7 +5,7 @@ eventsData:
   # - Number of lines in scoreboard can not exceed 15, basic there is 4 for title, time and blank lines, so rankingLines plus line of description can not exceed 11
   #
   #  exampleEvent:
-  #    id: EXAMPLE  ----------> the identifier by which you will reference the event when using commands
+  #    id: exemple-event-id  ----------> the identifier by which you will reference the event when using commands
   #    displayName: '&6&lExample Event'  ---------->  the tile of event scoreboard
   #    defaultDuration: 60  ----------> the duration (in seconds) of event when event is started automatically or by command /se start without time argument
   #    description:  ---------->  the description that shows in event scoreboard
@@ -17,7 +17,7 @@ eventsData:
   #
 
   throwEnderPerlEvent:
-    id: THROW_ENDER_PERL
+    id: throw-ender-perl
     displayName: '&6&lPerl Thrower Master'
     defaultDuration: 600
     description:
@@ -28,7 +28,7 @@ eventsData:
     prizeItems:
 
   breakBlockEvent:
-    id: BREAK_BLOCK
+    id: break-block
     displayName: '&6&lBlock Destroyer'
     defaultDuration: 900
     description:
@@ -39,7 +39,7 @@ eventsData:
     prizeItems:
 
   placeBlockEvent:
-    id: PLACE_BLOCK
+    id: place-block
     displayName: '&6&lCrazy Builder'
     defaultDuration: 900
     description:
@@ -50,7 +50,7 @@ eventsData:
     prizeItems:
 
   passiveMobsKillEvent:
-    id: PASSIVE_MOB_KILL
+    id: passive-mob-kill
     displayName: '&6&lAnimal Hunter'
     defaultDuration: 480
     description:
@@ -61,7 +61,7 @@ eventsData:
     prizeItems:
 
   hostileMobsKillEvent:
-    id: HOSTILE_MOB_KILL
+    id: hostile-mob-kill
     displayName: '&6&lMonster Hunter'
     defaultDuration: 480
     description:
@@ -72,7 +72,7 @@ eventsData:
     prizeItems:
 
   dealDamageEvent:
-    id: DEAL_DAMAGE
+    id: deal-damage
     displayName: '&6&lMaster of Damage'
     defaultDuration: 600
     description:
@@ -83,7 +83,7 @@ eventsData:
     prizeItems:
 
   catchFishEvent:
-    id: CATCH_FISH
+    id: catch-fish
     displayName: '&6&lGreatest Fisherman'
     defaultDuration: 900
     description:
@@ -95,7 +95,7 @@ eventsData:
     prizeItems:
 
   playerKillEvent:
-    id: PLAYER_KILL
+    id: player-kill
     displayName: '&6&lAssassin'
     defaultDuration: 1200
     description:
@@ -106,7 +106,7 @@ eventsData:
     prizeItems:
 
   deathEvent:
-    id: PLAYER_DEATH
+    id: player-death
     displayName: '&6&lDeadly Step'
     defaultDuration: 120
     description:
@@ -117,7 +117,7 @@ eventsData:
     prizeItems:
 
   craftItemEvent:
-    id: CRAFT_ITEM
+    id: craft-item
     displayName: '&6&lGreatest Crafter'
     defaultDuration: 300
     description:
@@ -130,7 +130,7 @@ eventsData:
     prizeItems:
 
   enchantItemEvent:
-    id: ENCHANT_ITEM
+    id: enchant-item
     displayName: '&6&lGreatest Wizard'
     defaultDuration: 300
     description:
@@ -143,7 +143,7 @@ eventsData:
     prizeItems:
 
   eatFoodEvent:
-    id: EAT_FOOD
+    id: eat-food
     displayName: '&6&lGourmand Battle'
     defaultDuration: 600
     description:
@@ -154,7 +154,7 @@ eventsData:
     prizeItems:
 
   jumpEvent:
-    id: JUMPING
+    id: jumping
     displayName: '&6&lJumping Fight'
     defaultDuration: 900
     description:
@@ -165,7 +165,7 @@ eventsData:
     prizeItems:
 
   moveEvent:
-    id: MOVING
+    id: moving
     displayName: '&6&lMarathoner'
     defaultDuration: 900
     description:
@@ -176,7 +176,7 @@ eventsData:
     prizeItems:
 
   getDamageNoDeathEvent:
-    id: GET_DAMAGE_NO_DEATH
+    id: get-damage-no-death
     displayName: '&6&lMaster of Careless'
     defaultDuration: 360
     description:
@@ -187,7 +187,7 @@ eventsData:
     prizeItems:
 
   oreMineEvent:
-    id: ORE_MINE
+    id: ore-mine
     displayName: '&6&lMiner'
     defaultDuration: 1200
     description:
@@ -198,7 +198,7 @@ eventsData:
     prizeItems:
 
   woodCutEvent:
-    id: WOOD_CUT
+    id: wood-cut
     displayName: '&6&llumberjack'
     defaultDuration: 1200
     description:
@@ -209,7 +209,7 @@ eventsData:
     prizeItems:
 
   chatMessageEvent:
-    id: CHAT_MESSAGE
+    id: chat-message
     displayName: '&6&lChat Spamer'
     defaultDuration: 60
     description:
@@ -220,7 +220,7 @@ eventsData:
     prizeItems:
 
   retypeCodeEvent: #only player who first retypes code gets the point
-    id: RETYPE_CODE
+    id: retype-code
     displayName: '&6&lFast Fingers'
     defaultDuration: 120
     description:
@@ -231,7 +231,7 @@ eventsData:
     prizeItems:
 
   shieldBlockEvent:
-    id: SHIELD_BLOCK
+    id: shield-block
     displayName: '&6&lDefender'
     defaultDuration: 900
     description:
@@ -242,7 +242,7 @@ eventsData:
     prizeItems:
 
   expIncreaseEvent:
-    id: EXP_INCREASE
+    id: exp-increase
     displayName: '&6&lExp Master'
     defaultDuration: 1200
     description:
@@ -253,9 +253,9 @@ eventsData:
     prizeItems:
 
   mobSpawnerBreakEvent:
-    id: MOBSPAWNER_BREAK
+    id: mobspawner-break
     displayName: '&6&lMob Ravager'
-    defaultDuration: 1200
+    defaultDuration: 3600
     description:
       - '&5The player who'
       - '&5breaks the most'
