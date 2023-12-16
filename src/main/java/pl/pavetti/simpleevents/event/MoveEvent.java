@@ -9,18 +9,25 @@ import pl.pavetti.simpleevents.model.EventData;
 
 public class MoveEvent extends Event {
 
-
     public MoveEvent(Plugin plugin, EventData data) {
         super(plugin, data);
     }
 
     @EventHandler
-    public void onPlayerMove(PlayerMoveEvent event){
-        if(running){
+    public void onPlayerMove(PlayerMoveEvent event) {
+        if (running) {
             Player player = event.getPlayer();
-            if (player.isFlying() || player.isGliding() || player.getVehicle() != null) return;
+            if (
+                player.isFlying() ||
+                player.isGliding() ||
+                player.getVehicle() != null
+            ) return;
 
-            int distance = (event.getTo().getBlockX()-event.getFrom().getBlockX())^2 + (event.getTo().getBlockZ()-event.getFrom().getBlockZ())^2;
+            int distance =
+                (event.getTo().getBlockX() - event.getFrom().getBlockX()) ^
+                (2 +
+                    (event.getTo().getBlockZ() - event.getFrom().getBlockZ())) ^
+                2;
             addScore(event.getPlayer(), (int) Math.sqrt(distance));
         }
     }

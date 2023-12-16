@@ -10,16 +10,21 @@ import pl.pavetti.simpleevents.model.EventData;
 
 public class HostileMobsKillEvent extends Event {
 
-
     public HostileMobsKillEvent(Plugin plugin, EventData data) {
         super(plugin, data);
     }
 
     @EventHandler
-    public void onHostileMobKillEvent(EntityDeathEvent event){
-        if(running){
-            if(event.getEntity() instanceof Creature && event.getEntity() instanceof Monster){
-                if(event.getEntity().getKiller() != null) addScore(event.getEntity().getKiller(),1);
+    public void onHostileMobKillEvent(EntityDeathEvent event) {
+        if (running) {
+            if (
+                event.getEntity() instanceof Creature &&
+                event.getEntity() instanceof Monster
+            ) {
+                if (event.getEntity().getKiller() != null) addScore(
+                    event.getEntity().getKiller(),
+                    1
+                );
             }
         }
     }

@@ -13,10 +13,10 @@ public class ExpIncreaseEvent extends Event {
     }
 
     @EventHandler
-    public void onExpIncrease(PlayerExpChangeEvent event){
-        if(running){
+    public void onExpIncrease(PlayerExpChangeEvent event) {
+        if (running) {
             int amount = event.getAmount();
-            if(amount > 0) addScore(event.getPlayer(), amount);
+            if (amount > 0) addScore(event.getPlayer(), amount);
         }
     }
 }

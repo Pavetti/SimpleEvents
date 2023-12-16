@@ -1,13 +1,12 @@
 package pl.pavetti.simpleevents.api;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * ScoreboardWrapper is a class that wraps Bukkit Scoreboard API
@@ -45,8 +44,7 @@ public class ScoreboardWrapper {
      */
     private String getLineCoded(String line) {
         String result = line;
-        while (modifies.contains(result))
-            result += ChatColor.RESET;
+        while (modifies.contains(result)) result += ChatColor.RESET;
         return result.substring(0, Math.min(40, result.length()));
     }
 
@@ -54,8 +52,9 @@ public class ScoreboardWrapper {
      * Adds a new line to the scoreboard. Throw an error if the lines count are higher than 16.
      */
     public void addLine(String line) {
-        if (modifies.size() > MAX_LINES)
-            throw new IndexOutOfBoundsException("You cannot add more than 16 lines.");
+        if (modifies.size() > MAX_LINES) throw new IndexOutOfBoundsException(
+            "You cannot add more than 16 lines."
+        );
         String modified = getLineCoded(line);
         modifies.add(modified);
         objective.getScore(modified).setScore(-(modifies.size()));
@@ -72,8 +71,11 @@ public class ScoreboardWrapper {
      * Sets a scoreboard line to an exact index (between 0 and 15).
      */
     public void setLine(int index, String line) {
-        if (index < 0 || index >= MAX_LINES)
-            throw new IndexOutOfBoundsException("The index cannot be negative or higher than 15.");
+        if (
+            index < 0 || index >= MAX_LINES
+        ) throw new IndexOutOfBoundsException(
+            "The index cannot be negative or higher than 15."
+        );
         String oldModified = modifies.get(index);
         scoreboard.resetScores(oldModified);
         String modified = getLineCoded(line);
@@ -95,8 +97,8 @@ public class ScoreboardWrapper {
     public String toString() {
         String out = "";
         int i = 0;
-        for (String string : modifies)
-            out += -(i + 1) + ")-> " + string + ";\n";
+        for (String string : modifies) out +=
+        -(i + 1) + ")-> " + string + ";\n";
         return out;
     }
 }

@@ -9,15 +9,14 @@ import pl.pavetti.simpleevents.model.EventData;
 
 public class MobSpawnerBreakEvent extends Event {
 
-
     public MobSpawnerBreakEvent(Plugin plugin, EventData data) {
         super(plugin, data);
     }
 
     @EventHandler
-    public void onSpawnerBreak(BlockBreakEvent event){
-        if(running){
-            if(event.getBlock().getType() == Material.SPAWNER){
+    public void onSpawnerBreak(BlockBreakEvent event) {
+        if (running) {
+            if (event.getBlock().getType() == Material.SPAWNER) {
                 addScore(event.getPlayer(), 1);
             }
         }

@@ -1,33 +1,43 @@
 package pl.pavetti.simpleevents.util;
 
+import java.util.*;
 import lombok.experimental.UtilityClass;
 import org.bukkit.Bukkit;
 
-import java.util.*;
-
 @UtilityClass
 public class EventUtil {
-    public String formatTime(int seconds){
+
+    public String formatTime(int seconds) {
         int minutes = seconds / 60;
         int remainingSeconds = seconds % 60;
         return String.format("%d.%02d", minutes, remainingSeconds);
     }
 
-    public String[] getFormatTop(Map<UUID,Integer> map,int rankingLines,String formatPattern){
-        Map<UUID, Integer> top = getTop(map,rankingLines);
+    public String[] getFormatTop(
+        Map<UUID, Integer> map,
+        int rankingLines,
+        String formatPattern
+    ) {
+        Map<UUID, Integer> top = getTop(map, rankingLines);
         String[] formatTop = new String[rankingLines];
-        if(rankingLines != 0) {
+        if (rankingLines != 0) {
             int count = 0;
             for (Map.Entry<UUID, Integer> entry : top.entrySet()) {
-                formatTop[count] = formatPattern.replace("{POSITION}", String.valueOf(count + 1))
-                        .replace("{PLAYER}", Bukkit.getOfflinePlayer(entry.getKey()).getName())
+                formatTop[count] =
+                    formatPattern
+                        .replace("{POSITION}", String.valueOf(count + 1))
+                        .replace(
+                            "{PLAYER}",
+                            Bukkit.getOfflinePlayer(entry.getKey()).getName()
+                        )
                         .replace("{SCORE}", String.valueOf(entry.getValue()));
                 count++;
             }
         }
         return formatTop;
     }
-    public Map<UUID,Integer> getTop(Map<UUID,Integer> map,int rankingLines){
+
+    public Map<UUID, Integer> getTop(Map<UUID, Integer> map, int rankingLines) {
         // Convert map to list
         List<Map.Entry<UUID, Integer>> list = new ArrayList<>(map.entrySet());
         // Sort list by integer value (up to down)
@@ -38,7 +48,7 @@ public class EventUtil {
             sortedMap.put(entry.getKey(), entry.getValue());
         }
         Map<UUID, Integer> top = new LinkedHashMap<>();
-        if(rankingLines != 0) {
+        if (rankingLines != 0) {
             int count = 0;
             for (Map.Entry<UUID, Integer> entry : sortedMap.entrySet()) {
                 top.put(entry.getKey(), entry.getValue());
@@ -47,11 +57,10 @@ public class EventUtil {
                     break;
                 }
             }
-        }else {
+        } else {
             for (Map.Entry<UUID, Integer> entry : sortedMap.entrySet()) {
                 top.put(entry.getKey(), entry.getValue());
                 break;
-
             }
         }
         return top;

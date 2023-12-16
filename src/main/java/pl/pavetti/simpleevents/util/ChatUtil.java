@@ -1,10 +1,10 @@
 package pl.pavetti.simpleevents.util;
 
+import java.util.ArrayList;
+import java.util.List;
 import lombok.experimental.UtilityClass;
 import org.bukkit.ChatColor;
 
-import java.util.ArrayList;
-import java.util.List;
 @UtilityClass
 public class ChatUtil {
 

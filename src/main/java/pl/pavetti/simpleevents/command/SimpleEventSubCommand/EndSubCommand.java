@@ -20,10 +20,18 @@ public class EndSubCommand implements SubCommand {
     @Override
     public boolean executeCommand(CommandSender sender, String[] args) {
         Player player = (Player) sender;
-        if(eventManager.isRunning()){
+        if (eventManager.isRunning()) {
             eventManager.setGoEnd(true);
-            PlayerUtil.sendMessage(player,settings.getPrefix(),settings.getSuccessfulEndEvent());
-        }else PlayerUtil.sendMessage(player,settings.getPrefix(),settings.getNothing());
+            PlayerUtil.sendMessage(
+                player,
+                settings.getPrefix(),
+                settings.getSuccessfulEndEvent()
+            );
+        } else PlayerUtil.sendMessage(
+            player,
+            settings.getPrefix(),
+            settings.getNothing()
+        );
         return false;
     }
 

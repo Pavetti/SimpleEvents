@@ -1,23 +1,24 @@
 package pl.pavetti.simpleevents.config;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import org.bukkit.configuration.file.FileConfiguration;
-import pl.pavetti.simpleevents.SimpleEvents;
-import pl.pavetti.simpleevents.exception.NoCorretTimeFormatException;
+import static pl.pavetti.simpleevents.util.ChatUtil.chatColor;
 
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.List;
+import lombok.AccessLevel;
+import lombok.Getter;
+import org.bukkit.configuration.file.FileConfiguration;
+import pl.pavetti.simpleevents.SimpleEvents;
+import pl.pavetti.simpleevents.exception.NoCorretTimeFormatException;
 
-import static pl.pavetti.simpleevents.util.ChatUtil.chatColor;
 @Getter
 public class Settings {
 
     @Getter(AccessLevel.NONE)
     private final SimpleEvents plugin;
+
     //basic config
     private String prefix;
     private boolean givePrize;
@@ -59,56 +60,146 @@ public class Settings {
         load();
     }
 
-    private void load(){
+    private void load() {
         FileConfiguration configuration = plugin.getConfig();
 
         //basic config
         prefix = chatColor(configuration.getString("settings.prefix"));
-        givePrizeWhenEndedByCmd = configuration.getBoolean("settings.givePrizeWhenEndedByCmd");
+        givePrizeWhenEndedByCmd =
+            configuration.getBoolean("settings.givePrizeWhenEndedByCmd");
         givePrize = configuration.getBoolean("settings.givePrize");
-        globalWinMessage = configuration.getBoolean("settings.globalWinMessage");
-        itemPrizeInventoryTitle = chatColor(configuration.getString("settings.itemPrizeInventoryTitle"));
+        globalWinMessage =
+            configuration.getBoolean("settings.globalWinMessage");
+        itemPrizeInventoryTitle =
+            chatColor(
+                configuration.getString("settings.itemPrizeInventoryTitle")
+            );
         //auto active
         loadTimes(configuration);
         interval = configuration.getInt("settings.autoActive.interval") * 20;
         autoActive = configuration.getBoolean("settings.autoActive.autoActive");
-        imposedActiveTime = configuration.getBoolean("settings.autoActive.imposedActiveTime");
-        eventsAutoActive = configuration.getStringList("settings.autoActive.eventsAutoActive");
+        imposedActiveTime =
+            configuration.getBoolean("settings.autoActive.imposedActiveTime");
+        eventsAutoActive =
+            configuration.getStringList("settings.autoActive.eventsAutoActive");
         //scoreboard config
-        scoreboardTimeLineFormat = chatColor(configuration.getString("settings.scoreboard.timeLineFormat"));
-        scoreboardRankingLineFormat = chatColor(configuration.getString("settings.scoreboard.rankingLineFormat"));
-        scoreboardRankingLines = configuration.getInt("settings.scoreboard.rankingLines");
+        scoreboardTimeLineFormat =
+            chatColor(
+                configuration.getString("settings.scoreboard.timeLineFormat")
+            );
+        scoreboardRankingLineFormat =
+            chatColor(
+                configuration.getString("settings.scoreboard.rankingLineFormat")
+            );
+        scoreboardRankingLines =
+            configuration.getInt("settings.scoreboard.rankingLines");
         //messages
         help = chatColor(configuration.getStringList("settings.messages.help"));
-        winMessage = chatColor(configuration.getStringList("settings.messages.winMessage"));
-        noPermission = chatColor(configuration.getString("settings.messages.noPermission"));
-        noEventFound = chatColor(configuration.getString("settings.messages.noEventFound"));
-        badCmdUseSEScoreShow = chatColor(configuration.getString("settings.messages.badCmdUseSEScoreShow"));
-        badCmdUseSEStart = chatColor(configuration.getString("settings.messages.badCmdUseSEStart"));
-        badArgumentTimeSEStart = chatColor(configuration.getString("settings.messages.badArgumentTimeSEStart"));
-        badCmdUseSEScoreShow = chatColor(configuration.getString("settings.messages.badCmdUseSEScoreShow"));
-        successfulStartEvent = chatColor(configuration.getString("settings.messages.successfulStartEvent"));
-        successfulEndEvent = chatColor(configuration.getString("settings.messages.successfulEndEvent"));
-        successfulSetItemPrize = chatColor(configuration.getString("settings.messages.successfulSetItemPrize"));
-        successfulSwitchScoreShow = chatColor(configuration.getString("settings.messages.successfulSwitchScoreShow"));
-        messageForWinner = chatColor(configuration.getString("settings.messages.messageForWinner"));
-        nothing = chatColor(configuration.getString("settings.messages.nothing"));
-        eventAlreadyActive = chatColor(configuration.getString("settings.messages.eventAlreadyActive"));
-        badCmdUseSESetPrize = chatColor(configuration.getString("settings.messages.badCmdUseSESetPrize"));
-        noEventFoundInEventDataFile = chatColor(configuration.getString("settings.messages.noEventFoundInEventDataFile"));
+        winMessage =
+            chatColor(
+                configuration.getStringList("settings.messages.winMessage")
+            );
+        noPermission =
+            chatColor(
+                configuration.getString("settings.messages.noPermission")
+            );
+        noEventFound =
+            chatColor(
+                configuration.getString("settings.messages.noEventFound")
+            );
+        badCmdUseSEScoreShow =
+            chatColor(
+                configuration.getString(
+                    "settings.messages.badCmdUseSEScoreShow"
+                )
+            );
+        badCmdUseSEStart =
+            chatColor(
+                configuration.getString("settings.messages.badCmdUseSEStart")
+            );
+        badArgumentTimeSEStart =
+            chatColor(
+                configuration.getString(
+                    "settings.messages.badArgumentTimeSEStart"
+                )
+            );
+        badCmdUseSEScoreShow =
+            chatColor(
+                configuration.getString(
+                    "settings.messages.badCmdUseSEScoreShow"
+                )
+            );
+        successfulStartEvent =
+            chatColor(
+                configuration.getString(
+                    "settings.messages.successfulStartEvent"
+                )
+            );
+        successfulEndEvent =
+            chatColor(
+                configuration.getString("settings.messages.successfulEndEvent")
+            );
+        successfulSetItemPrize =
+            chatColor(
+                configuration.getString(
+                    "settings.messages.successfulSetItemPrize"
+                )
+            );
+        successfulSwitchScoreShow =
+            chatColor(
+                configuration.getString(
+                    "settings.messages.successfulSwitchScoreShow"
+                )
+            );
+        messageForWinner =
+            chatColor(
+                configuration.getString("settings.messages.messageForWinner")
+            );
+        nothing =
+            chatColor(configuration.getString("settings.messages.nothing"));
+        eventAlreadyActive =
+            chatColor(
+                configuration.getString("settings.messages.eventAlreadyActive")
+            );
+        badCmdUseSESetPrize =
+            chatColor(
+                configuration.getString("settings.messages.badCmdUseSESetPrize")
+            );
+        noEventFoundInEventDataFile =
+            chatColor(
+                configuration.getString(
+                    "settings.messages.noEventFoundInEventDataFile"
+                )
+            );
     }
 
-    private void loadTimes(FileConfiguration configuration){
-
+    private void loadTimes(FileConfiguration configuration) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
         try {
-            timeZone = ZoneId.of(configuration.getString("settings.autoActive.timeZone"));
-            if(timeZone == null) throw new NoCorretTimeFormatException("In correct timeZone section value. Check your config file");
+            timeZone =
+                ZoneId.of(
+                    configuration.getString("settings.autoActive.timeZone")
+                );
+            if (timeZone == null) throw new NoCorretTimeFormatException(
+                "In correct timeZone section value. Check your config file"
+            );
 
-            activeTimeFrom = LocalTime.parse(configuration.getString("settings.autoActive.activeTimeFrom"), formatter);
-            activeTimeTo = LocalTime.parse(configuration.getString("settings.autoActive.activeTimeTo"), formatter);
+            activeTimeFrom =
+                LocalTime.parse(
+                    configuration.getString(
+                        "settings.autoActive.activeTimeFrom"
+                    ),
+                    formatter
+                );
+            activeTimeTo =
+                LocalTime.parse(
+                    configuration.getString("settings.autoActive.activeTimeTo"),
+                    formatter
+                );
         } catch (DateTimeParseException e) {
-            throw new NoCorretTimeFormatException("In correct activeTimeFrom or activeTimeTo section value format. Check your config file.");
+            throw new NoCorretTimeFormatException(
+                "In correct activeTimeFrom or activeTimeTo section value format. Check your config file."
+            );
         }
     }
 }

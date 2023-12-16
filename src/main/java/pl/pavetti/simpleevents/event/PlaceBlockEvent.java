@@ -7,14 +7,13 @@ import pl.pavetti.simpleevents.model.EventData;
 
 public class PlaceBlockEvent extends Event {
 
-
     public PlaceBlockEvent(Plugin plugin, EventData data) {
         super(plugin, data);
     }
 
     @EventHandler
-    public void onBlockPlace(org.bukkit.event.block.BlockPlaceEvent event){
-        if(running){
+    public void onBlockPlace(org.bukkit.event.block.BlockPlaceEvent event) {
+        if (running) {
             addScore(event.getPlayer(), 1);
         }
     }

@@ -9,16 +9,18 @@ import pl.pavetti.simpleevents.model.EventData;
 
 public class DealDamageEvent extends Event {
 
-
     public DealDamageEvent(Plugin plugin, EventData data) {
         super(plugin, data);
     }
 
     @EventHandler
-    public void onDealDamage(EntityDamageByEntityEvent event){
-        if(running){
-            if(event.getDamager() instanceof Player){
-                addScore((Player) event.getDamager(), (int) event.getFinalDamage());
+    public void onDealDamage(EntityDamageByEntityEvent event) {
+        if (running) {
+            if (event.getDamager() instanceof Player) {
+                addScore(
+                    (Player) event.getDamager(),
+                    (int) event.getFinalDamage()
+                );
             }
         }
     }

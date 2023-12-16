@@ -1,5 +1,7 @@
 package pl.pavetti.simpleevents.event;
 
+import java.util.HashMap;
+import java.util.UUID;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -9,10 +11,8 @@ import org.bukkit.plugin.Plugin;
 import pl.pavetti.simpleevents.model.Event;
 import pl.pavetti.simpleevents.model.EventData;
 
-import java.util.HashMap;
-import java.util.UUID;
-
 public class ThrowEnderPerlEvent extends Event {
+
     private static final int COOLDOWN_TIME_IN_SECOND = 1;
     private final HashMap<UUID, Long> cooldowns = new HashMap<>();
 
@@ -20,27 +20,31 @@ public class ThrowEnderPerlEvent extends Event {
         super(plugin, data);
     }
 
-
     @EventHandler
-    public void onPlayerThrowPearl(PlayerInteractEvent event){
-
-        if(running){
+    public void onPlayerThrowPearl(PlayerInteractEvent event) {
+        if (running) {
             Player player = event.getPlayer();
             ItemStack item = event.getItem();
-            if(event.getAction().toString().contains("RIGHT_CLICK") && item != null && item.getType() == Material.ENDER_PEARL){
+            if (
+                event.getAction().toString().contains("RIGHT_CLICK") &&
+                item != null &&
+                item.getType() == Material.ENDER_PEARL
+            ) {
                 if (!hasCooldown(player)) {
-                    addScore(player,1);
+                    addScore(player, 1);
                     setCooldown(player);
                 }
             }
         }
     }
-    private boolean hasCooldown(Player player) {
 
+    private boolean hasCooldown(Player player) {
         if (cooldowns.containsKey(player.getUniqueId())) {
             long cooldownTime = cooldowns.get(player.getUniqueId());
             long currentTime = System.currentTimeMillis();
-            return (currentTime - cooldownTime) < COOLDOWN_TIME_IN_SECOND * 1000;
+            return (
+                (currentTime - cooldownTime) < COOLDOWN_TIME_IN_SECOND * 1000
+            );
         }
         return false;
     }

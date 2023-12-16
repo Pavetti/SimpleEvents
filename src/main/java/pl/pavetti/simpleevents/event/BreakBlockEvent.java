@@ -9,16 +9,15 @@ import pl.pavetti.simpleevents.model.EventData;
 
 public class BreakBlockEvent extends Event {
 
-
     public BreakBlockEvent(Plugin plugin, EventData data) {
         super(plugin, data);
     }
 
     @EventHandler
-    public void onBlockBreak(BlockBreakEvent event){
-        if(running){
+    public void onBlockBreak(BlockBreakEvent event) {
+        if (running) {
             Player player = event.getPlayer();
-            addScore(player,1);
+            addScore(player, 1);
         }
     }
 }

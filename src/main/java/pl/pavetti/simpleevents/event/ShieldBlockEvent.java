@@ -11,25 +11,34 @@ import pl.pavetti.simpleevents.model.EventData;
 
 public class ShieldBlockEvent extends Event {
 
-
     public ShieldBlockEvent(Plugin plugin, EventData data) {
         super(plugin, data);
     }
 
     @EventHandler
-    public void onShieldBlockEBE(EntityDamageByEntityEvent event){
-        if(running) {
+    public void onShieldBlockEBE(EntityDamageByEntityEvent event) {
+        if (running) {
             if (event.getEntity() instanceof Player) {
-                if(event.getDamage(EntityDamageEvent.DamageModifier.BLOCKING) != 0) addScore((Player) event.getEntity(), 1);
+                if (
+                    event.getDamage(
+                        EntityDamageEvent.DamageModifier.BLOCKING
+                    ) !=
+                    0
+                ) addScore((Player) event.getEntity(), 1);
             }
         }
     }
 
     @EventHandler
-    public void onShieldBlockEBB(EntityDamageByBlockEvent event){
-        if(running) {
+    public void onShieldBlockEBB(EntityDamageByBlockEvent event) {
+        if (running) {
             if (event.getEntity() instanceof Player) {
-                if(event.getDamage(EntityDamageEvent.DamageModifier.BLOCKING) != 0) addScore((Player) event.getEntity(), 1);
+                if (
+                    event.getDamage(
+                        EntityDamageEvent.DamageModifier.BLOCKING
+                    ) !=
+                    0
+                ) addScore((Player) event.getEntity(), 1);
             }
         }
     }

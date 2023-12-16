@@ -9,16 +9,18 @@ import pl.pavetti.simpleevents.model.EventData;
 
 public class PlayerKillEvent extends Event {
 
-
     public PlayerKillEvent(Plugin plugin, EventData data) {
         super(plugin, data);
     }
 
     @EventHandler
-    public void onKillPlayerByPlayer(EntityDeathEvent event){
-        if(running) {
+    public void onKillPlayerByPlayer(EntityDeathEvent event) {
+        if (running) {
             if (event.getEntity() instanceof Player) {
-                if (event.getEntity().getKiller() != null) addScore(event.getEntity().getKiller(), 1);
+                if (event.getEntity().getKiller() != null) addScore(
+                    event.getEntity().getKiller(),
+                    1
+                );
             }
         }
     }

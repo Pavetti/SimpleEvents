@@ -14,10 +14,10 @@ public class DeathEvent extends Event {
     }
 
     @EventHandler
-    public void onPlayerDeath(EntityDeathEvent event){
-        if(running){
-            if(event.getEntity() instanceof Player){
-                addScore((Player) event.getEntity(),1);
+    public void onPlayerDeath(EntityDeathEvent event) {
+        if (running) {
+            if (event.getEntity() instanceof Player) {
+                addScore((Player) event.getEntity(), 1);
             }
         }
     }

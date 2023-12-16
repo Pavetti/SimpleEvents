@@ -1,11 +1,10 @@
 package pl.pavetti.simpleevents.config;
 
+import java.io.File;
 import lombok.AccessLevel;
 import lombok.Getter;
 import org.bukkit.configuration.file.YamlConfiguration;
 import pl.pavetti.simpleevents.SimpleEvents;
-
-import java.io.File;
 
 @Getter
 public class ConfigFile {
@@ -13,12 +12,12 @@ public class ConfigFile {
     @Getter(AccessLevel.NONE)
     private final SimpleEvents plugin;
 
-
     private File eventDataFile;
     private File playerDataFile;
 
     private YamlConfiguration ymlEventData;
     private YamlConfiguration ymlPlayerData;
+
     public ConfigFile(SimpleEvents plugin) {
         this.plugin = plugin;
         createFiles();

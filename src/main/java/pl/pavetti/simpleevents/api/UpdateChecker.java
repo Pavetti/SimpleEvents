@@ -1,13 +1,12 @@
 package pl.pavetti.simpleevents.api;
 
-import org.bukkit.Bukkit;
-import org.bukkit.plugin.java.JavaPlugin;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.Scanner;
 import java.util.function.Consumer;
+import org.bukkit.Bukkit;
+import org.bukkit.plugin.java.JavaPlugin;
 
 // From: https://www.spigotmc.org/wiki/creating-an-update-checker-that-checks-for-updates
 public class UpdateChecker {
@@ -21,14 +20,31 @@ public class UpdateChecker {
     }
 
     public void getVersion(final Consumer<String> consumer) {
-        Bukkit.getScheduler().runTaskAsynchronously(this.plugin, () -> {
-            try (InputStream is = new URL("https://api.spigotmc.org/legacy/update.php?resource=" + this.resourceId + "/~").openStream(); Scanner scann = new Scanner(is)) {
-                if (scann.hasNext()) {
-                    consumer.accept(scann.next());
+        Bukkit
+            .getScheduler()
+            .runTaskAsynchronously(
+                this.plugin,
+                () -> {
+                    try (
+                        InputStream is = new URL(
+                            "https://api.spigotmc.org/legacy/update.php?resource=" +
+                            this.resourceId +
+                            "/~"
+                        )
+                            .openStream();
+                        Scanner scann = new Scanner(is)
+                    ) {
+                        if (scann.hasNext()) {
+                            consumer.accept(scann.next());
+                        }
+                    } catch (IOException e) {
+                        plugin
+                            .getLogger()
+                            .info(
+                                "Unable to check for updates: " + e.getMessage()
+                            );
+                    }
                 }
-            } catch (IOException e) {
-                plugin.getLogger().info("Unable to check for updates: " + e.getMessage());
-            }
-        });
+            );
     }
 }

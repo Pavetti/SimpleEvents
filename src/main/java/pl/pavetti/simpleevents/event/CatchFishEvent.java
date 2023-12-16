@@ -8,15 +8,14 @@ import pl.pavetti.simpleevents.model.EventData;
 
 public class CatchFishEvent extends Event {
 
-
     public CatchFishEvent(Plugin plugin, EventData data) {
         super(plugin, data);
     }
 
     @EventHandler
-    public void onFishCatch(PlayerFishEvent event){
-        if(running){
-            if(event.getState().equals(PlayerFishEvent.State.CAUGHT_FISH)) {
+    public void onFishCatch(PlayerFishEvent event) {
+        if (running) {
+            if (event.getState().equals(PlayerFishEvent.State.CAUGHT_FISH)) {
                 addScore(event.getPlayer(), 1);
             }
         }

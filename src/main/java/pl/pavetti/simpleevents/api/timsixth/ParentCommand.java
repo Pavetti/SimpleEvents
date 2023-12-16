@@ -1,14 +1,13 @@
 package pl.pavetti.simpleevents.api.timsixth;
 
+import java.util.ArrayList;
+import java.util.List;
 import lombok.NonNull;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import pl.pavetti.simpleevents.config.Settings;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -26,7 +25,6 @@ public abstract class ParentCommand implements CommandExecutor {
     private final boolean usePermission;
     private final Settings settings;
 
-
     /**
      * All args constructor
      *
@@ -35,7 +33,13 @@ public abstract class ParentCommand implements CommandExecutor {
      * @param onlyPlayers   true if command can be used by only players otherwise false
      * @param usePermission true if command has permission otherwise false
      */
-    public ParentCommand(String permission, boolean hasArguments, boolean onlyPlayers, boolean usePermission, Settings settings) {
+    public ParentCommand(
+        String permission,
+        boolean hasArguments,
+        boolean onlyPlayers,
+        boolean usePermission,
+        Settings settings
+    ) {
         this.permission = permission;
         this.hasArguments = hasArguments;
         this.onlyPlayers = onlyPlayers;
@@ -52,7 +56,12 @@ public abstract class ParentCommand implements CommandExecutor {
      * @param onlyPlayers                 true if command can be used by only players otherwise false
      * @param usePermission               true if command has permission otherwise false
      */
-    public ParentCommand(String permission, boolean onlyPlayers, boolean usePermission,Settings settings) {
+    public ParentCommand(
+        String permission,
+        boolean onlyPlayers,
+        boolean usePermission,
+        Settings settings
+    ) {
         this.permission = permission;
         this.onlyPlayers = onlyPlayers;
         this.usePermission = usePermission;
@@ -65,7 +74,7 @@ public abstract class ParentCommand implements CommandExecutor {
      * Constructor without params, everything is set to default value like false, empty string and for configuration null
      */
     public ParentCommand() {
-        this("", false, false, false,null);
+        this("", false, false, false, null);
     }
 
     /**
@@ -78,7 +87,12 @@ public abstract class ParentCommand implements CommandExecutor {
      * @return true if a valid command, otherwise false
      */
     @Override
-    public boolean onCommand(@NonNull CommandSender sender, @NonNull Command command, @NonNull String label, String[] args) {
+    public boolean onCommand(
+        @NonNull CommandSender sender,
+        @NonNull Command command,
+        @NonNull String label,
+        String[] args
+    ) {
         if (onlyPlayers) {
             if (!(sender instanceof Player)) {
                 return true;
@@ -112,7 +126,10 @@ public abstract class ParentCommand implements CommandExecutor {
      * @param args Passed command arguments
      * @return true if a valid command, otherwise false
      */
-    protected abstract boolean executeCommand(CommandSender commandSender, String[] args);
+    protected abstract boolean executeCommand(
+        CommandSender commandSender,
+        String[] args
+    );
 
     /**
      * Gets sub commands
@@ -121,8 +138,9 @@ public abstract class ParentCommand implements CommandExecutor {
      * @throws IllegalStateException when subCommands is null
      */
     protected List<SubCommand> getSubCommands() {
-        if (subCommands == null)
-            throw new IllegalStateException("Can not get sub commands from ParentCommand, because field hasArguments is false");
+        if (subCommands == null) throw new IllegalStateException(
+            "Can not get sub commands from ParentCommand, because field hasArguments is false"
+        );
 
         return subCommands;
     }
