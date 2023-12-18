@@ -17,7 +17,7 @@ public class EnchantItemEvent extends Event {
         org.bukkit.event.enchantment.EnchantItemEvent event
     ) {
         if (running) {
-            addScore((Player) event.getView().getPlayer(), 1);
+            addScore((Player) event.getView().getPlayer(),  1);
         }
     }
 }
