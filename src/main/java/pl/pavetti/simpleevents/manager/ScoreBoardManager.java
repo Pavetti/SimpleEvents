@@ -105,28 +105,26 @@ public class ScoreBoardManager {
     }
 
     public void showScoreBoardForALl() {
-        saveScores();
         for (Player player : Bukkit.getOnlinePlayers()) {
-            Optional<PlayerData> playerDataOptional =
-                playerDataFile.getPlayerDataOf(player.getUniqueId());
-            if (playerDataOptional.isPresent()) {
-                if (playerDataOptional.get().isScoreboardShow()) {
-                    player.setScoreboard(board.getScoreboard());
-                }
-            } else {
-                player.setScoreboard(board.getScoreboard());
-            }
+            showScoreboard(player);
         }
     }
 
-    private void saveScores() {
-        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-            oldScores.put(
-                onlinePlayer.getUniqueId(),
-                onlinePlayer.getScoreboard()
-            );
+    public void showScoreboard(Player player){
+        if(board == null) return;
+        Optional<PlayerData> playerDataOptional = playerDataFile.getPlayerDataOf(player.getUniqueId());
+        if(playerDataOptional.isPresent()){
+            PlayerData playerData = playerDataOptional.get();
+            if(playerData.isScoreboardShow()) {
+                oldScores.put(player.getUniqueId(), player.getScoreboard());
+                player.setScoreboard(board.getScoreboard());
+            }
+        } else {
+            oldScores.put(player.getUniqueId(),player.getScoreboard());
+            player.setScoreboard(board.getScoreboard());
         }
     }
+
 
     public void closeScoreBoardForALl() {
         oldScores.forEach(
@@ -138,6 +136,13 @@ public class ScoreBoardManager {
                     }
                 })
         );
+    }
+
+    public void closeScoreBoard(Player player){
+        Scoreboard scoreboard = oldScores.get(player.getUniqueId());
+        if(scoreboard != null){
+            player.setScoreboard(scoreboard);
+        }
     }
 
     public void reset() {

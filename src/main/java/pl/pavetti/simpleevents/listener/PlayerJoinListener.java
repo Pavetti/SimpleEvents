@@ -5,18 +5,26 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import pl.pavetti.simpleevents.manager.EventManager;
+import pl.pavetti.simpleevents.manager.ScoreBoardManager;
 
 public class PlayerJoinListener implements Listener {
 
     private final boolean updateAvailable;
+    private final EventManager eventManager;
+    private final ScoreBoardManager scoreBoardManager;
 
-    public PlayerJoinListener(boolean updateAvailable) {
+    public PlayerJoinListener(boolean updateAvailable, EventManager eventManager ) {
         this.updateAvailable = updateAvailable;
+        this.eventManager = eventManager;
+        this.scoreBoardManager = eventManager.getScoreBoardManager();
     }
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
+
+        //FOR OPERATOR
         if (player.isOp() && updateAvailable) {
             player.sendMessage(
                 "﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉"
@@ -27,5 +35,10 @@ public class PlayerJoinListener implements Listener {
                 "﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍"
             );
         }
+
+        if(eventManager.isRunning()){
+            scoreBoardManager.showScoreboard(player);
+        }
+
     }
 }

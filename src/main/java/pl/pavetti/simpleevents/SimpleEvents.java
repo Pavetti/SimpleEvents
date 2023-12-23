@@ -92,7 +92,7 @@ public final class SimpleEvents extends JavaPlugin {
 
     private void registerCommand() {
         getCommand("simpleevent").setExecutor(new SimpleEventCommand(settings, eventManager, eventData));
-        getCommand("scoreboardtoggle").setExecutor(new ScoreboardToggleCommand(settings, playerData));
+        getCommand("scoreboardtoggle").setExecutor(new ScoreboardToggleCommand(settings, playerData,eventManager));
     }
 
     private void registerTabCompleter() {
@@ -134,7 +134,7 @@ public final class SimpleEvents extends JavaPlugin {
                     );
                 getServer()
                     .getPluginManager()
-                    .registerEvents(new PlayerJoinListener(false), this);
+                    .registerEvents(new PlayerJoinListener(false, eventManager), this);
             } else {
                 Bukkit.broadcastMessage(
                     ChatColor.LIGHT_PURPLE +
@@ -142,7 +142,7 @@ public final class SimpleEvents extends JavaPlugin {
                 );
                 getServer()
                     .getPluginManager()
-                    .registerEvents(new PlayerJoinListener(true), this);
+                    .registerEvents(new PlayerJoinListener(true, eventManager), this);
             }
         });
     }

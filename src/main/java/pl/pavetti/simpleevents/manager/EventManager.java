@@ -194,7 +194,6 @@ public class EventManager {
     }
 
     private void makeWinner(Map<UUID, Integer> top, Event event, boolean givePrize) {
-        System.out.println(givePrize);
         if (!top.isEmpty()) {
             //gets information about winner
             Map.Entry<UUID, Integer> firstPlayerMapEntry = top
