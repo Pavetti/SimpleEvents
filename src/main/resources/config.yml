@@ -99,7 +99,7 @@ settings:
     # {EVENT} - name of the event that was play
     winMessage:
       - '&7 ﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉﹉'
-      - '&7  &aPlayer &f{NICK} wins the event and get prize'
+      - '&7  &aPlayer &f{NICK}&a wins the event and get prize'
       - '&7 ﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍'
     help:
       - ''

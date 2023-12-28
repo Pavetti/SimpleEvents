@@ -20,7 +20,6 @@ import pl.pavetti.simpleevents.config.Settings;
 import pl.pavetti.simpleevents.exception.NoCorrectEventDataException;
 import pl.pavetti.simpleevents.model.Event;
 import pl.pavetti.simpleevents.model.EventData;
-import pl.pavetti.simpleevents.model.PlayerData;
 import pl.pavetti.simpleevents.util.EventUtil;
 import pl.pavetti.simpleevents.util.PlayerUtil;
 
