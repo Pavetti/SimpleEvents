@@ -2,7 +2,7 @@ name: SimpleEvents
 version: '1.5.3'
 main: pl.pavetti.simpleevents.SimpleEvents
 authors: [ 'Pavetti' ]
-api-version: '1.13'
+api-version: '1.20'
 softdepend: ['Vault']
 commands:
   scoreboardtoggle:

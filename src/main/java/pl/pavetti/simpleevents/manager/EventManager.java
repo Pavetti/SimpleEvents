@@ -40,10 +40,12 @@ public class EventManager {
 
     private final Map<String, Event> registeredEvents = new HashMap<>();
     private final List<String> eventsClassNames = new ArrayList<>();
-    private final ScoreBoardManager scoreBoardManager;
+    private final ScoreboardManager scoreBoardManager;
 
     private boolean isRunning = false;
     private boolean goEnd = false;
+
+    private Event currentEvent = null;
 
     public EventManager(
         SimpleEvents plugin,
@@ -59,12 +61,7 @@ public class EventManager {
         this.plugin = plugin;
         this.playerDataFile = playerDataFile;
         this.rankingLinesAmount = settings.getScoreboardRankingLines();
-        scoreBoardManager =
-            new ScoreBoardManager(
-                settings,
-                rankingLinesAmount,
-                this.playerDataFile
-            );
+        this.scoreBoardManager = new ScoreboardManager(settings,playerDataFile);
         this.eventDataFile = eventDataFile;
 
         //names of class that has to be registered as SimpleEvent
@@ -142,8 +139,9 @@ public class EventManager {
     public void startSimpleEvent(int time, Event event) {
         event.start();
         isRunning = true;
-        scoreBoardManager.createScoreBoard(time, event.getData());
-        scoreBoardManager.showScoreBoardForALl();
+        scoreBoardManager.createNewScoreboard(time,event.getData());
+        currentEvent = event;
+
         new BukkitRunnable() {
             int second = time;
 
@@ -168,7 +166,7 @@ public class EventManager {
                         settings.isGivePrize()
                     );
                     event.stop();
-                    scoreBoardManager.closeScoreBoardForALl();
+                    scoreBoardManager.closeBoardForAll();
                     scoreBoardManager.reset();
                     isRunning = false;
                     this.cancel();
@@ -181,7 +179,7 @@ public class EventManager {
                         (settings.isGivePrize() && settings.isGivePrizeWhenEndedByCmd())
                     );
                     event.stop();
-                    scoreBoardManager.closeScoreBoardForALl();
+                    scoreBoardManager.closeBoardForAll();
                     scoreBoardManager.reset();
                     isRunning = false;
                     goEnd = false;
@@ -258,4 +256,5 @@ public class EventManager {
     public boolean isSimpleEvent(String id) {
         return registeredEvents.containsKey(id);
     }
+
 }

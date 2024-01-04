@@ -6,7 +6,7 @@ import pl.pavetti.simpleevents.api.timsixth.ParentCommand;
 import pl.pavetti.simpleevents.config.PlayerDataFile;
 import pl.pavetti.simpleevents.config.Settings;
 import pl.pavetti.simpleevents.manager.EventManager;
-import pl.pavetti.simpleevents.manager.ScoreBoardManager;
+import pl.pavetti.simpleevents.manager.ScoreboardManager;
 import pl.pavetti.simpleevents.util.PlayerUtil;
 
 import java.util.Optional;
@@ -16,12 +16,14 @@ public class ScoreboardToggleCommand extends ParentCommand {
 
     private final Settings settings;
     private final PlayerDataFile playerDataFile;
-    private final ScoreBoardManager scoreBoardManager;
+    private final ScoreboardManager scoreBoardManager;
+    private final EventManager eventManager;
     public ScoreboardToggleCommand(Settings settings, PlayerDataFile playerDataFile, EventManager eventManager) {
         super("", false, true, false, settings);
         this.settings = settings;
         this.playerDataFile = playerDataFile;
         this.scoreBoardManager = eventManager.getScoreBoardManager();
+        this.eventManager = eventManager;
     }
 
     @Override
@@ -34,21 +36,29 @@ public class ScoreboardToggleCommand extends ParentCommand {
             boolean scoreShow = scoreShowOptional.get();
             if(scoreShow){
                 PlayerUtil.sendMessage(player, settings.getPrefix(), settings.getSuccessfulSwitchScoreShowToDisable());
-                scoreShow = !scoreShow;
-                playerDataFile.setPlayerDataScoreShow(player.getUniqueId(), scoreShow);
-                scoreBoardManager.closeScoreBoard(player);
-
+                playerDataFile.setPlayerDataScoreShow(player.getUniqueId(), false);
+                if(eventManager.isRunning()){
+                    scoreBoardManager.closeBoard(player);
+                }
+                scoreBoardManager.removeScoreboard(player);
             }else {
                 PlayerUtil.sendMessage(player, settings.getPrefix(), settings.getSuccessfulSwitchScoreShowToEnable());
-                scoreShow = !scoreShow;
-                playerDataFile.setPlayerDataScoreShow(player.getUniqueId(), scoreShow);
-                scoreBoardManager.showScoreboard(player);
+                playerDataFile.setPlayerDataScoreShow(player.getUniqueId(), true);
+                scoreBoardManager.registerScoreboard(player);
+                if(eventManager.isRunning()){
+                    scoreBoardManager.registerScoreboard(player,eventManager.getCurrentEvent().getData());
+                }else {
+                    scoreBoardManager.registerScoreboard(player);
+                }
             }
         }
         else {
             playerDataFile.setPlayerDataScoreShow(player.getUniqueId(), false);
             PlayerUtil.sendMessage(player, settings.getPrefix(), settings.getSuccessfulSwitchScoreShowToDisable());
-            scoreBoardManager.closeScoreBoard(player);
+            if(eventManager.isRunning()){
+                scoreBoardManager.closeBoard(player);
+            }
+            scoreBoardManager.removeScoreboard(player);
         }
         return false;
     }

@@ -5,14 +5,18 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import pl.pavetti.simpleevents.config.PlayerDataFile;
 import pl.pavetti.simpleevents.manager.EventManager;
-import pl.pavetti.simpleevents.manager.ScoreBoardManager;
+import pl.pavetti.simpleevents.manager.ScoreboardManager;
+import pl.pavetti.simpleevents.model.PlayerData;
+
+import java.util.Optional;
 
 public class PlayerJoinListener implements Listener {
 
     private final boolean updateAvailable;
     private final EventManager eventManager;
-    private final ScoreBoardManager scoreBoardManager;
+    private final ScoreboardManager scoreBoardManager;
 
     public PlayerJoinListener(boolean updateAvailable, EventManager eventManager ) {
         this.updateAvailable = updateAvailable;
@@ -36,9 +40,23 @@ public class PlayerJoinListener implements Listener {
             );
         }
 
-        if(eventManager.isRunning()){
-            scoreBoardManager.showScoreboard(player);
+        PlayerDataFile playerDataFile = eventManager.getPlayerDataFile();
+        Optional<PlayerData> playerDataOptional = playerDataFile.getPlayerDataOf(player.getUniqueId());
+        if(playerDataOptional.isPresent()){
+            PlayerData playerData = playerDataOptional.get();
+            if(playerData.isScoreboardShow()){
+                if(eventManager.isRunning()){
+                    scoreBoardManager.registerScoreboard(player,eventManager.getCurrentEvent().getData());
+                }else {
+                    scoreBoardManager.registerScoreboard(player);
+                }
+            }
+        }else {
+            if(eventManager.isRunning()){
+                scoreBoardManager.registerScoreboard(player,eventManager.getCurrentEvent().getData());
+            }else {
+                scoreBoardManager.registerScoreboard(player);
+            }
         }
-
     }
 }

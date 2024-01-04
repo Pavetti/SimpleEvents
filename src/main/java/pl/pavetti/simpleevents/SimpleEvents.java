@@ -5,6 +5,7 @@ import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.serialization.ConfigurationSerialization;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -18,6 +19,7 @@ import pl.pavetti.simpleevents.config.PlayerDataFile;
 import pl.pavetti.simpleevents.config.Settings;
 import pl.pavetti.simpleevents.listener.CloseInventoryListener;
 import pl.pavetti.simpleevents.listener.PlayerJoinListener;
+import pl.pavetti.simpleevents.listener.PlayerQuitListener;
 import pl.pavetti.simpleevents.manager.EventManager;
 import pl.pavetti.simpleevents.model.PlayerData;
 import pl.pavetti.simpleevents.tabcompleter.SimpleEventTabCompleter;
@@ -34,6 +36,7 @@ public final class SimpleEvents extends JavaPlugin {
 
     private EventManager eventManager;
     private Economy economy;
+
 
     @Override
     public void onEnable() {
@@ -63,6 +66,7 @@ public final class SimpleEvents extends JavaPlugin {
         registerTask();
         registerListener();
         updateCheck();
+        postReloadActions();
     }
 
     @Override
@@ -110,6 +114,8 @@ public final class SimpleEvents extends JavaPlugin {
             ),
             this
         );
+        pluginManager.registerEvents(new PlayerQuitListener(eventManager), this);
+
     }
 
     private void registerTask() {
@@ -122,6 +128,13 @@ public final class SimpleEvents extends JavaPlugin {
             PlayerData.class,
             "playerData"
         );
+    }
+
+    private void postReloadActions() {
+        //register players that was on server while reload that onJoinEvent cant register them
+        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+            eventManager.getScoreBoardManager().registerScoreboard(onlinePlayer);
+        }
     }
 
     private void updateCheck() {
