@@ -1,6 +1,5 @@
 settings:
 
-
   # Prefix that will be adding to every message sending by this plugin
   # without message that are contains in list of lines (defaultWinMessage,customWinMessage,help)
   prefix: '&d&lSimple&9&lEvents &7⋙ '
