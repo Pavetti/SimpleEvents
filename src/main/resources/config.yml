@@ -1,5 +1,6 @@
 settings:
 
+
   # Prefix that will be adding to every message sending by this plugin
   # without message that are contains in list of lines (defaultWinMessage,customWinMessage,help)
   prefix: '&d&lSimple&9&lEvents &7⋙ '
@@ -80,7 +81,7 @@ settings:
     # {POSITION} - holds the number of the player's current ranking position,
     # {PLAYER} - holds players name,
     # {SCORE} - holds players score
-    rankingLineFormat: ' &6{POSITION}. &7{PLAYER} &f{SCORE}'
+    rankingLineFormat: ' &3{POSITION}. &7{PLAYER} &f{SCORE}'
 
     # Number of places for players in the ranking
     # !!!WARING VERY IMPORTANT!!! Number of lines in scoreboard can not exceed 16,

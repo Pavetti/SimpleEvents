@@ -18,247 +18,247 @@ eventsData:
 
   throwEnderPerlEvent:
     id: throw-ender-perl
-    displayName: '&6&lPerl Thrower Master'
+    displayName: '&b&lPerl Thrower'
     defaultDuration: 600
     description:
-      - '&5The player who'
-      - '&5throws the most'
-      - '&5ender pearls wins'
+      - '&7The player who'
+      - '&7throws the most'
+      - '&7ender pearls wins'
     prizeEconomy: 0
     prizeItems:
 
   breakBlockEvent:
     id: break-block
-    displayName: '&6&lBlock Destroyer'
+    displayName: '&b&lBlock Destroyer'
     defaultDuration: 900
     description:
-      - '&5The player who'
-      - '&5breaks the most'
-      - '&5blocks wins'
+      - '&7The player who'
+      - '&7breaks the most'
+      - '&7blocks wins'
     prizeEconomy: 0
     prizeItems:
 
   placeBlockEvent:
     id: place-block
-    displayName: '&6&lCrazy Builder'
+    displayName: '&b&lCrazy Builder'
     defaultDuration: 900
     description:
-      - '&5The player who'
-      - '&5places the most'
-      - '&5blocks wins'
+      - '&7The player who'
+      - '&7places the most'
+      - '&7blocks wins'
     prizeEconomy: 0
     prizeItems:
 
   passiveMobsKillEvent:
     id: passive-mob-kill
-    displayName: '&6&lAnimal Hunter'
+    displayName: '&b&lAnimal Hunter'
     defaultDuration: 480
     description:
-      - '&5The player who'
-      - '&5kills the most'
-      - '&5passive mobs wins'
+      - '&7The player who'
+      - '&7kills the most'
+      - '&7passive mobs wins'
     prizeEconomy: 0
     prizeItems:
 
   hostileMobsKillEvent:
     id: hostile-mob-kill
-    displayName: '&6&lMonster Hunter'
+    displayName: '&b&lMonster Hunter'
     defaultDuration: 480
     description:
-      - '&5The player who'
-      - '&5kills the most'
-      - '&5hostile mobs wins'
+      - '&7The player who'
+      - '&7kills the most'
+      - '&7hostile mobs wins'
     prizeEconomy: 0
     prizeItems:
 
   dealDamageEvent:
     id: deal-damage
-    displayName: '&6&lMaster of Damage'
+    displayName: '&b&lMaster of Damage'
     defaultDuration: 600
     description:
-      - '&5The player who'
-      - '&5deals the most'
-      - '&5damage wins'
+      - '&7The player who'
+      - '&7deals the most'
+      - '&7damage wins'
     prizeEconomy: 0
     prizeItems:
 
   catchFishEvent:
     id: catch-fish
-    displayName: '&6&lGreatest Fisherman'
+    displayName: '&b&lFisherman'
     defaultDuration: 900
     description:
-      - '&5The player who'
-      - '&5catches the most'
-      - '&5things by'
-      - '&5fishing rood wins'
+      - '&7The player who'
+      - '&7catches the most'
+      - '&7things by'
+      - '&7fishing rood wins'
     prizeEconomy: 0
     prizeItems:
 
   playerKillEvent:
     id: player-kill
-    displayName: '&6&lAssassin'
+    displayName: '&b&lAssassin'
     defaultDuration: 1200
     description:
-      - '&5The player who'
-      - '&5kills the most'
-      - '&5players wins'
+      - '&7The player who'
+      - '&7kills the most'
+      - '&7players wins'
     prizeEconomy: 0
     prizeItems:
 
   deathEvent:
     id: player-death
-    displayName: '&6&lDeadly Step'
+    displayName: '&b&lDeadly Step'
     defaultDuration: 120
     description:
-      - '&5The player who'
-      - '&5deaths the most'
-      - '&5times wins'
+      - '&7The player who'
+      - '&7deaths the most'
+      - '&7times wins'
     prizeEconomy: 0
     prizeItems:
 
   craftItemEvent:
     id: craft-item
-    displayName: '&6&lGreatest Crafter'
+    displayName: '&b&lCrafter'
     defaultDuration: 300
     description:
-      - '&5The player who'
-      - '&5crafts the most'
-      - '&5things by'
-      - '&5crafting table'
-      - '&5wins'
+      - '&7The player who'
+      - '&7crafts the most'
+      - '&7things by'
+      - '&7crafting table'
+      - '&7wins'
     prizeEconomy: 0
     prizeItems:
 
   enchantItemEvent:
     id: enchant-item
-    displayName: '&6&lGreatest Wizard'
+    displayName: '&b&lWizard'
     defaultDuration: 300
     description:
-      - '&5The player who'
-      - '&5enchant the most'
-      - '&5things by'
-      - '&5enchanting table'
-      - '&5wins'
+      - '&7The player who'
+      - '&7enchant the most'
+      - '&7things by'
+      - '&7enchanting table'
+      - '&7wins'
     prizeEconomy: 0
     prizeItems:
 
   eatFoodEvent:
     id: eat-food
-    displayName: '&6&lGourmand Battle'
+    displayName: '&b&lGourmand Battle'
     defaultDuration: 600
     description:
-      - '&5The player who'
-      - '&5eats the most'
-      - '&5food wins'
+      - '&7The player who'
+      - '&7eats the most'
+      - '&7food wins'
     prizeEconomy: 0
     prizeItems:
 
   jumpEvent:
     id: jumping
-    displayName: '&6&lJumping Fight'
+    displayName: '&b&lJumping Fight'
     defaultDuration: 900
     description:
-      - '&5The player who'
-      - '&5jumps the most'
-      - '&5times wins'
+      - '&7The player who'
+      - '&7jumps the most'
+      - '&7times wins'
     prizeEconomy: 1000
     prizeItems:
 
   moveEvent:
     id: moving
-    displayName: '&6&lMarathoner'
+    displayName: '&b&lMarathoner'
     defaultDuration: 900
     description:
-      - '&5The player who'
-      - '&5walks the longest'
-      - '&5distance wins'
+      - '&7The player who'
+      - '&7walks the longest'
+      - '&7distance wins'
     prizeEconomy: 0
     prizeItems:
 
   getDamageNoDeathEvent:
     id: get-damage-no-death
-    displayName: '&6&lMaster of Careless'
+    displayName: '&b&lMaster of Careless'
     defaultDuration: 360
     description:
-      - '&5The player who'
-      - '&5loses the most'
-      - '&5health wins'
+      - '&7The player who'
+      - '&7loses the most'
+      - '&7health wins'
     prizeEconomy: 0
     prizeItems:
 
   oreMineEvent:
     id: ore-mine
-    displayName: '&6&lMiner'
+    displayName: '&b&lMiner'
     defaultDuration: 1200
     description:
-      - '&5The player who'
-      - '&5mines the most'
-      - '&5ores wins'
+      - '&7The player who'
+      - '&7mines the most'
+      - '&7ores wins'
     prizeEconomy: 0
     prizeItems:
 
   woodCutEvent:
     id: wood-cut
-    displayName: '&6&llumberjack'
+    displayName: '&b&lLumberjack'
     defaultDuration: 1200
     description:
-      - '&5The player who'
-      - '&5cut the most'
-      - '&5woods wins'
+      - '&7The player who'
+      - '&7cut the most'
+      - '&7woods wins'
     prizeEconomy: 0
     prizeItems:
 
   chatMessageEvent:
     id: chat-message
-    displayName: '&6&lChat Spamer'
+    displayName: '&b&lSpammer'
     defaultDuration: 60
     description:
-      - '&5The player who'
-      - '&5sends the most'
-      - '&5messages wins'
+      - '&7The player who'
+      - '&7sends the most'
+      - '&7messages wins'
     prizeEconomy: 0
     prizeItems:
 
   retypeCodeEvent: #only player who first retypes code gets the point
     id: retype-code
-    displayName: '&6&lFast Fingers'
+    displayName: '&b&lFast Fingers'
     defaultDuration: 120
     description:
-      - '&5The player who'
-      - '&5retypes the most'
-      - '&5codes wins'
+      - '&7The player who'
+      - '&7retypes the most'
+      - '&7codes wins'
     prizeEconomy: 0
     prizeItems:
 
   shieldBlockEvent:
     id: shield-block
-    displayName: '&6&lDefender'
+    displayName: '&b&lDefender'
     defaultDuration: 900
     description:
-      - '&5The player who'
-      - '&5defended the most'
-      - '&5times by shield wins'
+      - '&7The player who'
+      - '&7defended the most'
+      - '&7times by shield wins'
     prizeEconomy: 0
     prizeItems:
 
   expIncreaseEvent:
     id: exp-increase
-    displayName: '&6&lExp Master'
+    displayName: '&b&lExp Master'
     defaultDuration: 1200
     description:
-      - '&5The player who'
-      - '&5increases his exp'
-      - '&5the most wins'
+      - '&7The player who'
+      - '&7increases his exp'
+      - '&7the most wins'
     prizeEconomy: 0
     prizeItems:
 
   mobSpawnerBreakEvent:
     id: mobspawner-break
-    displayName: '&6&lMob Ravager'
+    displayName: '&b&lMob Ravager'
     defaultDuration: 3600
     description:
-      - '&5The player who'
-      - '&5breaks the most'
-      - '&5mob spawners wins'
+      - '&7The player who'
+      - '&7breaks the most'
+      - '&7mob spawners wins'
     prizeEconomy: 0
     prizeItems:
